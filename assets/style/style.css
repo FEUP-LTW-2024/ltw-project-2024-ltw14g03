@@ -10,33 +10,44 @@ body {
 }
 
 header {
-    background: #5694da;
+    background: #70aad1;
     color: #fff;
-    padding: 0.625em 1.25em;
+    padding:2em 0 0 0;
     text-align: center;
 }
 
 header h1 {
     margin: 0;
-    padding: 1em 0 0.75em 0;
+    padding: 0.3em 0 1em 0;
+    font-size: 3em;
 }
 
 #menu ul {
+    width: 100%;
+    background-color: #e6d8d8;
     list-style-type: none;
     display: flex;
     justify-content: center;
-    padding: 0.625em 0;
+    padding: 0;
+    margin: 0;
     transform-origin: top;
     transition: all .3s ease-in-out;
 }
 
 #menu ul li {
-    margin: 0 0.9em;
+    padding: 1em 0;
+}
+
+#menu ul li:hover{
+    background-color: #c3c5c9;
+
 }
 
 #menu ul li a {
-    color: white;
+    color: rgb(0, 0, 0);
     text-decoration: none;
+    font-size: large;
+    padding: 1em;
 }
 
 main {
@@ -60,7 +71,7 @@ main {
 }
 
 footer {
-    background: #5694da;
+    background: #70aad1;
     color: #fff;
     text-align: center;
     padding: 0.6em 1.25em;
