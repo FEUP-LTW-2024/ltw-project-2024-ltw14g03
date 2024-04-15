@@ -1,10 +1,17 @@
 @media (max-width: 600px) {
+
+    header h1 {
+        padding: 0.3em 0 0 0;
+    }
+
+
     #menu .hamburger {
         display: block;
         background-color: inherit;
         color: inherit;
         padding: 1em 0 1em 0;
     }
+    
     
     #menu .hamburger:before {
         content:'\2630';
@@ -26,10 +33,11 @@
     }
     
     #menu ul li {
+        width: 100%;
+        text-align: center;
         max-height: 0;
         padding: 0 1em;
         background-color: inherit;
-        text-align: left;
         opacity: 0;
         transition: height .3s ease-in-out, opacity .3s ease-in-out, padding .3s ease-in-out;
     }
