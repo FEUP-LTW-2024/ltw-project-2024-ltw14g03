@@ -12,30 +12,34 @@
     
     #menu ul {
         flex-direction: column;
-        margin: 0;
-        padding: 0;
-        color: inherit;
         align-items: center;
+        background-color: #e6d8d8;
+        list-style-type: none;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
     }
-    
-    #hamburger:checked + .hamburger + ul li{
-        max-height: 1em;
-        padding: 1em;
-        opacity: 1;
-    }
-    
+
+
     #hamburger:checked + .hamburger:before {
         content:'\2715';
     }
     
-    #menu li {
+    #menu ul li {
         max-height: 0;
         padding: 0 1em;
         background-color: inherit;
         text-align: left;
         opacity: 0;
-        transition: all .3s ease-in-out;
+        transition: height .3s ease-in-out, opacity .3s ease-in-out, padding .3s ease-in-out;
     }
+    
+    #hamburger:checked ~ ul li {
+        max-height: 5em;
+        padding: 1em 0;
+        opacity: 1;
+    }
+
 
     .featured-items .item {
         width: 90%;

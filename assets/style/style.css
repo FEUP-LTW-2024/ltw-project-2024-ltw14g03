@@ -31,11 +31,11 @@ header h1 {
     padding: 0;
     margin: 0;
     transform-origin: top;
-    transition: all .3s ease-in-out;
 }
 
 #menu ul li {
-    padding: 1em 0;
+    padding: 1em;
+    list-style-type: none;
 }
 
 #menu ul li:hover{
@@ -47,7 +47,7 @@ header h1 {
     color: rgb(0, 0, 0);
     text-decoration: none;
     font-size: large;
-    padding: 1em;
+    padding: 0;
 }
 
 main {
