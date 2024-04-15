@@ -5,6 +5,11 @@
     box-sizing: border-box;
 }
 
+
+html,body{
+    height: 100%;
+}
+
 body {
     font-family: Arial, sans-serif;
 }
@@ -74,11 +79,13 @@ footer {
     color: #fff;
     text-align: center;
     padding: 0.6em 1.25em;
-    position: absolute;
     width: 100%;
-    bottom: 0;
 }
 
 #hamburger, .hamburger {
     display: none;
   }
+
+
+.mainImage{
+}

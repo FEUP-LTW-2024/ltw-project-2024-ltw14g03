@@ -6,6 +6,7 @@
     <title>QuickFlip - Home</title>
     <link rel="stylesheet" href="assets/style/style.css">
     <link rel="stylesheet" href="assets/style/responsive.css">
+    <link rel="stylesheet" href="assets/style/layout.css">
 </head>
 <body>
     <header>
