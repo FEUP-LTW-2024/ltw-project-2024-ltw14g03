@@ -1,27 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuickFlip - Home</title>
-    <link rel="stylesheet" href="assets/style/style.css">
-    <link rel="stylesheet" href="assets/style/responsive.css">
-    <link rel="stylesheet" href="assets/style/layout.css">
-</head>
-<body>
-    <header>
-        <h1>QuickFlip</h1>
-        <nav id="menu">
-            <input type="checkbox" id="hamburger"> 
-            <label class="hamburger" for="hamburger"></label>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Browse</a></li>
-                <li><a href="#">Sell</a></li>
-                <li><a href="#">Profile</a></li>
-            </ul>
-        </nav>
-    </header>
+<?php 
+    declare(strict_types = 1);
+    require_once(__DIR__ . '/templates/common.tpl.php');
+
+    drawHeader(); 
+?>
     <main>
         <section class="featured-items">
             <h2>Featured Items</h2>
@@ -33,8 +15,8 @@
             <!-- Repeat the above div block for more items -->
         </section>
     </main>
-    <footer>
-        <p>© 2024 QuickFlip. All rights reserved.</p>
-    </footer>
+<?php
+    drawFooter();
+?>
 </body>
 </html>
