@@ -9,20 +9,26 @@
 </head>
 <body>
     <header>
+
+        <ul class = "log-options">
+            <li><a>LogIn</a></li>
+            <li><a>LogOut</a></li>
+        </ul>
+
         <h1>QuickFlip</h1>
         <nav id="menu">
             <input type="checkbox" id="hamburger"> 
             <label class="hamburger" for="hamburger"></label>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Browse</a></li>
-                <li><a href="#">Sell</a></li>
-                <li><a href="#">Profile</a></li>
+                <li><a href = "../index.php" >Home</a></li>
+                <li><a >Browse</a></li>
+                <li><a >Sell</a></li6>
+                <li><a href = "../profile.php" >Profile</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <section class="featured-items">
+        <section class = "featured-items">
             <h2>Featured Items</h2>
             <div class="item">
                 <img src="https://via.placeholder.com/150" alt="Item Image">
