@@ -1,45 +1,49 @@
 PRAGMA foreign_keys = ON;
 
--- Drop existing tables if they exist to avoid conflicts.
+-- First, drop tables with foreign key dependencies
+DROP TABLE IF EXISTS transactions;
 DROP TABLE IF EXISTS wishlist;
 DROP TABLE IF EXISTS item_images;
-DROP TABLE IF EXISTS transactions;
 DROP TABLE IF EXISTS items;
+
+-- Then drop tables that are referenced by foreign key constraints
+DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS categories;
 DROP TABLE IF EXISTS brands;
 DROP TABLE IF EXISTS conditions;
-DROP TABLE IF EXISTS users;
 
--- Users Table
+-- Create tables after all necessary drops
 CREATE TABLE users (
     user_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL,
+    firstName TEXT NOT NULL,
+    lastName TEXT NOT NULL,
     username TEXT UNIQUE NOT NULL,
     password TEXT NOT NULL, -- Store hashed passwords
     email TEXT UNIQUE NOT NULL,
+    city TEXT,
+    state TEXT,
+    country TEXT,
+    zip TEXT,
+    phone TEXT,
     created_at TEXT DEFAULT (datetime('now', 'localtime')),
     is_admin INTEGER NOT NULL DEFAULT 0 -- 0: regular user, 1: admin user
 );
 
--- Categories Table
 CREATE TABLE categories (
     category_id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT UNIQUE NOT NULL
 );
 
--- Brands Table
 CREATE TABLE brands (
     brand_id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT UNIQUE NOT NULL
 );
 
--- Conditions Table
 CREATE TABLE conditions (
     condition_id INTEGER PRIMARY KEY AUTOINCREMENT,
     description TEXT UNIQUE NOT NULL
 );
 
--- Items Table
 CREATE TABLE items (
     item_id INTEGER PRIMARY KEY AUTOINCREMENT,
     seller_id INTEGER NOT NULL,
@@ -58,7 +62,6 @@ CREATE TABLE items (
     FOREIGN KEY (condition_id) REFERENCES conditions(condition_id)
 );
 
--- Item Images Table
 CREATE TABLE item_images (
     image_id INTEGER PRIMARY KEY AUTOINCREMENT,
     item_id INTEGER NOT NULL,
@@ -66,7 +69,6 @@ CREATE TABLE item_images (
     FOREIGN KEY (item_id) REFERENCES items(item_id)
 );
 
--- Wishlist Table
 CREATE TABLE wishlist (
     wishlist_id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER NOT NULL,
@@ -76,7 +78,6 @@ CREATE TABLE wishlist (
     FOREIGN KEY (item_id) REFERENCES items(item_id)
 );
 
--- Transactions Table
 CREATE TABLE transactions (
     transaction_id INTEGER PRIMARY KEY AUTOINCREMENT,
     buyer_id INTEGER NOT NULL,

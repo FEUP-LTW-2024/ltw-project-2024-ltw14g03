@@ -38,9 +38,24 @@ header h1 {
 }
 
 #menu ul li {
-    padding: 1em;
+    padding: 1em 3em;
     list-style-type: none;
+    border: #c3c5c9;
 }
+
+
+#menu ul li:not(:last-child) {
+    border-style: solid;
+    border-width: 0 1px 0 0;
+}
+
+#menu ul li:last-child {
+    margin-left: auto; /* Pushes it to the left */
+    border-style: solid;
+    border-width: 0 0 0 1px;
+}
+
+
 
 #menu ul li:hover{
     background-color: #c3c5c9;
@@ -55,7 +70,6 @@ header h1 {
 }
 
 main {
-    padding: 1.25em;
     text-align: center;
 }
 
@@ -72,6 +86,23 @@ main {
 .featured-items .item img {
     width: 100%;
     height: auto;
+}
+
+.featured-items {
+    padding: 2em 0;
+}
+
+.about{
+    padding: 2em 0;
+    background-color: #384955;
+}
+
+.about h2 {
+    padding: 10em 3em 0 3em;
+}
+
+.about p{
+    padding: 0 3em 10em 3em;
 }
 
 footer {
