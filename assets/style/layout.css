@@ -1,0 +1,40 @@
+
+body{
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+/* ITEM PAGE LAYOUT */
+
+#itemPage main{
+    display: flex;
+    flex-direction: row;
+}
+
+#itemPage .Product{
+    grid-area: product;
+    text-align: center;
+}
+
+#itemPage .Seller{
+    grid-area: seller;
+    text-align: center;
+}
+
+
+/*MAIN PAGE LAYOUT*/
+
+#mainPage{
+    display: flex;
+    flex-direction: row;
+}
+
+.featured-items{
+    text-align: center;
+    width: 65%;
+}
+
+.about{
+    text-align: center;
+    width: 35%;
+}
