@@ -26,7 +26,7 @@
                 <li><a href="#">Browse</a></li>
                 <li><a href="#">Sell</a></li>
                 <li><a href="#">Profile</a></li>
-                <li><a href="#">Sign In/Sign Up</a></li>
+                <li><a href="../pages/login.php">Sign In/Sign Up</a></li>
             </ul>
         </nav>
     </header>

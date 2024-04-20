@@ -118,5 +118,55 @@ footer {
   }
 
 
-.mainImage{
+
+/* LOGIN PAGE */
+
+.login-form {
+    width: 50%;
+    max-width: 600px;
+    padding: 4em 2em;
+    background-color: #f2f2f2;
+    border-radius: 0.5em;
+    margin: auto;
 }
+
+.login-form form{
+    align-items: center;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+
+.login-form form input, .login-form form button{
+    width: 80%;
+}
+
+.login-form form button {
+    margin-top: 2em;
+    padding: 1em;
+    border-radius: 5px;
+    background-color: #80bfe9;
+}
+
+#registerButton{
+    margin-top: 1em;
+    background-color: #0a85d6;
+}
+
+.login-form form input {
+    margin: 0.5em 0;
+    padding: 0.5em;
+    border-radius: 5px;
+}
+
+.login-form form label{
+    margin: 0.8em 0 0 0;
+}
+
+.login-form form label:first-child{
+    margin-top: 0;
+}
+
+/* END OF LOGIN PAGE*/
