@@ -46,14 +46,14 @@ class Customer {
         ]);
     }
 
-    static function getCustomerWithPassword(PDO $db, string $email, string $password): ?Customer {
+    static function getCustomerWithPassword(PDO $db, string $username, string $password): ?Customer {
         $stmt = $db->prepare('
             SELECT user_id, firstName, lastName, username, city, state, country, zip, phone, email, created_at, is_admin
             FROM users 
-            WHERE lower(email) = ? AND password = ?
+            WHERE lower(username) = ? AND password = ?
         ');
 
-        $stmt->execute([strtolower($email), $password]);
+        $stmt->execute([strtolower($username), $password]);
 
         if ($customer = $stmt->fetch()) {
             $dateJoined = new DateTime($customer['created_at']);

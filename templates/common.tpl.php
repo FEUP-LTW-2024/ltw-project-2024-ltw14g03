@@ -1,5 +1,6 @@
 <?php 
   declare(strict_types = 1); 
+  session_start();
 ?>
 
 
@@ -26,7 +27,13 @@
                 <li><a href="#">Browse</a></li>
                 <li><a href="#">Sell</a></li>
                 <li><a href="#">Profile</a></li>
-                <li><a href="../pages/login.php">Sign In/Sign Up</a></li>
+                <?php if(isset($_SESSION['username'])) { ?>
+                  <li><a href="../pages/login.php">LOGGED IN</a></li>
+                <?php } else { ?>
+                  <li><a href="../pages/login.php">Sign In/Sign Up</a></li>
+                <?php } ?>
+              
+
             </ul>
         </nav>
     </header>
