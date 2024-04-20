@@ -13,8 +13,8 @@
           <label for="password">Password:</label>
           <input type="password" name="password" id="password" required>
           <button type="submit" name="login">Login</button>
-          <button id="registerButton" onclick="location.href='newpage.html'">Dont have an account? Click here</button>
         </form>
+        <button id="registerButton" onclick="location.href='register.php'">Dont have an account? Click here</button>
     </div>
   </body>
 

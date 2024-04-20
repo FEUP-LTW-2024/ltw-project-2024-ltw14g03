@@ -135,7 +135,7 @@ footer {
     width: 70%;
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
+    margin: 0 auto 0 auto;
 }
 
 
@@ -150,9 +150,13 @@ footer {
     background-color: #80bfe9;
 }
 
-#registerButton{
-    margin-top: 1em;
-    background-color: #0a85d6;
+#registerButton {
+    padding: 1em; 
+    border-radius: 5px;  
+    background-color: #0a85d6;  
+    display: block; 
+    margin: 1em auto auto auto; 
+    width: 56%; /* Form width * content width (EQUIVALENT TO BEING INSIDE THE FORM BUT WITHOUT TRIGGERING THE ACTION"*/
 }
 
 .login-form form input {

@@ -65,14 +65,14 @@
     /* LOGIN PAGE*/
 
     .login-form form{
-        margin: auto;
+        margin: auto auto 0 auto;
         width: 100%;
     }
 
 
 
     .login-form{
-        margin: 0 auto;
+        margin: 0 auto ;
         width: 100%; 
         max-width: 100%;
         display: grid;
@@ -92,6 +92,9 @@
         font-size: large;
     }
 
-
+    #registerButton{
+        margin-top: 3em;
+        width: 80%;
+    }
     /* END OF LOGIN PAGE */
 }
