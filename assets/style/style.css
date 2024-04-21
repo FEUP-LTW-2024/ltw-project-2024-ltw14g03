@@ -119,7 +119,7 @@ footer {
 
 
 
-/* LOGIN PAGE */
+/* LOGIN PAGE / REGISTER PAGE */
 
 .login-form {
     width: 50%;
@@ -127,7 +127,7 @@ footer {
     padding: 4em 2em;
     background-color: #f2f2f2;
     border-radius: 0.5em;
-    margin: auto;
+    margin: 8% auto;
 }
 
 .login-form form{
@@ -139,30 +139,30 @@ footer {
 }
 
 
-.login-form form input, .login-form form button{
+.login-form form input, .login-form form button, .login-form form select{
     width: 80%;
 }
 
 .login-form form button {
     margin-top: 2em;
     padding: 1em;
-    border-radius: 5px;
+    border-radius: 7px;
     background-color: #80bfe9;
 }
 
 #registerButton {
     padding: 1em; 
-    border-radius: 5px;  
+    border-radius: 7px;  
     background-color: #0a85d6;  
     display: block; 
     margin: 1em auto auto auto; 
     width: 56%; /* Form width * content width (EQUIVALENT TO BEING INSIDE THE FORM BUT WITHOUT TRIGGERING THE ACTION"*/
 }
 
-.login-form form input {
+.login-form form input, .login-form form select {
     margin: 0.5em 0;
     padding: 0.5em;
-    border-radius: 5px;
+    border-radius: 7px;
 }
 
 .login-form form label{
@@ -173,4 +173,4 @@ footer {
     margin-top: 0;
 }
 
-/* END OF LOGIN PAGE*/
+/* END OF LOGIN PAGE / REGISTER PAGE */
