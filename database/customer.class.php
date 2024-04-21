@@ -1,6 +1,11 @@
 <?php
 declare(strict_types=1);
 
+function debugToConsole($msg) { 
+    echo "<script>console.log(".json_encode($msg).")</script>";
+}
+
+
 class Customer {
     public int $user_id;
     public string $firstName;
@@ -103,6 +108,26 @@ class Customer {
             );
         } else {
             return null;
+        }
+    }
+
+    static function registerUser(PDO $db, string $firstName, string $lastName, string $username, string $password, string $city, string $state, string $country, string $zip, string $phone, string $email): void {
+        $stmt = $db->prepare('
+        SELECT * FROM users WHERE username = ? OR email = ?
+        ');
+
+
+        $stmt->execute([$username, $email]);
+        if ($stmt->fetch()) {
+            debugToConsole("User already exists");
+        }else{
+
+            $stmt = $db->prepare('
+                INSERT INTO users (firstName, lastName, username, password, city, state, country, zip, phone, email, is_admin)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ');
+
+            $stmt->execute([$firstName, $lastName, $username, $password, $city, $state, $country, $zip, $phone, $email, 0]);
         }
     }
 }
