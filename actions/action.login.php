@@ -14,8 +14,10 @@ declare(strict_types = 1);
 
   if ($customer) {
     $session->setUsername($customer->username);
+    header('Location: ../pages/index.php');
   }else{
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
   }
 
-  header('Location: ' . $_SERVER['HTTP_REFERER']);
+
 ?>
