@@ -17,7 +17,8 @@
     <link rel="stylesheet" href="../assets/style/layout.css">
     <link rel="stylesheet" href="../assets/style/responsive.css">
     <script src="../scripts/logout.js"></script>
-  
+    <script src="../scripts/validatePassword.js"></script>
+
   </head>
   <body>
   <header>

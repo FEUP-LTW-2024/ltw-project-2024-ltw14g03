@@ -130,4 +130,8 @@ class Customer {
             $stmt->execute([$firstName, $lastName, $username, $password, $city, $state, $country, $zip, $phone, $email, 0]);
         }
     }
+
+    static function checkPassword(string $password): int{
+        return preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/', $password);
+    }
 }
