@@ -1,10 +1,12 @@
 <?php 
   declare(strict_types = 1); 
-  session_start();
+
+  require_once(__DIR__ . '/../utils/session.php');
+  
 ?>
 
 
-<?php function drawHeader() { ?>
+<?php function drawHeader(Session $session) { ?>
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
@@ -14,6 +16,7 @@
     <link rel="stylesheet" href="../assets/style/style.css">
     <link rel="stylesheet" href="../assets/style/layout.css">
     <link rel="stylesheet" href="../assets/style/responsive.css">
+    <script src="../scripts/logout.js"></script>
   
   </head>
   <body>
@@ -27,12 +30,12 @@
                 <li><a href="#">Browse</a></li>
                 <li><a href="#">Sell</a></li>
                 <li><a href="#">Profile</a></li>
-                <?php if(isset($_SESSION['username'])) { ?>
+                <?php if($session->isLoggedIn()) { ?>
                   <li class="dropdown"><img class="profileImageBar" src="https://via.placeholder.com/150"><a href="../pages/login.php"><?php echo  $_SESSION['username']?></a>
                   <div class="dropdown-content">
                     <a href="#">Link 1</a>
                     <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
+                    <a href="#" onclick="logoutUser(); return false;">Logout</a>
                   </div>
                   </li>
                 <?php } else { ?>
