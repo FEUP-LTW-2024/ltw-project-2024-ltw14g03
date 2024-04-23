@@ -12,6 +12,8 @@ declare(strict_types = 1);
     Customer::registerUser($db, $_POST['firstName'], $_POST['lastName'], $_POST['username'], $password, $_POST['city'], $_POST['state'], $_POST['country'], $_POST['zip'], $_POST['phone'], $_POST['email']);
   } else {
     header('Location: ' . $_SERVER['HTTP_REFERER'] . '?error=password');
+    exit();
   }
-  header('Location: ' . $_SERVER['HTTP_REFERER']);
+  header('Location: ../pages/profile.php');
+  exit();
 ?>

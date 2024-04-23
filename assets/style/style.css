@@ -218,3 +218,70 @@ main {
 }
 
 /* END OF LOGIN PAGE / REGISTER PAGE */
+
+/* PROFILE PAGE */
+
+.profile-info {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-details {
+    margin-bottom: 20px;
+}
+
+.profile-detail {
+    margin-bottom: 10px;
+}
+
+.profile-detail label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.profile-detail span {
+    color: #333;
+}
+
+.profile-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.profile-button:hover {
+    background-color: #0056b3;
+}
+
+/* END OF PROFILE PAGE */
+
+/* BROWSE PAGE */
+
+.search-items input {
+    padding: 0.7em 3em;
+    font-size: 1.5em;
+    border-radius: 1em 0 0 1em;
+    border: 0.01em solid #ccc;
+    border-right: none;
+    margin: -0.16em;
+}
+
+.search-items button {
+    padding: 0.7em 2em;
+    font-size: 1.5em;
+    border-radius: 0 1em 1em 0;
+    background-color: #70aad1;
+    border: 0.01em solid #ccc;
+    border-left: none;
+    margin: 0em;
+    cursor:pointer;
+}
+
+/* END OF BROWSE PAGE */
