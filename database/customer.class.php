@@ -55,10 +55,10 @@ class Customer {
         $stmt = $db->prepare('
             SELECT user_id, firstName, lastName, username, city, state, country, zip, phone, email, created_at, is_admin
             FROM users 
-            WHERE lower(username) = ? AND password = ?
+            WHERE lower(username) = ?
         ');
 
-        $stmt->execute([strtolower($username), $password]);
+        $stmt->execute([strtolower($username)]);
 
         if ($customer = $stmt->fetch()) {
             $dateJoined = new DateTime($customer['created_at']);
@@ -132,6 +132,6 @@ class Customer {
     }
 
     static function checkPassword(string $password): int{
-        return preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/', $password);
+        return preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]{8,}$/', $password);
     }
 }

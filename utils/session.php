@@ -13,12 +13,23 @@
       session_destroy();
     }
 
-    public function setUsername(string $username) {
-      $_SESSION['username'] = $username;
+    public function setParam(string $param, string $username) {
+      $_SESSION[$param] = $username;
     }
 
-    public function getUsername() : ?string {
-      return isset($_SESSION['username']) ? $_SESSION['username'] : null;
+    public function getParam(string $param) : ?string {
+      return isset($_SESSION[$param]) ? $_SESSION[$param] : "";
+    }
+
+    public function getUserDetails(): array
+    {
+
+        $details['username'] = $this->getParam('username');
+        $details['email'] = $this->getParam('email');
+        $details['firstname'] = $this->getParam('firstname');
+        $details['lastname'] = $this->getParam('lastname');
+
+        return $details;
     }
   }
 ?>

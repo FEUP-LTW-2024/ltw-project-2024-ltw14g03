@@ -11,7 +11,7 @@ if (!$session->isLoggedIn()) {
 }
 
 // Assume getUsername() returns the username from the session
-$username = $session->getUsername();
+$username = $session->getParam('username');
 
 //TODO:: nao sei fazer esta funcao a ir buscar à base de dados
 $userDetails = $session->getUserDetails($username);
@@ -33,7 +33,7 @@ drawHeader($session);
             </div>
             <div class="profile-detail">
                 <label for="fullName">Full Name:</label>
-                <span id="fullName"><?php echo htmlspecialchars($userDetails['firstName'] . ' ' . $userDetails['lastName']); ?></span>
+                <span id="fullName"><?php echo htmlspecialchars($userDetails['firstname'] . ' ' . $userDetails['lastname']); ?></span>
             </div>
         </div>
         <button class="profile-button" onclick="location.href='editProfile.php';">Edit Profile</button>
