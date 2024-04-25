@@ -222,8 +222,11 @@ main {
 /* PROFILE PAGE */
 
 .profile-info {
+
+    align-content: center;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 2em auto;
+    margin-bottom: auto;
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 8px;
@@ -231,6 +234,7 @@ main {
 }
 
 .profile-details {
+    margin-top: 1em;
     margin-bottom: 20px;
 }
 

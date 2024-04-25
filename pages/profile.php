@@ -10,11 +10,8 @@ if (!$session->isLoggedIn()) {
     exit();
 }
 
-// Assume getUsername() returns the username from the session
-$username = $session->getParam('username');
-
 //TODO:: nao sei fazer esta funcao a ir buscar à base de dados
-$userDetails = $session->getUserDetails($username);
+$userDetails = $session->getUserDetails();
 
 drawHeader($session);
 ?>
@@ -23,14 +20,19 @@ drawHeader($session);
     <div class="profile-info">
         <h1>User Profile</h1>
         <div class="profile-details">
+
+            <img src = "<?php echo $userDetails['pfp'] ?>">
+
             <div class="profile-detail">
                 <label for="username">Username:</label>
                 <span id="username"><?php echo htmlspecialchars($userDetails['username']); ?></span>
             </div>
+
             <div class="profile-detail">
                 <label for="email">Email:</label>
                 <span id="email"><?php echo htmlspecialchars($userDetails['email']); ?></span>
             </div>
+
             <div class="profile-detail">
                 <label for="fullName">Full Name:</label>
                 <span id="fullName"><?php echo htmlspecialchars($userDetails['firstname'] . ' ' . $userDetails['lastname']); ?></span>

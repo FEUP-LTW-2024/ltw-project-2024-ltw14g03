@@ -24,10 +24,12 @@
     public function getUserDetails(): array
     {
 
+        $details['pfp'] = $this->getParam('pfp');
+
         $details['username'] = $this->getParam('username');
         $details['email'] = $this->getParam('email');
-        $details['firstname'] = $this->getParam('firstname');
-        $details['lastname'] = $this->getParam('lastname');
+        $details['firstname'] = $this->getParam('firstName');
+        $details['lastname'] = $this->getParam('lastName');
 
         return $details;
     }
