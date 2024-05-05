@@ -288,7 +288,11 @@ main {
 
 .profile-info {
 
-    align-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
     max-width: 600px;
     margin: 2em auto;
     margin-bottom: auto;
@@ -296,14 +300,34 @@ main {
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
 }
 
-.profile-details {
+.profile-info img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+
+
+.profile-detail:first-of-type {
     margin-top: 1em;
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
-.profile-detail {
+.profile-detail:first-of-type form{
+    margin-top: 1em;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.profile-detail{
     margin-bottom: 10px;
 }
 
@@ -353,4 +377,9 @@ main {
     cursor:pointer;
 }
 
+
+/* ------------------------ */
+
 /* END OF BROWSE PAGE */
+
+

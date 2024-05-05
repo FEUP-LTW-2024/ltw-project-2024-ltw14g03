@@ -18,8 +18,7 @@ drawHeader($session);
 <body>
     <div class="profile-info">
         <h1>User Profile</h1>
-        <div class="profile-details">
-            <?php debugToConsole($userDetails['pfp']); ?>
+        <div class="profile-detail">
             <img src="../<?php echo $userDetails['pfp'] ?>" alt="Profile Picture">
 
             <form action="../actions/action.uploadProfileImage.php" method="post" enctype="multipart/form-data">
@@ -27,24 +26,24 @@ drawHeader($session);
                 <input type="file" id="profilePicture" name="profilePicture" accept="image/*"><br>
                 <button type="submit">Upload Image</button>
             </form>
+        </div>
+            
 
-            <div class="profile-detail">
-                <label for="username">Username:</label>
-                <span id="username"><?php echo htmlspecialchars($userDetails['username']); ?></span>
-            </div>
+        <div class="profile-detail">
+            <label for="username">Username:</label>
+            <span id="username"><?php echo htmlspecialchars($userDetails['username']); ?></span>
+        </div>
 
-            <div class="profile-detail">
-                <label for="email">Email:</label>
-                <span id="email"><?php echo htmlspecialchars($userDetails['email']); ?></span>
-            </div>
+        <div class="profile-detail">
+            <label for="email">Email:</label>
+            <span id="email"><?php echo htmlspecialchars($userDetails['email']); ?></span>
+        </div>
 
-            <div class="profile-detail">
-                <label for="fullName">Full Name:</label>
-                <span id="fullName"><?php echo htmlspecialchars($userDetails['firstname'] . ' ' . $userDetails['lastname']); ?></span>
-            </div>
+        <div class="profile-detail">
+            <label for="fullName">Full Name:</label>
+            <span id="fullName"><?php echo htmlspecialchars($userDetails['firstname'] . ' ' . $userDetails['lastname']); ?></span>
         </div>
         <button class="profile-button" id="editProfileBtn">Edit Profile</button>
-
     </div>
 </body>
 
