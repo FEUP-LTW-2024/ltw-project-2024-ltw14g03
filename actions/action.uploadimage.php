@@ -2,7 +2,7 @@
 require_once(__DIR__ . '/../database/connection.db.php');
 
 
-$target_dir = "uploads/";
+$target_dir = "../assets/images/";
 $original_file_name = basename($_FILES["fileToUpload"]["name"]);
 $imageFileType = strtolower(pathinfo($original_file_name, PATHINFO_EXTENSION));
 $base_file_name = pathinfo($original_file_name, PATHINFO_FILENAME);
