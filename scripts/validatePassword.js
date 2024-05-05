@@ -1,6 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", function() {
-    const form = document.querySelector(".login-form form");
+    const form = document.querySelector("#registerForm");
     const passwordInput = document.getElementById("password");
     const errorMessage = document.createElement("div");
     errorMessage.style.color = "red";

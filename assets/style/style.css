@@ -194,6 +194,11 @@ main {
     background-color: #80bfe9;
 }
 
+.login-form p{
+    text-align: center;
+    margin-top: 0.3em;
+}
+
 #registerButton {
     padding: 1em; 
     border-radius: 7px;  

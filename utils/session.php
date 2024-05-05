@@ -33,5 +33,24 @@
 
         return $details;
     }
+  
+
+    public function setError(string $error) {
+      $_SESSION['error'] = $error;
+    }
+
+    public function checkIfError() : bool {
+      return isset($_SESSION['error']);
+    }
+
+    public function getError() : string {
+      $error = $_SESSION['error'];
+      unset($_SESSION['error']);
+      return $error;
+    }
+
+    public function clearError() {
+      unset($_SESSION['error']);
+    }
   }
 ?>

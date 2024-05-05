@@ -6,7 +6,7 @@ drawHeader($session);
 ?>
 
 <body>
-    <div class="login-form">
+    <div class="login-form" id="registerForm">
         <form action="../actions/action.register.php" method="post">
 
             <label for="email">Email:</label>
