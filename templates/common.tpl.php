@@ -5,7 +5,6 @@
   
 ?>
 
-
 <?php function drawHeader(Session $session) { ?>
 <!DOCTYPE html>
 <html lang="en-US">
@@ -28,22 +27,18 @@
             <label class="hamburger" for="hamburger"></label>
             <ul>
                 <li><a href="../pages/index.php">Home</a></li>
-                <li><a href="#">Browse</a></li>
+                <li><a href="../pages/browse.php">Browse</a></li>
                 <li><a href="#">Sell</a></li>
-                <li><a href="#">Profile</a></li>
                 <?php if($session->isLoggedIn()) { ?>
-                  <li class="dropdown"><img class="profileImageBar" src="https://via.placeholder.com/150"><a href="../pages/login.php"><?php echo  $_SESSION['username']?></a>
+                  <li class="dropdown"><img class="profileImageBar" src="https://via.placeholder.com/150"><a href=""><?php echo  $_SESSION['username']?></a>
                   <div class="dropdown-content">
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
+                    <a href="../pages/profile.php">Profile</a>
                     <a href="#" onclick="logoutUser(); return false;">Logout</a>
                   </div>
                   </li>
                 <?php } else { ?>
                   <li><a href="../pages/login.php">Sign In/Sign Up</a></li>
                 <?php } ?>
-              
-
             </ul>
         </nav>
     </header>

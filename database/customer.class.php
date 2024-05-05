@@ -21,7 +21,10 @@ class Customer {
     public DateTime $dateJoined;
     public bool $isAdmin;
 
+    public string $pfp;
+
     public function __construct(int $user_id, string $firstName, string $lastName, string $username, string $city, string $state, string $country, string $zip, string $phone, string $email, DateTime $dateJoined, bool $isAdmin) {
+
         $this->user_id = $user_id;
         $this->firstName = $firstName;
         $this->lastName = $lastName;
@@ -52,15 +55,21 @@ class Customer {
     }
 
     static function getCustomerWithPassword(PDO $db, string $username, string $password): ?Customer {
+
         $stmt = $db->prepare('
-            SELECT user_id, firstName, lastName, username, city, state, country, zip, phone, email, created_at, is_admin
+            SELECT user_id, firstName, lastName, username, password, city, state, country, zip, phone, email, created_at, is_admin
             FROM users 
-            WHERE lower(username) = ? AND password = ?
+            WHERE lower(username) = ?
         ');
 
-        $stmt->execute([strtolower($username), $password]);
+        $stmt->execute([strtolower($username)]);
 
         if ($customer = $stmt->fetch()) {
+
+            if (!password_verify($password, $customer['password'])) {
+                return null;
+            }
+
             $dateJoined = new DateTime($customer['created_at']);
             return new Customer(
                 (int)$customer['user_id'],
@@ -76,7 +85,9 @@ class Customer {
                 $dateJoined,
                 (bool)$customer['is_admin']
             );
-        } else {
+        }
+        else
+        {
             return null;
         }
     }
@@ -116,8 +127,8 @@ class Customer {
         SELECT * FROM users WHERE username = ? OR email = ?
         ');
 
-
         $stmt->execute([$username, $email]);
+
         if ($stmt->fetch()) {
             debugToConsole("User already exists");
         }else{
@@ -132,6 +143,6 @@ class Customer {
     }
 
     static function checkPassword(string $password): int{
-        return preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/', $password);
+        return preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]{8,}$/', $password);
     }
 }

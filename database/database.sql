@@ -25,6 +25,7 @@ CREATE TABLE users (
     country TEXT,
     zip TEXT,
     phone TEXT,
+    pfp TEXT,
     created_at TEXT DEFAULT (datetime('now', 'localtime')),
     is_admin INTEGER NOT NULL DEFAULT 0 -- 0: regular user, 1: admin user
 );

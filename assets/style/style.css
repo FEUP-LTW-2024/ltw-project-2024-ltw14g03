@@ -217,4 +217,135 @@ main {
     margin-top: 0;
 }
 
+
+
 /* END OF LOGIN PAGE / REGISTER PAGE */
+
+
+/* SELL ORDER CREATION */
+
+.sell-order-create {
+    align-content: center;
+    max-width: 600px;
+    margin: 2em auto;
+    margin-bottom: auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sell-order-create form input, .login-form form select {
+    margin: 0.5em 0;
+    padding: 0.5em;
+    border-radius: 7px;
+}
+
+.sell-order-create form label{
+    align-self: flex-start;
+    margin: 1em 0 0.5em 0;
+}
+
+.sell-order-create form select{
+    padding: 0.5em;
+}
+
+.sell-order-create form input{
+    align-self: flex-start;
+    margin: 0 0 0 0;
+}
+
+.sell-order-create form label:first-child{
+    margin-top: 0;
+}
+
+.sell-order-create form{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto 0 auto;
+}
+
+.sell-order-create input, .sell-order-create form button, .sell-order-create form select{
+    width: 100%;
+}
+
+.sell-order-create form button {
+    margin-top: 2em;
+    padding: 1em;
+    border-radius: 7px;
+    background-color: #80bfe9;
+}
+
+/* END OF SELL ORDER CREATION */
+
+/* PROFILE PAGE */
+
+.profile-info {
+
+    align-content: center;
+    max-width: 600px;
+    margin: 2em auto;
+    margin-bottom: auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-details {
+    margin-top: 1em;
+    margin-bottom: 20px;
+}
+
+.profile-detail {
+    margin-bottom: 10px;
+}
+
+.profile-detail label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.profile-detail span {
+    color: #333;
+}
+
+.profile-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.profile-button:hover {
+    background-color: #0056b3;
+}
+
+/* END OF PROFILE PAGE */
+
+/* BROWSE PAGE */
+
+.search-items input {
+    padding: 0.7em 3em;
+    font-size: 1.5em;
+    border-radius: 1em 0 0 1em;
+    border: 0.01em solid #ccc;
+    border-right: none;
+    margin: -0.16em;
+}
+
+.search-items button {
+    padding: 0.7em 2em;
+    font-size: 1.5em;
+    border-radius: 0 1em 1em 0;
+    background-color: #70aad1;
+    border: 0.01em solid #ccc;
+    border-left: none;
+    margin: 0em;
+    cursor:pointer;
+}
+
+/* END OF BROWSE PAGE */

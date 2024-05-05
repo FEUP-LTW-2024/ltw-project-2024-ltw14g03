@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function() {
     const form = document.querySelector(".login-form form");
     const passwordInput = document.getElementById("password");
@@ -14,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     function isValidPassword(password) {
-        return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password);
+        return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/.test(password);
     }
 });
 

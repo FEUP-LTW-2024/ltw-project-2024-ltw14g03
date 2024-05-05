@@ -21,7 +21,6 @@ drawHeader($session);
             <label for="lastName">Last Name:</label>
             <input type="text" name="lastName" id="lastName" required>
 
-
             <label for="city">City:</label>
             <input type="text" name="city" id="city" required>
 
@@ -53,11 +52,11 @@ drawHeader($session);
             <label for="password">Password:</label>
             <input type="password" name="password" id="password" required>
 
-            <?php if (isset($_GET['error']) && $_GET['error'] === 'password'): ?>
-                <p style="color: red;">Password must be at least 8 characters long and include uppercase, lowercase, a number, and a special character.</p>
+            <?php if (isset($_GET['error']) && $_GET['error'] == 'password'): ?>
+                <p style="color: red;">.</p>
             <?php endif; ?>
 
-            <button type="submit" name="register">Register</button>
+            <button type = "submit" name="register">Register</button>
         </form>
     </div>
 </body>
