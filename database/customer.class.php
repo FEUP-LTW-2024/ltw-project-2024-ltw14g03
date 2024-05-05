@@ -23,7 +23,7 @@ class Customer {
 
     public string $pfp;
 
-    public function __construct(int $user_id, string $firstName, string $lastName, string $username, string $city, string $state, string $country, string $zip, string $phone, string $email, DateTime $dateJoined, bool $isAdmin) {
+    public function __construct(int $user_id, string $firstName, string $lastName, string $username, string $city, string $state, string $country, string $zip, string $phone, string $email, DateTime $dateJoined, bool $isAdmin, string $pfp) {
 
         $this->user_id = $user_id;
         $this->firstName = $firstName;
@@ -37,6 +37,7 @@ class Customer {
         $this->email = $email;
         $this->dateJoined = $dateJoined;
         $this->isAdmin = $isAdmin;
+        $this->pfp = $pfp;
     }
 
     public function name(): string {
@@ -57,7 +58,7 @@ class Customer {
     static function getCustomerWithPassword(PDO $db, string $username, string $password): ?Customer {
 
         $stmt = $db->prepare('
-            SELECT user_id, firstName, lastName, username, password, city, state, country, zip, phone, email, created_at, is_admin
+            SELECT user_id, firstName, lastName, username, password, city, state, country, zip, phone, email, created_at, is_admin, profile_picture
             FROM users 
             WHERE lower(username) = ?
         ');
@@ -83,7 +84,8 @@ class Customer {
                 $customer['phone'],
                 $customer['email'],
                 $dateJoined,
-                (bool)$customer['is_admin']
+                (bool)$customer['is_admin'],
+                $customer['profile_picture']
             );
         }
         else

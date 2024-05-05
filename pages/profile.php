@@ -10,7 +10,6 @@ if (!$session->isLoggedIn()) {
     exit();
 }
 
-//TODO:: nao sei fazer esta funcao a ir buscar à base de dados
 $userDetails = $session->getUserDetails();
 
 drawHeader($session);
@@ -20,8 +19,14 @@ drawHeader($session);
     <div class="profile-info">
         <h1>User Profile</h1>
         <div class="profile-details">
+            <?php debugToConsole($userDetails['pfp']); ?>
+            <img src="../<?php echo $userDetails['pfp'] ?>" alt="Profile Picture">
 
-            <img src = "<?php echo $userDetails['pfp'] ?>">
+            <form action="uploadProfilePicture.php" method="post" enctype="multipart/form-data">
+                <label for="profilePicture">Change Profile Picture:</label><br>
+                <input type="file" id="profilePicture" name="profilePicture" accept="image/*"><br>
+                <button type="submit">Upload Image</button>
+            </form>
 
             <div class="profile-detail">
                 <label for="username">Username:</label>
@@ -45,6 +50,11 @@ drawHeader($session);
 
 <?php
 drawFooter();
+
+function debugToConsole($msg) { 
+    echo "<script>console.log(".json_encode($msg).")</script>";
+}
+
 ?>
 
 </html>

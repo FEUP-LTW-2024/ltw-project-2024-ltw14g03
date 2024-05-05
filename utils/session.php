@@ -30,6 +30,7 @@
         $details['email'] = $this->getParam('email');
         $details['firstname'] = $this->getParam('firstName');
         $details['lastname'] = $this->getParam('lastName');
+        $details['pfp'] = $this->getParam('pfp');
 
         return $details;
     }
