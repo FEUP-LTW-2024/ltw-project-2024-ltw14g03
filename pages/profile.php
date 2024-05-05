@@ -38,7 +38,7 @@ drawHeader($session);
                 <span id="fullName"><?php echo htmlspecialchars($userDetails['firstname'] . ' ' . $userDetails['lastname']); ?></span>
             </div>
         </div>
-        <button class="profile-button" onclick="location.href='editProfile.php';">Edit Profile</button>
+        <button class="profile-button" id="editProfileBtn">Edit Profile</button>
 
     </div>
 </body>

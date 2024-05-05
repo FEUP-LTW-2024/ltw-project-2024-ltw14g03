@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="../assets/style/responsive.css">
     <script src="../scripts/logout.js"></script>
     <script src="../scripts/validatePassword.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../scripts/editProfile.js"></script>
 
   </head>
   <body>

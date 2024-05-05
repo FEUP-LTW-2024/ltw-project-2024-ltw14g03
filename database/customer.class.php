@@ -145,4 +145,15 @@ class Customer {
     static function checkPassword(string $password): int{
         return preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]{8,}$/', $password);
     }
+
+    public function updateFirstAndSecondName(PDO $db, string $firstName, string $lastName): void {
+        // Username is this customer user_id
+        $user_id = $this->user_id;
+        $stmt = $db->prepare('
+            UPDATE users SET firstName = ?, lastName = ?
+            WHERE user_id = ?
+        ');
+
+        $stmt->execute([$firstName, $lastName, $user_id]);
+    }
 }
