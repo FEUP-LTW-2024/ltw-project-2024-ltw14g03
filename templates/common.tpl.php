@@ -32,7 +32,7 @@
                 <li><a href="../pages/browse.php">Browse</a></li>
                 <li><a href="#">Sell</a></li>
                 <?php if($session->isLoggedIn()) { ?>
-                  <li class="dropdown"><img class="profileImageBar" src="https://via.placeholder.com/150"><a href=""><?php echo  $_SESSION['username']?></a>
+                  <li class="dropdown"><img class="profileImageBar" src="<?php echo $session->getParam("pfp")?>"><a href=""><?php echo  $_SESSION['username']?></a>
                   <div class="dropdown-content">
                     <a href="../pages/profile.php">Profile</a>
                     <a href="#" onclick="logoutUser(); return false;">Logout</a>

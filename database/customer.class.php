@@ -96,7 +96,7 @@ class Customer {
 
     static function getCustomer(PDO $db, int $id): ?Customer {
         $stmt = $db->prepare('
-            SELECT user_id, firstName, lastName, username, city, state, country, zip, phone, email, created_at, is_admin
+            SELECT user_id, firstName, lastName, username, city, state, country, zip, phone, email, created_at, is_admin, profile_picture
             FROM users
             WHERE user_id = ?
         ');
@@ -117,7 +117,8 @@ class Customer {
                 $customer['phone'],
                 $customer['email'],
                 $dateJoined,
-                (bool)$customer['is_admin']
+                (bool)$customer['is_admin'],
+                $customer['profile_picture']
             );
         } else {
             return null;

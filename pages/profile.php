@@ -22,7 +22,7 @@ drawHeader($session);
             <?php debugToConsole($userDetails['pfp']); ?>
             <img src="../<?php echo $userDetails['pfp'] ?>" alt="Profile Picture">
 
-            <form action="uploadProfilePicture.php" method="post" enctype="multipart/form-data">
+            <form action="../actions/action.uploadProfileImage.php" method="post" enctype="multipart/form-data">
                 <label for="profilePicture">Change Profile Picture:</label><br>
                 <input type="file" id="profilePicture" name="profilePicture" accept="image/*"><br>
                 <button type="submit">Upload Image</button>
