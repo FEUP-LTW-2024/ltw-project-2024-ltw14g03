@@ -8,7 +8,7 @@
 <body>
     <main>
         <section class="search-items">
-            <form action="search.php" method="get">
+            <form action="action_search.php" method="get">
                 <input type="text" name="search_query" placeholder="Search items..." required>
                 <button type="submit">Search</button>
             </form>

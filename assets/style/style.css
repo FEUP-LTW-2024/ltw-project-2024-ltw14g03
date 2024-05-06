@@ -27,23 +27,31 @@ header h1 {
     font-size: 3em;
 }
 
+
+.featured-items{
+    margin: 1em;
+}
+
 .featured-items h2 {
     color: #333;
+    margin: 0;
 }
 
-.featured-items .item {
-    margin: 1.25em;
-    display: inline-block;
-    width: 19em;
+.featured-items .product-list{
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px
 }
 
-.featured-items .item img {
+.featured-items .product-list .item{
+    background-color: #cccccc;
+    padding: 1em;
+    border-radius: 20px;
+}
+
+.featured-items .product-list .item img{
     width: 100%;
-    height: auto;
-}
-
-.featured-items {
-    padding: 2em 0;
 }
 
 .about{

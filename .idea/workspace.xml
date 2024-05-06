@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8599a4c-efa6-4dcd-b6da-710d5a420be1" name="Changes" comment="" />
+    <list default="true" id="d8599a4c-efa6-4dcd-b6da-710d5a420be1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/scripts/showSellOrders.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actions/action.uploadProfileImage.php" beforeDir="false" afterPath="$PROJECT_DIR$/actions/action.uploadProfileImage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/style/responsive.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/style/responsive.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/style/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/style/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/database/database.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/browse.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/browse.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/itempage.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/itempage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/profile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/editProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/editProfile.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,6 +24,16 @@
   </component>
   <component name="ComposerSettings">
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
@@ -32,7 +54,8 @@
     "PHP Script.profile.php.executor": "Run",
     "PHP Script.register.php.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/Utilizador/Desktop/ltw-project-2024-ltw14g03-profile/database",
+    "git-widget-placeholder": "feature/images",
+    "last_opened_file_path": "C:/Users/Utilizador/Documents/ES/ltw-project-2024-ltw14g03",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -92,6 +115,7 @@
       <workItem from="1714051304778" duration="2134000" />
       <workItem from="1714574465234" duration="7000" />
       <workItem from="1714913922209" duration="4087000" />
+      <workItem from="1714995387446" duration="4836000" />
     </task>
     <servers />
   </component>
