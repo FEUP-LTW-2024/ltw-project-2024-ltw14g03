@@ -13,16 +13,6 @@
                 <input type="text" name="search_query" placeholder="Search items..." required>
 
             </form>
-
-            <div class = "filtered-items" id = "itemsFilter">
-                    <div class="item" id = "items">
-                        <img src="https://via.placeholder.com/150" alt="Item Image">
-                        <h3>Item Name</h3>
-                        <p>Description of the item.</p>
-                    </div>
-
-            </div>
-
         </section>
     </main>
 </body>

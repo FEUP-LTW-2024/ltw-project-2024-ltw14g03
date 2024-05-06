@@ -1,6 +1,8 @@
 
 document.addEventListener('DOMContentLoaded', function() {
 
+    if (window.location.pathname === '/pages/index.php') {
+    console.log("lol");
 
     fetch('../actions/action.getSellOrders.php')
         .then(response => response.json())
@@ -19,4 +21,5 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => {
             alert('Error loading data: ' + error);
         });
+    }
 });

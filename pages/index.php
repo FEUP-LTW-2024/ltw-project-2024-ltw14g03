@@ -11,16 +11,8 @@
             <br>
 
             <div class = "product-list" id = "productList">
-
-                <div class="item" id = "items">
-                    <img src="https://via.placeholder.com/150" alt="Item Image">
-                    <h3>Item Name</h3>
-                    <p>Description of the item.</p>
-                </div>
-
             </div>
 
-            <!-- Repeat the above div block for more items -->
         </section>
 
         <section class="about">
