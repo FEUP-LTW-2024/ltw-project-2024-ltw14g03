@@ -9,10 +9,7 @@
     <main>
         <section class = "search-items">
 
-            <form action = "" method="get" id="searchForm">
-                <input type="text" name="search_query" placeholder="Search items..." required>
-
-            </form>
+            
         </section>
     </main>
 </body>

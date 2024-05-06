@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-
+    if (window.location.pathname === '/pages/browse.php') {
     fetch('../actions/action.getSellOrders.php')
         .then(response => response.json())
         .then(data => {
@@ -23,5 +23,5 @@ document.addEventListener('DOMContentLoaded', function() {
     form.addEventListener("change", function(){
 
     })
-
+}
 });

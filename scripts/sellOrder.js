@@ -8,5 +8,4 @@ document.addEventListener("DOMContentLoaded", function() {
 
         document.getElementById("imageSell").src = URL.createObjectURL(file);
     });
-
 });
