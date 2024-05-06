@@ -11,7 +11,6 @@
 
             <form action = "" method="get" id="searchForm">
                 <input type="text" name="search_query" placeholder="Search items..." required>
-                <button type="submit">Search</button>
 
             </form>
 

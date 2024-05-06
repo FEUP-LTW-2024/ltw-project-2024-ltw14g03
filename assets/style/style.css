@@ -238,6 +238,7 @@ main {
 /* SELL ORDER CREATION */
 
 .sell-order-create {
+
     align-content: center;
     max-width: 600px;
     margin: 2em auto;
@@ -246,6 +247,15 @@ main {
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sell-order-create .sell-order-elements{
+    display: flex;
+    margin-top: 1em;
+}
+
+.sell-order-create .sell-order-elements .sell-order-item{
+    margin: 0.5em;
 }
 
 .sell-order-create form input, .login-form form select {
@@ -267,6 +277,11 @@ main {
     align-self: flex-start;
     margin: 0 0 0 0;
 }
+
+.sell-order-create .sell-order-elements .sell-order-item img{
+    width: 300px;
+}
+
 
 .sell-order-create form label:first-child{
     margin-top: 0;

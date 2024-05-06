@@ -20,6 +20,7 @@
     <script src="../scripts/editProfile.js"></script>
     <script src="../scripts/showSellOrders.js"></script>
       <script src="../scripts/showSellOrdersFiltered.js"></script>
+      <script src="../scripts/sellOrder.js"></script>
   </head>
   <body>
   <header>

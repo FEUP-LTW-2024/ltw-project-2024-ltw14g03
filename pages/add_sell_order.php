@@ -18,31 +18,49 @@ drawHeader($session);
 
 <body>
     <div class = "sell-order-create">
+
         <form action="../actions/action_add_sellorder.php" method="post">
+
             <h1>Add Sell Order</h1>
 
-                <label for="category">Category:</label>
-                <select name = "category" id = "category" required>
-                    <option value = "">Select a Category</option>
-                    <option value = "1">Games</option>
-                </select>
+            <div class = "sell-order-elements">
 
-                <label for="condition">Condition:</label>
-                <input type="text" name="condition" id="condition" required>
+                <div class = "sell-order-item" id = "SellImage">
 
-                <label for="model">Model:</label>
-                <input type="text" name="model" id="model" required>
+                    <form id = "sell-image-form" action="../actions/action.uploadimage.php" method="post" enctype="multipart/form-data">
+                        <img id = "imageSell" src = "https://via.placeholder.com/150">
+                        <label for="imageInput">Add Sell Order Image:</label>
+                        <input type="file" id="imageInput" name="PostPicture" accept="image/*">
+                    </form>
 
-                <label for="size">Size:</label>
-                <input type="text" name="size" id="size" required>
+                </div>
 
-                <label for="price">Price:</label>
-                <input type="text" name="price" id="price" required>
+                <div class = "sell-order-item" id = "Sellbody">
 
-                <label for="description">Description:</label>
-                <input type="text" name="description" id="description" required>
+                    <label for="category">Category:</label>
+                    <select name = "category" id = "category" required>
+                        <option value = "">Select a Category</option>
+                        <option value = "1">Games</option>
+                    </select>
 
-            <button type = "submit" name = "register">Submit</button>
+                    <label for="condition">Condition:</label>
+                    <input type="text" name="condition" id="condition" required>
+
+                    <label for="model">Model:</label>
+                    <input type="text" name="model" id="model" required>
+
+                    <label for="size">Size:</label>
+                    <input type="text" name="size" id="size" required>
+
+                    <label for="price">Price:</label>
+                    <input type="text" name="price" id="price" required>
+
+                    <label for="description">Description:</label>
+                    <input type="text" name="description" id="description" required>
+
+                    <button type = "submit" name = "register">Submit</button>
+                </div>
+            </div>
         </form>
     </div>
 
