@@ -9,7 +9,7 @@
         <section class="featured-items">
             <h2>Featured Items</h2>
 
-            <div class = "product-list">
+            <div class = "product-list" id = "productList">
 
                 <div class="item" id = "items">
                     <img src="https://via.placeholder.com/150" alt="Item Image">

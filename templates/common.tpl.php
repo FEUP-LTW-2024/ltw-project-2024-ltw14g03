@@ -19,6 +19,10 @@
     <script src="../scripts/validatePassword.js"></script>
     <script src="../scripts/editProfile.js"></script>
     <script src="../scripts/showSellOrders.js"></script>
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
   </head>
   <body>
   <header>

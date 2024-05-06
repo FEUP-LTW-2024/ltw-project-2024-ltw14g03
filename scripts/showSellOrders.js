@@ -1,11 +1,23 @@
-document.addEventListener("DOMContentLoaded", function() {
 
-    const featuredItems = document.getElementById('items');
+document.addEventListener('DOMContentLoaded', function() {
 
-    featuredItems.innerHTML = `
-        <div>lol</div>
-    `;
+    console.log("lol");
 
-    console.log("DOM fully loaded and parsed");
-
+    fetch('../actions/action.getSellOrders.php')
+        .then(response => response.json())
+        .then(data => {
+            const container = document.getElementById('productList');
+            let itemsHtml = '';
+            data.forEach(item => {
+                itemsHtml += `<div class="item" id = "items">
+                            <img src="https://via.placeholder.com/150" alt="Item Image">
+                            <h3>Item Name</h3>
+                            <p>${item.description}</p>
+                            </div>`;
+            });
+            container.innerHTML = itemsHtml;
+        })
+        .catch(error => {
+            alert('Error loading data: ' + error);
+        });
 });

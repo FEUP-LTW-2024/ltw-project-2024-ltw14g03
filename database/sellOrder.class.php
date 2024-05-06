@@ -7,7 +7,6 @@ function debugToConsole($msg) {
 
 
 class SellOrder {
-
     static function addSellOrder(PDO $db, Session $session, string $category, string $condition, string $model, string $size, string $price, string $description): void {
 
             $stmt = $db->prepare('
@@ -18,6 +17,18 @@ class SellOrder {
             $details = $session->getUserDetails();
 
             $stmt->execute([intval($details["id"]), intval($category), intval($condition), $model, $size, intval($price), $description]);
+    }
+
+    static function getSellOrders(PDO $db): array {
+
+
+        $stmt = $db->prepare('
+                SELECT * FROM items LIMIT 5;
+            ');
+
+        $stmt->execute();
+
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
     static function checkPassword(string $password): int{
