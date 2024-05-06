@@ -19,19 +19,15 @@ drawHeader($session);
 <body>
     <div class = "sell-order-create">
 
-        <form action="../actions/action_add_sellorder.php" method="post">
+        <form action="../actions/action_add_sellorder.php" method="post" enctype="multipart/form-data">
 
             <h1>Add Sell Order</h1>
 
             <div class = "sell-order-elements">
 
                 <div class = "sell-order-item" id = "SellImage">
-
-                    <form id = "sell-image-form" action="../actions/action.uploadimage.php" method="post" enctype="multipart/form-data">
-                        <img id = "imageSell" src = "https://via.placeholder.com/150">
-                        <label for="imageInput">Add Sell Order Image:</label>
-                        <input type="file" id="imageInput" name="PostPicture" accept="image/*">
-                    </form>
+                    <img id = "imageSell" src = "https://via.placeholder.com/150">
+                    <input type="file" id="imageInput" name="image" accept="image/*">
 
                 </div>
 

@@ -21,6 +21,7 @@
     <?php } ?>
     <?php if($_SERVER['REQUEST_URI']=="/pages/add_sell_order.php"){?>
       <script src="../scripts/sellOrder.js"></script>
+      <script src="../scripts/addSellOrderWithImage.js"></script>
     <?php } ?>
     <?php if($_SERVER['REQUEST_URI']=="/pages/profile.php"){?>
       <script src="../scripts/editProfile.js"></script>
