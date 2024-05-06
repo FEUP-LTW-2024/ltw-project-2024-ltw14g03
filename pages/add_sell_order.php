@@ -10,7 +10,6 @@ if (!$session->isLoggedIn()) {
     exit();
 }
 
-//TODO:: nao sei fazer esta funcao a ir buscar à base de dados
 $userDetails = $session->getUserDetails();
 
 drawHeader($session);
@@ -19,7 +18,7 @@ drawHeader($session);
 <body>
     <div class = "sell-order-create">
 
-        <form action="../actions/action_add_sellorder.php" method="post" enctype="multipart/form-data">
+        <form id="sellOrderForm" action="" method="post" enctype="multipart/form-data">
 
             <h1>Add Sell Order</h1>
 

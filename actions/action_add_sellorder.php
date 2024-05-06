@@ -40,6 +40,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     echo json_encode($response);
-    header('Location: ../pages/index.php');
 }
 ?>
