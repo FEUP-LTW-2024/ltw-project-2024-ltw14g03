@@ -31,7 +31,13 @@ class SellOrder {
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    static function checkPassword(string $password): int{
-        return preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]{8,}$/', $password);
+    public function getSellOrdersFilter(PDO $db, string $name): array{
+        $stmt = $db->prepare('
+                SELECT * FROM items WHERE (instr(name, ?) != 0) LIMIT 5;
+            ');
+
+        $stmt->execute([$name]);
+
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 }

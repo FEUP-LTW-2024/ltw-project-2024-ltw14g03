@@ -19,6 +19,7 @@
     <script src="../scripts/validatePassword.js"></script>
     <script src="../scripts/editProfile.js"></script>
     <script src="../scripts/showSellOrders.js"></script>
+      <script src="../scripts/showSellOrdersFiltered.js"></script>
   </head>
   <body>
   <header>
@@ -29,11 +30,11 @@
             <ul>
                 <li><a href="../pages/index.php">Home</a></li>
                 <li><a href="../pages/browse.php">Browse</a></li>
-                <li><a href="#">Sell</a></li>
                 <?php if($session->isLoggedIn()) { ?>
                   <li class="dropdown"><img class="profileImageBar" src="<?php echo $session->getParam("pfp")?>"><a href=""><?php echo  $_SESSION['username']?></a>
                   <div class="dropdown-content">
                     <a href="../pages/profile.php">Profile</a>
+                      <a href="../pages/add_sell_order.php">Sell</a>
                     <a href="#" onclick="logoutUser(); return false;">Logout</a>
                   </div>
                   </li>

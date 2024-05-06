@@ -1,7 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', function() {
 
-    console.log("lol");
 
     fetch('../actions/action.getSellOrders.php')
         .then(response => response.json())

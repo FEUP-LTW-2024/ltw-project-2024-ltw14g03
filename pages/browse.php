@@ -7,12 +7,23 @@
 ?>
 <body>
     <main>
-        <section class="search-items">
-            <form action="action_search.php" method="get">
+        <section class = "search-items">
+
+            <form action = "" method="get" id="searchForm">
                 <input type="text" name="search_query" placeholder="Search items..." required>
                 <button type="submit">Search</button>
+
             </form>
-            <!-- Repeat the above div block for more items -->
+
+            <div class = "filtered-items" id = "itemsFilter">
+                    <div class="item" id = "items">
+                        <img src="https://via.placeholder.com/150" alt="Item Image">
+                        <h3>Item Name</h3>
+                        <p>Description of the item.</p>
+                    </div>
+
+            </div>
+
         </section>
     </main>
 </body>

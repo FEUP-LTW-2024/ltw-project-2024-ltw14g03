@@ -8,6 +8,7 @@
     <main id="mainPage">
         <section class="featured-items">
             <h2>Featured Items</h2>
+            <br>
 
             <div class = "product-list" id = "productList">
 

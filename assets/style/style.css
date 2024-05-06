@@ -364,7 +364,29 @@ main {
 
 /* BROWSE PAGE */
 
-.search-items input {
+.search-items {
+    margin: 1em;
+}
+
+.search-items .filtered-items{
+    margin: 1em;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px
+}
+
+.search-items .filtered-items .item {
+    background-color: #cccccc;
+    padding: 1em;
+    border-radius: 20px;
+}
+
+.search-items .filtered-items .item img{
+    width: 100%
+}
+
+.search-items .filtered-items input {
     padding: 0.7em 3em;
     font-size: 1.5em;
     border-radius: 1em 0 0 1em;
@@ -373,7 +395,7 @@ main {
     margin: -0.16em;
 }
 
-.search-items button {
+.search-items .filtered-items button {
     padding: 0.7em 2em;
     font-size: 1.5em;
     border-radius: 0 1em 1em 0;
