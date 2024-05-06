@@ -137,11 +137,11 @@ class Customer {
         }else{
 
             $stmt = $db->prepare('
-                INSERT INTO users (firstName, lastName, username, password, city, state, country, zip, phone, email, is_admin)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                INSERT INTO users (firstName, lastName, username, password, city, state, country, zip, phone, email, is_admin, profile_picture)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ');
 
-            $stmt->execute([$firstName, $lastName, $username, $password, $city, $state, $country, $zip, $phone, $email, 0]);
+            $stmt->execute([$firstName, $lastName, $username, $password, $city, $state, $country, $zip, $phone, $email, 0, "../assets/style/images/default_image.jpg"]);
         }
     }
 
