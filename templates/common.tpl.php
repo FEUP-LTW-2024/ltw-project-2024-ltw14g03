@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="../assets/style/responsive.css">
     <script src="../scripts/logout.js"></script>
     <script src="../scripts/validatePassword.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../scripts/editProfile.js"></script>
 
   </head>
   <body>
@@ -30,7 +32,7 @@
                 <li><a href="../pages/browse.php">Browse</a></li>
                 <li><a href="#">Sell</a></li>
                 <?php if($session->isLoggedIn()) { ?>
-                  <li class="dropdown"><img class="profileImageBar" src="https://via.placeholder.com/150"><a href=""><?php echo  $_SESSION['username']?></a>
+                  <li class="dropdown"><img class="profileImageBar" src="<?php echo $session->getParam("pfp")?>"><a href=""><?php echo  $_SESSION['username']?></a>
                   <div class="dropdown-content">
                     <a href="../pages/profile.php">Profile</a>
                     <a href="#" onclick="logoutUser(); return false;">Logout</a>

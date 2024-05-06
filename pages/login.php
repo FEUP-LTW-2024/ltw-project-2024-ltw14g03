@@ -15,6 +15,12 @@
           <input type="password" name="password" id="password" required>
           <button type="submit" name="login">Login</button>
         </form>
+        <?php if ($session->checkIfError()){
+          if ($session->getError() == "Invalid username or password"){
+            echo "<p style='color: red;'>Invalid username or password</p>";
+          }
+        } ?>
+          
         <button id="registerButton" onclick="location.href='register.php'">Dont have an account? Click here</button>
     </div>
   </body>

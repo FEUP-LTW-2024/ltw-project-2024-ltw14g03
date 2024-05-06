@@ -18,9 +18,15 @@ declare(strict_types = 1);
       $session->setParam("email", $customer->email);
       $session->setParam("firstName", $customer->firstName);
       $session->setParam("lastName", $customer->lastName);
-
+      $session->setParam("pfp", $customer->pfp);
+      if ($session->checkIfError()) {
+        if($session->getError() == "Invalid username or password"){
+          $session->clearError();
+        }
+      }
     header('Location: ../pages/index.php');
   }else{
+    $session->setError("Invalid username or password");
     header('Location: ' . $_SERVER['HTTP_REFERER']);
   }
 
