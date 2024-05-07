@@ -44,7 +44,7 @@ body{
 
 .browse {
     display: grid;
-    grid-template-columns: 300px auto; /* One fixed-width and one flexible column */
+    grid-template-columns: 320px auto; /* One fixed-width and one flexible column */
     min-height: 75vh; /* Ensures the container takes at least the full height of the viewport */
 }
 
