@@ -23,7 +23,19 @@ class SellOrder {
 
 
         $stmt = $db->prepare('
-                SELECT * FROM items LIMIT 5;
+                SELECT * FROM items;
+            ');
+
+        $stmt->execute();
+
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    static function getSellOrderImages(PDO $db): array {
+
+
+        $stmt = $db->prepare('
+                SELECT * FROM item_images;
             ');
 
         $stmt->execute();

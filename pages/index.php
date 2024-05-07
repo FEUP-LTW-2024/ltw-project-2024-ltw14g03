@@ -6,13 +6,26 @@
     drawHeader($session); 
 ?>
     <main id="mainPage">
-        <section class="featured-items">
-            <h2>Featured Items</h2>
-            <br>
 
-            <div class = "product-list" id = "productList">
+        <section>
+
+            <div class = "mainHeader">
+
+                <h2>Current Items</h2>
+
+                <div>
+                    <label for="browse">Browse:</label>
+                    <input type = "text" id = "browseInput">
+                </div>
             </div>
 
+            <div class="featured-items">
+
+
+                <div class = "product-list" id = "productList">
+                </div>
+
+            </div>
         </section>
 
         <section class="about">
