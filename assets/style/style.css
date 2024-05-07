@@ -346,10 +346,19 @@ main {
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
+    margin: 1px;
 }
 
 .profile-button:hover {
     background-color: #0056b3;
+}
+
+#cancelEditBtn {
+    background-color: #dc3545;
+}
+
+#cancelEditBtn:hover {
+    background-color: #c82333;
 }
 
 /* END OF PROFILE PAGE */
