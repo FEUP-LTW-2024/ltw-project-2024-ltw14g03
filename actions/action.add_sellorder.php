@@ -12,15 +12,14 @@ $response = ['success' => false, 'uploaded' => []];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $db = getDatabaseConnection();
-
-    $stmt = $db->prepare("INSERT INTO items (seller_id, category_id, condition_id, model, size, price, description) VALUES (:seller_id, :category_id, :condition_id, :model, :size, :price, :description)");
-
+    $stmt = $db->prepare("INSERT INTO items (name, seller_id, category_id, condition_id, model, size_id, price, description) VALUES (:name, :seller_id, :category_id, :condition_id, :model, :size_id, :price, :description)");
     if ($stmt->execute([
+        'name' => $_POST['name'],
         'seller_id' => $user_id, 
         ':category_id' => $_POST['category'], 
         ':condition_id' => $_POST['condition'], 
         ':model' => $_POST['model'], 
-        ':size' => $_POST['size'], 
+        ':size_id' => $_POST['size_'], 
         ':price' => $_POST['price'], 
         ':description' => $_POST['description']
     ])) {
@@ -38,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $stmt = $db->prepare("INSERT INTO item_images (item_id, image_url) VALUES (:item_id, :image_url)");
                         if ($stmt->execute([':item_id' => $item_id, ':image_url' => $target_file])) {
                             $response['uploaded'][] = $target_file;
-                            $response['success'] = true; // Mark as success if at least one image uploads
+                            $response['success'] = true;
                         } else {
                             $response['error'] = 'Failed to insert image record into the database.';
                         }
@@ -49,6 +48,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $response['error'] = 'No file uploaded or file upload error.';
                 }
             }
+        } else {
+            $response['success'] = true;
         }
 
         echo json_encode($response);

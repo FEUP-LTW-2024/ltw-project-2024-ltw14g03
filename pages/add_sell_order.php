@@ -2,6 +2,7 @@
 declare(strict_types = 1);
 require_once(__DIR__ . '/../utils/session.php');
 require_once(__DIR__ . '/../templates/common.tpl.php');
+require_once(__DIR__ . '/../database/connection.db.php');
 $session = new Session();
 
 // Check if the user is logged in
@@ -11,7 +12,7 @@ if (!$session->isLoggedIn()) {
 }
 
 $userDetails = $session->getUserDetails();
-
+$db = getDatabaseConnection();
 drawHeader($session);
 ?>
 
@@ -31,21 +32,49 @@ drawHeader($session);
                 </div>
 
                 <div class = "sell-order-item" id = "Sellbody">
+                    
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" id="name" required>
+
 
                     <label for="category">Category:</label>
                     <select name = "category" id = "category" required>
                         <option value = "">Select a Category</option>
-                        <option value = "1">Games</option>
+                        <?php
+                        $stmt = $db->query("SELECT * FROM categories");
+                        $categories = $stmt->fetchAll();
+                        foreach ($categories as $category) {
+                            echo "<option value='{$category['id']}'>{$category['name']}</option>";
+                        }
+                        ?>
                     </select>
 
                     <label for="condition">Condition:</label>
-                    <input type="text" name="condition" id="condition" required>
+                    <select name = "condition" id = "condition" required>
+                        <option value = "">Select a Condition</option>
+                        <?php
+                        $stmt = $db->query("SELECT * FROM conditions");
+                        $conditions = $stmt->fetchAll();
+                        foreach ($conditions as $condition) {
+                            echo "<option value='{$condition['id']}'>{$condition['name']}</option>";
+                        }
+                        ?>
+                    </select>
+
+                    <label for="size">Size:</label>
+                    <select name = "size" id = "size" required>
+                        <option value = "">Select a Size</option>
+                        <?php
+                        $stmt = $db->query("SELECT * FROM sizes");
+                        $sizes = $stmt->fetchAll();
+                        foreach ($sizes as $size) {
+                            echo "<option value='{$size['id']}'>{$size['name']}</option>";
+                        }
+                        ?>
+                    </select>
 
                     <label for="model">Model:</label>
                     <input type="text" name="model" id="model" required>
-
-                    <label for="size">Size:</label>
-                    <input type="text" name="size" id="size" required>
 
                     <label for="price">Price:</label>
                     <input type="text" name="price" id="price" required>

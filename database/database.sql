@@ -25,7 +25,7 @@ CREATE TABLE users (
     country TEXT,
     zip TEXT,
     phone TEXT,
-    pfp TEXT,
+    profile_picture TEXT,
     created_at TEXT DEFAULT (datetime('now', 'localtime')),
     is_admin INTEGER NOT NULL DEFAULT 0 -- 0: regular user, 1: admin user
 );
@@ -42,16 +42,22 @@ CREATE TABLE brands (
 
 CREATE TABLE conditions (
     condition_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    description TEXT UNIQUE NOT NULL
+    name TEXT UNIQUE NOT NULL
+);
+
+CREATE TABLE sizes (
+    size_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT UNIQUE NOT NULL
 );
 
 CREATE TABLE items (
     item_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
     seller_id INTEGER NOT NULL,
     category_id INTEGER,
     brand_id INTEGER,
     model TEXT NOT NULL,
-    size TEXT,
+    size_id INTEGER,
     condition_id INTEGER,
     price REAL NOT NULL,
     description TEXT,
@@ -61,6 +67,7 @@ CREATE TABLE items (
     FOREIGN KEY (category_id) REFERENCES categories(category_id),
     FOREIGN KEY (brand_id) REFERENCES brands(brand_id),
     FOREIGN KEY (condition_id) REFERENCES conditions(condition_id)
+    FOREIGN KEY (size_id) REFERENCES sizes(size_id)
 );
 
 CREATE TABLE item_images (
