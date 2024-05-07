@@ -1,10 +1,14 @@
-
 document.addEventListener('DOMContentLoaded', function() {
 
     console.log("lol");
 
     fetch('../actions/action.getSellOrders.php')
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
             const container = document.getElementById('productList');
             let itemsHtml = '';
@@ -17,6 +21,9 @@ document.addEventListener('DOMContentLoaded', function() {
                             </div>`;
             });
             container.innerHTML = itemsHtml;
+
+            // Add console log to track data
+            console.log(data);
         })
         .catch(error => {
             alert('Error loading data: ' + error);

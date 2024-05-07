@@ -12,11 +12,6 @@
 
             <div class = "featured-header">
                 <h2>Featured Items</h2>
-
-                <div class = "featured-browse-input">
-                    <label for="browse">Browse:</label>
-                    <input type = "text" id = "browse">
-                </div>
             </div>
 
 
