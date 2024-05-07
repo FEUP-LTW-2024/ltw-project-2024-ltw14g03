@@ -9,8 +9,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const container = document.getElementById('productList');
             let itemsHtml = '';
             data.forEach(item => {
-                itemsHtml += `<div class="item" id = "items">
-                            <img src="${item.image}" alt="Item Image">
+                const imageSrc = item.image ? item.image : '../assets/style/images/default_image.jpg'; // Use default image if item.image is falsy
+                itemsHtml += `<div class="item" id="items">
+                            <img src="${imageSrc}" alt="Item Image">
                             <h3>Item Name</h3>
                             <p>${item.description}</p>
                             </div>`;

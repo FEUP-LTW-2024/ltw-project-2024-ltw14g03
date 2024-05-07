@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $response['item_id'] = $item_id;
 
         // Handle file upload
-        if (isset($_FILES['image'])) {
+        if (isset($_FILES['image']) && $_FILES['image']['error'][0] != 4) { // Check if image is uploaded and not empty
             $target_dir = "../assets/images/";
             foreach ($_FILES["image"]["name"] as $key => $value) {
                 if ($_FILES['image']['error'][$key] == 0) {
@@ -48,10 +48,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
             }
         }
-    } else {
-        $response['error'] = 'Failed to insert item into the database.';
-    }
 
-    echo json_encode($response);
+        echo json_encode($response);
+    }
 }
 ?>
