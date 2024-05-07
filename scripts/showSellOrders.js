@@ -1,7 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', function() {
 
-    if (window.location.pathname === '/pages/index.php') {
     console.log("lol");
 
     fetch('../actions/action.getSellOrders.php')
@@ -10,8 +9,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const container = document.getElementById('productList');
             let itemsHtml = '';
             data.forEach(item => {
-                itemsHtml += `<div class="item" id = "items">
-                            <img src="https://via.placeholder.com/150" alt="Item Image">
+                const imageSrc = item.image ? item.image : '../assets/style/images/default_image.jpg'; // Use default image if item.image is falsy
+                itemsHtml += `<div class="item" id="items" data-product-id="${item.item_id}">
+                            <img src="${imageSrc}" alt="Item Image">
                             <h3>Item Name</h3>
                             <p>${item.description}</p>
                             </div>`;
@@ -21,5 +21,4 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => {
             alert('Error loading data: ' + error);
         });
-    }
 });

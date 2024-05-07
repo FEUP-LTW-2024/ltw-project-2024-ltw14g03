@@ -28,7 +28,15 @@ class SellOrder {
 
         $stmt->execute();
 
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        $sellOrders = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+
+        foreach ($sellOrders as $key => $order) {
+            $sellOrder = new SellOrder();
+            $sellOrders[$key]['image'] = $sellOrder->getImage($db, (int) $order['item_id']);
+        }
+
+        return $sellOrders;
     }
 
     public function getSellOrdersFilter(PDO $db, string $name): array{
@@ -38,6 +46,28 @@ class SellOrder {
 
         $stmt->execute([$name]);
 
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        $sellOrders = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+
+        foreach ($sellOrders as $key => $order) {
+            $sellOrders[$key]['image'] = self::getImage($db, (int) $order['item_id']);
+        }
+
+        return $sellOrders;
+    }
+
+    public function getImage(PDO $db, int $id): string{
+        $stmt = $db->prepare('
+                SELECT image_url FROM item_images WHERE item_id = ? LIMIT 1;
+            ');
+
+        $stmt->execute([$id]);
+
+        $result = $stmt->fetch(\PDO::FETCH_ASSOC);
+        if ($result === false) {
+            return ""; // Return an empty string if no image is found
+        }
+
+        return $result["image_url"];
     }
 }
