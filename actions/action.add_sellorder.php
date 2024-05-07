@@ -12,7 +12,9 @@ $response = ['success' => false, 'uploaded' => []];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $db = getDatabaseConnection();
+
     $stmt = $db->prepare("INSERT INTO items (seller_id, category_id, condition_id, model, size, price, description) VALUES (:seller_id, :category_id, :condition_id, :model, :size, :price, :description)");
+
     if ($stmt->execute([
         'seller_id' => $user_id, 
         ':category_id' => $_POST['category'], 
