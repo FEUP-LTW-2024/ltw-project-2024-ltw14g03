@@ -31,6 +31,17 @@ document.addEventListener("DOMContentLoaded", function() {
                     <input type="file" id="pfpInput" name="profilePicture" accept="image/*">
                 </form>
             `;
+
+            const main = document.getElementById("pfpInput");
+
+            main.addEventListener('change', function(event) {
+
+                const [file] = main.files
+
+                document.getElementById("imageprofile").src = URL.createObjectURL(file);
+            });
+
+
         } else {
             usernameSpan.textContent = document.getElementById('editUsername').value;
             fullNameSpan.textContent = `${document.getElementById('editFirstName').value} ${document.getElementById('editLastName').value}`;

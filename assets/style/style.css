@@ -32,6 +32,15 @@ header h1 {
     margin: 1em 0;
 }
 
+.featured-items .featured-header{
+    margin: 0em 1em 0em 1em;
+    display: flex;
+    justify-content: space-between
+}
+.featured-items .featured-header #browse{
+    height:2em
+}
+
 .featured-items h2 {
     color: #333;
     margin: 0;

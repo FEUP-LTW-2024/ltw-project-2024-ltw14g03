@@ -23,7 +23,7 @@ class SellOrder {
 
 
         $stmt = $db->prepare('
-                SELECT * FROM items LIMIT 5;
+                SELECT * FROM items;
             ');
 
         $stmt->execute();
