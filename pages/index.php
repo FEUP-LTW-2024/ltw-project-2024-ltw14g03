@@ -2,9 +2,14 @@
     declare(strict_types = 1);
     require_once(__DIR__ . '/../templates/common.tpl.php');
     $session = new Session();
-    
+
+
     drawHeader($session); 
 ?>
+
+<script src="../scripts/showSellOrders.js"></script>
+
+
     <main id="mainPage">
 
 

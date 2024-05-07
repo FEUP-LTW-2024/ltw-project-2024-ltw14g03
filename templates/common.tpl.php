@@ -15,23 +15,9 @@
     <link rel="stylesheet" href="../assets/style/style.css">
     <link rel="stylesheet" href="../assets/style/layout.css">
     <link rel="stylesheet" href="../assets/style/responsive.css">
-    <script src="../scripts/logout.js"></script>
-    <?php if($_SERVER['REQUEST_URI']=="/pages/register.php"){?>
-      <script src="../scripts/validatePassword.js"></script>
-    <?php } ?>
-    <?php if($_SERVER['REQUEST_URI']=="/pages/add_sell_order.php"){?>
-      <script src="../scripts/sellOrder.js"></script>
-      <script src="../scripts/addSellOrderWithImage.js"></script>
-    <?php } ?>
-    <?php if($_SERVER['REQUEST_URI']=="/pages/profile.php"){?>
-      <script src="../scripts/editProfile.js"></script>
-    <?php } ?>
-    <?php if($_SERVER['REQUEST_URI']=="/pages/index.php"){?>
-      <script src="../scripts/showSellOrders.js"></script>
-    <?php } ?>
-    <?php if($_SERVER['REQUEST_URI']=="/pages/browse.php"){?>
-      <script src="../scripts/showSellOrdersFiltered.js"></script>
-    <?php } ?>
+
+      <script src="../scripts/logout.js"></script>
+
   </head>
   <body>
   <header>

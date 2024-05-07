@@ -6,6 +6,8 @@
     drawHeader($session); 
 ?>
 
+<script src="../scripts/validatePassword.js"></script>
+
   <body>
     <div class="login-form">
         <form action="../actions/action.login.php" method="post">

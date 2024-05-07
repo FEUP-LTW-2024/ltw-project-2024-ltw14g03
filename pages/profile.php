@@ -15,6 +15,8 @@ $userDetails = $session->getUserDetails();
 drawHeader($session);
 ?>
 
+<script src="../scripts/editProfile.js"></script>
+
 <body>
     <div class="profile-info">
         <h1>User Profile</h1>

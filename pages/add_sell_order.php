@@ -16,6 +16,9 @@ $db = getDatabaseConnection();
 drawHeader($session);
 ?>
 
+<script src="../scripts/addSellOrderWithImage.js"></script>
+<script src="../scripts/sellOrder.js"></script>
+
 <body>
     <div class = "sell-order-create">
 
