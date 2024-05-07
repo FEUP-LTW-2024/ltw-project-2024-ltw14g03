@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
             let itemsHtml = '';
             data.forEach(item => {
                 const imageSrc = item.image ? item.image : '../assets/style/images/default_image.jpg'; // Use default image if item.image is falsy
-                itemsHtml += `<div class="item" id="items">
+                itemsHtml += `<div class="item" id="items" data-product-id="${item.item_id}">
                             <img src="${imageSrc}" alt="Item Image">
                             <h3>Item Name</h3>
                             <p>${item.description}</p>
