@@ -1,23 +1,33 @@
-document.getElementById('sellOrderForm').addEventListener('submit', function(event) {
-    event.preventDefault();  // Prevent the default form submission
+document.addEventListener('DOMContentLoaded', function() {
+    console.log("DOM fully loaded and parsed");
 
-    const formData = new FormData(this);  // This will gather all form inputs, including the file
+    const form = document.getElementById('sellOrderForm');
+    if (form) {
+        form.addEventListener('submit', function(event) {
+            console.log("Form submission intercepted");
+            event.preventDefault();  // This should prevent the form from submitting traditionally.
 
-    fetch('../actions/action_add_sellorder.php', {  // Update with the correct path to your PHP script
-        method: 'POST',
-        body: formData,
-    })
-    .then(response => response.json())  // Assuming the server responds with JSON
-    .then(data => {
-        if (data.success) {
-            alert('Item and image uploaded successfully!');
-            console.log(data.item_id);  // Handle or display the item ID as needed
-        } else {
-            alert('Failed to upload item and image.');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('An error occurred!');
-    });
+            const formData = new FormData(this);  // This collects the form data.
+
+            fetch('../actions/action_add_sellorder.php', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Response received", data);
+                if (data.success) {
+                    alert('Item uploaded successfully!');
+                } else {
+                    alert('Failed to upload item and image.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred!');
+            });
+        });
+    } else {
+        console.error('Form element not found');
+    }
 });
