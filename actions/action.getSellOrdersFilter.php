@@ -10,6 +10,7 @@ header('Content-Type: application/json');
 
 $db = getDatabaseConnection();
 
+$name = $_POST['name'] ?? '';
 $category = $_POST['category'] ?? '';
 $condition = $_POST['condition'] ?? '';
 $brand = $_POST['brand'] ?? '';
@@ -17,6 +18,12 @@ $size = $_POST['size'] ?? '';
 
 $query = "SELECT * FROM items WHERE 1=1";
 $params = [];
+
+if (!empty($name)) {
+    $query .= " AND name LIKE :name";
+    $params[':name'] = $name;
+}
+
 
 if (!empty($category)) {
     $query .= " AND category_id = :category_id";

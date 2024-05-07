@@ -28,7 +28,6 @@
     <?php } ?>
     <?php if($_SERVER['REQUEST_URI']=="/ltw-project-2024-ltw14g03/pages/index.php"){?>
       <script src="../scripts/showSellOrders.js"></script>
-      <script src="../scripts/showSellOrdersFiltered.js"></script>
     <?php } ?>
     <?php if($_SERVER['REQUEST_URI']=="/pages/browse.php"){?>
       <script src="../scripts/showSellOrdersFiltered.js"></script>
