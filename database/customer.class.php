@@ -37,7 +37,7 @@ class Customer {
         $this->email = $email;
         $this->dateJoined = $dateJoined;
         $this->isAdmin = $isAdmin;
-        $this->pfp = $pfp;
+        $this->pfp = $pfp ?? '';
     }
 
     public function name(): string {
