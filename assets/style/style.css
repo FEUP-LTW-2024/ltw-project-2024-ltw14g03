@@ -55,16 +55,36 @@ header h1 {
 }
 
 .featured-items .product-list .item{
-    width: 15em;
-    height:20em;
-    background-color: #cccccc;
+    min-width: 15em;
+    max-width: 30em;
+    background-color: #f4f4f4;
+    filter: drop-shadow(0 0 1rem #c7cfcc);
     padding: 1em;
     border-radius: 20px;
+
+    opacity: 0;
+    animation: fadeInAnimation 0.3s ease-in forwards, moveUpAnimation 0.3s cubic-bezier(0.5, 1, 0.89, 1) forwards 0.2s;
+
 }
 
+.featured-items .product-list .item .desc{
+    margin-top: 0.5em;
+}
+
+.featured-items .product-list .item .desc{
+    margin-top: 0.5em;
+    text-align: left;
+}
+
+.featured-items .product-list .item .details{
+    margin-top: 0.5em;
+    text-align: left;
+}
+
+
 .featured-items .product-list .item img{
-    width: 200px;
-    height: 200px;
+    width: 100%;
+    border-radius: 10%;
 }
 
 .about{
@@ -262,6 +282,18 @@ main {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.sell-order-create .sell-order-elements textarea{
+
+    font-size: 18px;
+
+    height: 1.8em;
+
+    padding: 0.2em;
+
+    max-width: 14em;
+    min-width: 14em;
+}
+
 .sell-order-create .sell-order-elements{
     display: flex;
     margin-top: 1em;
@@ -270,6 +302,20 @@ main {
 .sell-order-create .sell-order-elements .sell-order-item{
     margin: 0.5em;
 }
+
+.sell-order-create .sell-order-elements .sell-order-item .line{
+    margin-top: 0.6em;
+}
+
+.sell-order-create .sell-order-elements .sell-order-item .lineInput{
+    margin-top: 0.3em;
+}
+.sell-order-create .sell-order-elements .sell-order-item button {
+    color: white;
+    background-color: #384955;
+    border: 0;
+}
+
 
 .sell-order-create form input, .login-form form select {
     margin: 0.5em 0;
@@ -326,8 +372,10 @@ main {
 
     display: flex;
     flex-direction: column;
+
     align-items: center;
     justify-content: center;
+
     text-align: left;
     margin: 2em auto;
     margin-bottom: auto;
@@ -342,6 +390,16 @@ main {
     width: 200px;
     height: 200px;
     border-radius: 50%;
+}
+
+
+.profile-info button{
+    background-color: #384955;
+}
+
+.profile-info .profile-text{
+    align-items: flex-start;
+    justify-content: flex-start;
 }
 
 
@@ -402,7 +460,10 @@ main {
 }
 
 .search-items .filtered-items .item {
-    background-color: #cccccc;
+    min-width: 15em;
+    max-width: 30em;
+    background-color: #f4f4f4;
+    filter: drop-shadow(0 0 1rem #c7cfcc);
     padding: 1em;
     border-radius: 20px;
 }
@@ -482,18 +543,50 @@ main {
 }
 
 .searchResult .item {
-    width: 200px;
-    height: 300px;
-    background-color: #cccccc;
+    min-width: 15em;
+    max-width: 30em;
+    background-color: #f4f4f4;
+    filter: drop-shadow(0 0 1rem #c7cfcc);
     padding: 1em;
     border-radius: 20px;
+
+    text-align: left;
+
+    opacity: 0;
+    animation: fadeInAnimation 0.3s ease-in forwards, moveUpAnimation 0.3s cubic-bezier(0.5, 1, 0.89, 1) forwards 0.2s;
+}
+
+.searchResult .item .desc{
+    margin-top: 0.5em;
+}
+
+.searchResult .item .details{
+    margin-top: 0.5em;
 }
 
 .searchResult .item img {
-    width: 150px;
-    height: 150px;
+    width: 100%;
+    border-radius: 10%;
 }
 
 .searchResult{
     padding: 2em;
+}
+
+@keyframes fadeInAnimation {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes moveUpAnimation {
+    from {
+        transform: translateY(100px); /* Start position */
+    }
+    to {
+        transform: translateY(0); /* End position */
+    }
 }

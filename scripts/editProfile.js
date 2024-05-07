@@ -79,7 +79,6 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(data => {
             if (data.success) {
                 document.getElementById('username-bar').textContent = `${updatedUsername}`;
-                alert('Profile updated successfully');
                 toggleEditState(false);
             } else {
                 alert(data.error || 'Unknown error occurred');

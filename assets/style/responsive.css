@@ -1,3 +1,5 @@
+
+
 @media (max-width: 800px) {
 
     #mainPage{
@@ -19,7 +21,15 @@
         color: inherit;
         padding: 1em 0 1em 0;
     }
-    
+
+    .featured-items .product-list .item{
+        min-width: 15em;
+        max-width: 20em;
+
+        opacity: 0;
+        animation: fadeInAnimation 1s ease-in forwards;
+    }
+
     
     #menu .hamburger:before {
         content:'\2630';

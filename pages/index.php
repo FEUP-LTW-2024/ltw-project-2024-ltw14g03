@@ -30,6 +30,7 @@
             <p>We are here for you</p>
         </section>
     </main>
+
 <?php
     drawFooter();
 ?>
