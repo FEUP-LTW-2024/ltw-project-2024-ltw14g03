@@ -8,6 +8,7 @@ $target_dir = "../assets/images/";
 $uploadOk = 1;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["profilePicture"])) {
+
     $original_file_name = basename($_FILES["profilePicture"]["name"]);
     $imageFileType = strtolower(pathinfo($original_file_name, PATHINFO_EXTENSION));
     $base_file_name = pathinfo($original_file_name, PATHINFO_FILENAME);

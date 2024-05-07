@@ -137,11 +137,11 @@ class Customer {
         }else{
 
             $stmt = $db->prepare('
-                INSERT INTO users (firstName, lastName, username, password, city, state, country, zip, phone, email, is_admin)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                INSERT INTO users (firstName, lastName, username, password, city, state, country, zip, phone, email, is_admin, profile_picture)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ');
 
-            $stmt->execute([$firstName, $lastName, $username, $password, $city, $state, $country, $zip, $phone, $email, 0]);
+            $stmt->execute([$firstName, $lastName, $username, $password, $city, $state, $country, $zip, $phone, $email, 0, "../assets/style/images/default_image.jpg"]);
         }
     }
 
@@ -158,5 +158,16 @@ class Customer {
         ');
 
         $stmt->execute([$firstName, $lastName, $user_id]);
+    }
+
+    public function updateUsernameFirstSecondEmail(PDO $db, string $username,string $firstName, string $lastName, string $email): void {
+        // Username is this customer user_id
+        $user_id = $this->user_id;
+        $stmt = $db->prepare('
+            UPDATE users SET username = ?, firstName = ?, lastName = ?, email = ?
+            WHERE user_id = ?
+        ');
+
+        $stmt->execute([$username, $firstName, $lastName, $email, $user_id]);
     }
 }

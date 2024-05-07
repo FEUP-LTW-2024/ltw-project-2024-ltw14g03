@@ -27,23 +27,34 @@ header h1 {
     font-size: 3em;
 }
 
+
+.featured-items{
+    margin: 1em 0;
+}
+
 .featured-items h2 {
     color: #333;
+    margin: 0;
 }
 
-.featured-items .item {
-    margin: 1.25em;
-    display: inline-block;
-    width: 19em;
+.featured-items .product-list{
+    margin-top: 2em;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1em;
 }
 
-.featured-items .item img {
+.featured-items .product-list .item{
+    width: 15em;
+    height:20em;
+    background-color: #cccccc;
+    padding: 1em;
+    border-radius: 20px;
+}
+
+.featured-items .product-list .item img{
     width: 100%;
-    height: auto;
-}
-
-.featured-items {
-    padding: 2em 0;
 }
 
 .about{
@@ -230,6 +241,7 @@ main {
 /* SELL ORDER CREATION */
 
 .sell-order-create {
+
     align-content: center;
     max-width: 600px;
     margin: 2em auto;
@@ -238,6 +250,15 @@ main {
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sell-order-create .sell-order-elements{
+    display: flex;
+    margin-top: 1em;
+}
+
+.sell-order-create .sell-order-elements .sell-order-item{
+    margin: 0.5em;
 }
 
 .sell-order-create form input, .login-form form select {
@@ -259,6 +280,11 @@ main {
     align-self: flex-start;
     margin: 0 0 0 0;
 }
+
+.sell-order-create .sell-order-elements .sell-order-item img{
+    width: 300px;
+}
+
 
 .sell-order-create form label:first-child{
     margin-top: 0;
@@ -356,7 +382,29 @@ main {
 
 /* BROWSE PAGE */
 
-.search-items input {
+.search-items {
+    margin: 1em;
+}
+
+.search-items .filtered-items{
+    margin: 1em;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px
+}
+
+.search-items .filtered-items .item {
+    background-color: #cccccc;
+    padding: 1em;
+    border-radius: 20px;
+}
+
+.search-items .filtered-items .item img{
+    width: 100%
+}
+
+.search-items .filtered-items input {
     padding: 0.7em 3em;
     font-size: 1.5em;
     border-radius: 1em 0 0 1em;
@@ -365,7 +413,7 @@ main {
     margin: -0.16em;
 }
 
-.search-items button {
+.search-items .filtered-items button {
     padding: 0.7em 2em;
     font-size: 1.5em;
     border-radius: 0 1em 1em 0;

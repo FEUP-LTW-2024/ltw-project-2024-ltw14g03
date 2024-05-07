@@ -7,12 +7,9 @@
 ?>
 <body>
     <main>
-        <section class="search-items">
-            <form action="search.php" method="get">
-                <input type="text" name="search_query" placeholder="Search items..." required>
-                <button type="submit">Search</button>
-            </form>
-            <!-- Repeat the above div block for more items -->
+        <section class = "search-items">
+
+            
         </section>
     </main>
 </body>

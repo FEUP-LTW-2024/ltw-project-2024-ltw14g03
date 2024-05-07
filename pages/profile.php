@@ -18,16 +18,14 @@ drawHeader($session);
 <body>
     <div class="profile-info">
         <h1>User Profile</h1>
+
         <div class="profile-detail">
             <img src="../<?php echo $userDetails['pfp'] ?>" alt="Profile Picture">
+            <div id = "pfp_edit">
 
-            <form action="../actions/action.uploadProfileImage.php" method="post" enctype="multipart/form-data">
-                <label for="profilePicture">Change Profile Picture:</label><br>
-                <input type="file" id="profilePicture" name="profilePicture" accept="image/*"><br>
-                <button type="submit">Upload Image</button>
-            </form>
+            </div>
         </div>
-            
+
 
         <div class="profile-detail">
             <label for="username">Username:</label>

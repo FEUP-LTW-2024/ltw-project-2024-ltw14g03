@@ -8,12 +8,11 @@
     <main id="mainPage">
         <section class="featured-items">
             <h2>Featured Items</h2>
-            <div class="item">
-                <img src="https://via.placeholder.com/150" alt="Item Image">
-                <h3>Item Name</h3>
-                <p>Description of the item.</p>
+            <br>
+
+            <div class = "product-list" id = "productList">
             </div>
-            <!-- Repeat the above div block for more items -->
+
         </section>
 
         <section class="about">

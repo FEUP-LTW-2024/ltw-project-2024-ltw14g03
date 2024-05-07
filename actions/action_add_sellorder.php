@@ -1,15 +1,57 @@
 <?php
+require_once(__DIR__ . '/../database/connection.db.php');
+require_once(__DIR__ . '/../utils/session.php');
 
-declare(strict_types = 1);
-  require_once(__DIR__ . '/../database/connection.db.php');
-  require_once(__DIR__ . '/../database/sellOrder.class.php');
-require_once(__DIR__ . '/../templates/common.tpl.php');
+header('Content-Type: application/json');
 
-  $db = getDatabaseConnection();
 $session = new Session();
-  //Use register user from customer.class.php
+$user = $session->getUserDetails();
+$user_id = $user['id'];
 
-    SellOrder::addSellOrder($db, $session, $_POST['category'], $_POST['condition'], $_POST['model'], $_POST['size'], $_POST['price'], $_POST['description']);
-  header('Location: ../pages/profile.php');
-  exit();
+$response = ['success' => false, 'uploaded' => []];
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $db = getDatabaseConnection();
+    $stmt = $db->prepare("INSERT INTO items (seller_id, category_id, condition_id, model, size, price, description) VALUES (:seller_id, :category_id, :condition_id, :model, :size, :price, :description)");
+    if ($stmt->execute([
+        'seller_id' => $user_id, 
+        ':category_id' => $_POST['category'], 
+        ':condition_id' => $_POST['condition'], 
+        ':model' => $_POST['model'], 
+        ':size' => $_POST['size'], 
+        ':price' => $_POST['price'], 
+        ':description' => $_POST['description']
+    ])) {
+        $item_id = $db->lastInsertId();
+        $response['item_id'] = $item_id;
+
+        // Handle file upload
+        if (isset($_FILES['image'])) {
+            $target_dir = "../assets/images/";
+            foreach ($_FILES["image"]["name"] as $key => $value) {
+                if ($_FILES['image']['error'][$key] == 0) {
+                    $file_name = basename($_FILES["image"]["name"][$key]);
+                    $target_file = $target_dir . $file_name;
+                    if (move_uploaded_file($_FILES["image"]["tmp_name"][$key], $target_file)) {
+                        $stmt = $db->prepare("INSERT INTO item_images (item_id, image_url) VALUES (:item_id, :image_url)");
+                        if ($stmt->execute([':item_id' => $item_id, ':image_url' => $target_file])) {
+                            $response['uploaded'][] = $target_file;
+                            $response['success'] = true; // Mark as success if at least one image uploads
+                        } else {
+                            $response['error'] = 'Failed to insert image record into the database.';
+                        }
+                    } else {
+                        $response['error'] = 'Failed to move uploaded file.';
+                    }
+                } else {
+                    $response['error'] = 'No file uploaded or file upload error.';
+                }
+            }
+        }
+    } else {
+        $response['error'] = 'Failed to insert item into the database.';
+    }
+
+    echo json_encode($response);
+}
 ?>

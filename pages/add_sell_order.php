@@ -10,7 +10,6 @@ if (!$session->isLoggedIn()) {
     exit();
 }
 
-//TODO:: nao sei fazer esta funcao a ir buscar à base de dados
 $userDetails = $session->getUserDetails();
 
 drawHeader($session);
@@ -18,31 +17,45 @@ drawHeader($session);
 
 <body>
     <div class = "sell-order-create">
-        <form action="../actions/action_add_sellorder.php" method="post">
+
+        <form id="sellOrderForm" action="" method="post" enctype="multipart/form-data">
+
             <h1>Add Sell Order</h1>
 
-                <label for="category">Category:</label>
-                <select name = "category" id = "category" required>
-                    <option value = "">Select a Category</option>
-                    <option value = "1">Games</option>
-                </select>
+            <div class = "sell-order-elements">
 
-                <label for="condition">Condition:</label>
-                <input type="text" name="condition" id="condition" required>
+                <div class = "sell-order-item" id = "SellImage">
+                    <img id = "imageSell" src = "https://via.placeholder.com/150">
+                    <input type="file" id="imageInput" name="image[]" accept="image/*" multiple>
 
-                <label for="model">Model:</label>
-                <input type="text" name="model" id="model" required>
+                </div>
 
-                <label for="size">Size:</label>
-                <input type="text" name="size" id="size" required>
+                <div class = "sell-order-item" id = "Sellbody">
 
-                <label for="price">Price:</label>
-                <input type="text" name="price" id="price" required>
+                    <label for="category">Category:</label>
+                    <select name = "category" id = "category" required>
+                        <option value = "">Select a Category</option>
+                        <option value = "1">Games</option>
+                    </select>
 
-                <label for="description">Description:</label>
-                <input type="text" name="description" id="description" required>
+                    <label for="condition">Condition:</label>
+                    <input type="text" name="condition" id="condition" required>
 
-            <button type = "submit" name = "register">Submit</button>
+                    <label for="model">Model:</label>
+                    <input type="text" name="model" id="model" required>
+
+                    <label for="size">Size:</label>
+                    <input type="text" name="size" id="size" required>
+
+                    <label for="price">Price:</label>
+                    <input type="text" name="price" id="price" required>
+
+                    <label for="description">Description:</label>
+                    <input type="text" name="description" id="description" required>
+
+                    <button type = "submit" name = "register">Submit</button>
+                </div>
+            </div>
         </form>
     </div>
 
