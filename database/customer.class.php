@@ -37,7 +37,7 @@ class Customer {
         $this->email = $email;
         $this->dateJoined = $dateJoined;
         $this->isAdmin = $isAdmin;
-        $this->pfp = $pfp ?? '';
+        $this->pfp = $pfp;
     }
 
     public function name(): string {
@@ -135,13 +135,13 @@ class Customer {
         if ($stmt->fetch()) {
             debugToConsole("User already exists");
         }else{
-
+            $profile_picture = 'assets/style/images/default_image.jpg';
             $stmt = $db->prepare('
-                INSERT INTO users (firstName, lastName, username, password, city, state, country, zip, phone, email, is_admin)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-            ');
+                INSERT INTO users (firstName, lastName, username, password, city, state, country, zip, phone, email, is_admin, profile_picture)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ');            
 
-            $stmt->execute([$firstName, $lastName, $username, $password, $city, $state, $country, $zip, $phone, $email, 0]);
+            $stmt->execute([$firstName, $lastName, $username, $password, $city, $state, $country, $zip, $phone, $email, 0, $profile_picture]);
         }
     }
 
