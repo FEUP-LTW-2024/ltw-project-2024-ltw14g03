@@ -20,7 +20,7 @@ drawHeader($session);
         <h1>User Profile</h1>
 
         <div class="profile-detail">
-            <img src="../<?php echo $userDetails['pfp'] ?>" alt="Profile Picture">
+            <img src="../<?php echo $userDetails['pfp'] ?>" id="imageprofile" alt="Profile Picture">
             <div id = "pfp_edit">
 
             </div>
