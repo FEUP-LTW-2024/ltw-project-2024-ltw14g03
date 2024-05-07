@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => response.json())
         .then(data => {
+            console.log('Data received:', data);
             displayResults(data);
         })
         .catch(error => console.error('Error:', error));
@@ -27,13 +28,12 @@ document.addEventListener('DOMContentLoaded', function() {
             resultDiv.innerHTML = '<p>No results found.</p>';
             return;
         }
-
         // Create and append a div for each item
         data.forEach(item => {
             const itemDiv = document.createElement('div');
             itemDiv.className = 'item'; // Add a class for styling if necessary
             itemDiv.innerHTML = `
-                <h3>${item.model}</h3>
+                <img src="${item.images}" alt="Item Image">
                 <p>Price: $${item.price}</p>
                 <p>Category: ${item.category_id} (ID)</p>
                 <p>Condition: ${item.condition_id} (ID)</p>

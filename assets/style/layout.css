@@ -60,6 +60,8 @@ body{
     grid-column: 2;
     display: flex;
     flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
 }
 
 .sidesearch form {

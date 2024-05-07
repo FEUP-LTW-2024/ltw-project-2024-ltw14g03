@@ -471,3 +471,20 @@ main {
 .sidesearch input[type="submit"]:hover {
     background-color: #0056b3;
 }
+
+.searchResult .item {
+    width: 200px;
+    height: 300px;
+    background-color: #cccccc;
+    padding: 1em;
+    border-radius: 20px;
+}
+
+.searchResult .item img {
+    width: 150px;
+    height: 150px;
+}
+
+.searchResult{
+    padding: 2em;
+}

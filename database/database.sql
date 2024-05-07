@@ -52,6 +52,7 @@ CREATE TABLE sizes (
 
 CREATE TABLE items (
     item_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
     seller_id INTEGER NOT NULL,
     category_id INTEGER,
     brand_id INTEGER,
