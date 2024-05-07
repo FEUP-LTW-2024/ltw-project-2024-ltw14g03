@@ -8,8 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
             event.preventDefault();  // This should prevent the form from submitting traditionally.
 
             const formData = new FormData(this);  // This collects the form data.
-
-            fetch('../actions/action_add_sellorder.php', {
+            console.log ("Form data collected", formData);
+            fetch('../actions/action.add_sellorder.php', {
                 method: 'POST',
                 body: formData,
             })
