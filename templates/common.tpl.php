@@ -41,7 +41,7 @@
                 <li><a href="../pages/index.php">Home</a></li>
                 <li><a href="../pages/browse.php">Browse</a></li>
                 <?php if($session->isLoggedIn()) { ?>
-                  <li class="dropdown"><img class="profileImageBar" src="<?php echo $session->getParam("pfp")?>"><a href=""><?php echo  $_SESSION['username']?></a>
+                  <li class="dropdown"><img class="profileImageBar" src="<?php echo $session->getParam("pfp")?>"><a href="" id="username-bar"><?php echo  $_SESSION['username']?></a>
                   <div class="dropdown-content">
                     <a href="../pages/profile.php">Profile</a>
                       <a href="../pages/add_sell_order.php">Sell</a>

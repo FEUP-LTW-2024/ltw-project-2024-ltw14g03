@@ -21,7 +21,8 @@ $id = (int) $details['id'];
 $customer = Customer::getCustomer($db, $id);
 
 try {
-    $customer->updateFirstAndSecondName($db, $_POST['firstName'], $_POST['lastName']);
+    $customer->updateUsernameFirstSecondEmail($db, $_POST['username'], $_POST['firstName'], $_POST['lastName'], $_POST['email']);
+    $session->setParam('username', $_POST['username']);
     $session->setParam('firstName', $_POST['firstName']);
     $session->setParam('lastName', $_POST['lastName']);
     echo json_encode(['success' => 'Profile updated successfully']);

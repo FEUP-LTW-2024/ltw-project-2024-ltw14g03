@@ -10,13 +10,18 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     function toggleEditState(isEditState) {
+        const usernameSpan = document.getElementById('username');
         const pfp = document.getElementById('pfp_edit');
         const fullNameSpan = document.getElementById('fullName');
+        const emailSpan = document.getElementById('email');
         const btn = document.querySelector('.profile-button');
 
+
         if (isEditState) {
+            usernameSpan.innerHTML = `<input type="text" id="editUsername" value="${usernameSpan.textContent}">`;
             const fullName = fullNameSpan.textContent.split(' ');
             fullNameSpan.innerHTML = `<input type="text" id="editFirstName" value="${fullName[0]}"> <input type="text" id="editLastName" value="${fullName[1] || ''}">`;
+            emailSpan.innerHTML = `<input type="email" id="editEmail" value="${emailSpan.textContent}">`;
             btn.textContent = 'Save Profile';
             btn.id = 'saveProfileBtn';
 
@@ -27,7 +32,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 </form>
             `;
         } else {
+            usernameSpan.textContent = document.getElementById('editUsername').value;
             fullNameSpan.textContent = `${document.getElementById('editFirstName').value} ${document.getElementById('editLastName').value}`;
+            emailSpan.textContent = document.getElementById('editEmail').value;
             btn.textContent = 'Edit Profile';
             btn.id = 'editProfileBtn';
             pfp.innerHTML = '';
@@ -35,8 +42,10 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function saveProfile() {
+        const updatedUsername = document.getElementById('editUsername').value;
         const updatedFirstName = document.getElementById('editFirstName').value;
         const updatedLastName = document.getElementById('editLastName').value;
+        const updatedEmail = document.getElementById('editEmail').value;
         const profilePicture = document.getElementById('pfpInput').files.length > 0 ? document.getElementById('pfpInput').files[0] : null;
 
         if (profilePicture) {
@@ -48,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function() {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
-            body: `firstName=${encodeURIComponent(updatedFirstName)}&lastName=${encodeURIComponent(updatedLastName)}`
+            body: `firstName=${encodeURIComponent(updatedFirstName)}&lastName=${encodeURIComponent(updatedLastName)}&email=${encodeURIComponent(updatedEmail)}&username=${encodeURIComponent(updatedUsername)}`
         })
         .then(response => {
             if (!response.ok) {
@@ -58,6 +67,7 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .then(data => {
             if (data.success) {
+                document.getElementById('username-bar').textContent = `${updatedUsername}`;
                 alert('Profile updated successfully');
                 toggleEditState(false);
             } else {
