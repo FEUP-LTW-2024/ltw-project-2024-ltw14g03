@@ -383,13 +383,10 @@ main {
 
 /* BROWSE PAGE */
 
-.search-items {
-    margin: 1em;
-}
+
 
 .search-items .filtered-items{
     margin: 1em;
-
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px
@@ -431,3 +428,44 @@ main {
 /* END OF BROWSE PAGE */
 
 
+
+/* SEARCH PAGE */
+
+.browse {
+    width: 300px;
+    background-color: #f4f4f4; 
+    height: 75vh; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+}
+
+.sidesearch h2 {
+    color: #333; 
+    margin-bottom: 10px; 
+}
+
+
+.sidesearch label {
+    font-weight: bold; 
+    margin-bottom: 5px; 
+}
+
+.sidesearch input[type="text"],
+.sidesearch select {
+    padding: 8px;
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+}
+
+.sidesearch input[type="submit"] {
+    background-color: #007BFF; 
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer; 
+    transition: background-color 0.3s;
+}
+
+.sidesearch input[type="submit"]:hover {
+    background-color: #0056b3;
+}

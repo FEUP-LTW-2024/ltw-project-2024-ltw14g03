@@ -38,3 +38,32 @@ body{
     text-align: center;
     width: 35%;
 }
+
+
+/* Search Page Layout */
+
+.browse {
+    display: grid;
+    grid-template-columns: 300px auto; /* One fixed-width and one flexible column */
+    min-height: 75vh; /* Ensures the container takes at least the full height of the viewport */
+}
+
+.sidesearch {
+    grid-column: 1; /* Aligns the sidebar to the first column */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Vertical spacing between elements within the sidebar */
+    padding: 20px; /* Padding around the sidebar content */
+}
+
+.searchResult {
+    grid-column: 2;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.sidesearch form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* space between form fields */
+}

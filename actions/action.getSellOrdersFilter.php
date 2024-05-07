@@ -10,6 +10,5 @@ header('Content-Type: application/json');
 
 $db = getDatabaseConnection();
 
-echo json_encode(SellOrder::getSellOrdersFilter($db));
 
 ?>

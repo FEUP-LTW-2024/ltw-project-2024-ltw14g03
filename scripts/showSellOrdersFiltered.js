@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     if (window.location.pathname === '/pages/browse.php') {
-    fetch('../actions/action.getSellOrders.php')
+    fetch('../actions/action.getSellOrdersFilter.php')
         .then(response => response.json())
         .then(data => {
             const container = document.getElementById('itemsFilter');
