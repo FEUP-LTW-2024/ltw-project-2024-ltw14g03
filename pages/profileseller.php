@@ -54,6 +54,11 @@ drawHeader($session);
                 <label for="fullName">Full Name:</label>
                 <span id="fullName"><?php echo htmlspecialchars($sellerDetails['firstname'] . ' ' . $sellerDetails['lastname']); ?></span>
             </div>
+            </div>
+                <!-- Button to go to chat page -->
+                <button class="profile-button" onclick="window.location.href='chat.php?receiver_id=<?php echo $sellerId; ?>'">Chat with Seller</button>
+
+                </div>
         </div>
 
         <!-- You can add more profile details here as needed -->
