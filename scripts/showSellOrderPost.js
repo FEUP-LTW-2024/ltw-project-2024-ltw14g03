@@ -9,12 +9,15 @@
 
 
 
-                main.innerHTML = `
-     
-                    <h2 id="username">${data.name}</h2>
-                    <img src = "${data.image_src}">
-                
-                `;
+        main.innerHTML = `
+        <h2 id="username">${data.name}</h2>
+        <a href="/pages/profileseller.php?seller_id=${data.seller_id}">View Seller Profile</a>
+        <p>User: ${data.username}</p>
+        <p>User_ID: ${data.seller_id}</p>
+        <img src="${data.image_src}">
+        <p>Item Description: ${data.description}</p>
+        <p>Price: ${data.price}</p>
+    `;
 
 
 

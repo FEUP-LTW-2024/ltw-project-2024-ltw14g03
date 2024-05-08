@@ -14,7 +14,16 @@ document.addEventListener("DOMContentLoaded", function() {
         const pfp = document.getElementById('pfp_edit');
         const fullNameSpan = document.getElementById('fullName');
         const emailSpan = document.getElementById('email');
-        const btn = document.querySelector('.profile-button');
+
+        //com esta linha o edit profile button transforma-se em save profile , depois tenho de testar
+        //const btn = document.querySelector('.profile-button');
+        let btn = document.getElementById('saveProfileBtn') || document.getElementById('editProfileBtn');
+
+        // Remove any previous cancel button to prevent duplicates
+        const existingCancelButton = document.getElementById('cancelEditBtn');
+        if (existingCancelButton) {
+            existingCancelButton.remove();
+        }
 
 
         if (isEditState) {
@@ -24,6 +33,16 @@ document.addEventListener("DOMContentLoaded", function() {
             emailSpan.innerHTML = `<input type="email" id="editEmail" value="${emailSpan.textContent}">`;
             btn.textContent = 'Save Profile';
             btn.id = 'saveProfileBtn';
+
+            const cancelButton = document.createElement('button');
+            cancelButton.textContent = 'Cancel';
+            cancelButton.className = 'profile-button';
+            cancelButton.id = 'cancelEditBtn';
+            cancelButton.addEventListener('click', function() {
+                window.location.href = 'profile.php';
+            });
+
+            btn.parentNode.insertBefore(cancelButton, btn);
 
             pfp.innerHTML = `
                 <form id="pfpform" action="../actions/action.uploadProfileImage.php" method="post" enctype="multipart/form-data">
@@ -49,6 +68,12 @@ document.addEventListener("DOMContentLoaded", function() {
             btn.textContent = 'Edit Profile';
             btn.id = 'editProfileBtn';
             pfp.innerHTML = '';
+
+            // Remove cancel button if it exists
+            const cancelButton = document.getElementById('cancelEditBtn');
+            if (cancelButton) {
+                cancelButton.remove();
+            }
         }
     }
 

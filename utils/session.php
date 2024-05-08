@@ -79,17 +79,12 @@
       unset($_SESSION['error']);
     }
 
-    public function fetchOtherUser(PDO $db, int $val)
+    public function fetchOtherUser(PDO $db, int $sellerId)
     {
-
       $query = $db->prepare('SELECT * FROM users WHERE user_id = ?');
-      $query->execute([$val]);
-
+      $query->execute([$sellerId]);
       $otherUser = $query->fetch();
-
       $this->setParam("otherUser", json_encode($otherUser));
-
-
     }
   }
 ?>
