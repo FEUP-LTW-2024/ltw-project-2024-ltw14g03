@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
         if (isEditState) {
+
             usernameSpan.innerHTML = `<input type="text" id="editUsername" value="${usernameSpan.textContent}">`;
             const fullName = fullNameSpan.textContent.split(' ');
             fullNameSpan.innerHTML = `<input type="text" id="editFirstName" value="${fullName[0]}"> <input type="text" id="editLastName" value="${fullName[1] || ''}">`;

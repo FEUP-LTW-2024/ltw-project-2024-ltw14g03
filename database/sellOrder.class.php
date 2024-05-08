@@ -28,6 +28,18 @@ class SellOrder {
 
         $stmt->execute();
 
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    static function getSellOrderImages(PDO $db): array {
+
+
+        $stmt = $db->prepare('
+                SELECT * FROM item_images;
+            ');
+
+        $stmt->execute();
+
         $sellOrders = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
 
