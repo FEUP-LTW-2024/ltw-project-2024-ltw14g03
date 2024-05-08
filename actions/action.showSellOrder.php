@@ -29,10 +29,7 @@ $data = json_decode($json, true);
 
         $sellOrders['image_src'] = $query->fetch()['image_url'];
 
-        $session->setParam("sellOrder", json_encode($sellOrders));
+        echo json_encode($sellOrders);
 
-    //Get the Post's creator
-
-        echo $session->fetchOtherUser($db, intval($sellOrders['seller_id']));
 
 ?>

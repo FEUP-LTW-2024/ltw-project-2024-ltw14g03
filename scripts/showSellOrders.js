@@ -56,11 +56,11 @@ function selectSellOrder(itemID) {
         body: JSON.stringify(params),
     })
         .then(response => {
-            window.location.href = '../pages/sellOrder.php'
-            return response.text();
+            return response.json();
         })
         .then(data =>{
-            console.log(data);
+            window.location.href = `../pages/sellOrder.php?data=${encodeURIComponent(JSON.stringify(data))}`;
+
         })
 
 
