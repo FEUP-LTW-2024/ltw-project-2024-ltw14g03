@@ -8,6 +8,9 @@
     
     drawHeader($session); 
 ?>
+
+<script src="../scripts/showSellOrdersFiltered.js"></script>
+
 <body>
     <main>
         <div class="browse">
@@ -59,17 +62,19 @@
                     <input type="text" id="size" name="size">
 
 
-                    <input type="submit" value="Search">
+                    <!-- <input type="submit" value="Search"> -->
                 </form>
             </div>
+
             <div class="searchResult">
+
             </div>
-    </div>
+        </div>
     </main>
-</body>
-</body>
-<?php
+
+    <?php
     drawFooter();
-?>
+    ?>
 </body>
+
 </html>

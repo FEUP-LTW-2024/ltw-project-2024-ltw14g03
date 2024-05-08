@@ -6,6 +6,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const [file] = main.files
 
-        document.getElementById("imageSell").src = URL.createObjectURL(file);
+        document.getElementById("imageSell").src = "URL.createObjectURL(file)";
     });
 });

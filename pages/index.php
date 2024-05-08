@@ -2,9 +2,14 @@
     declare(strict_types = 1);
     require_once(__DIR__ . '/../templates/common.tpl.php');
     $session = new Session();
-    
+
+
     drawHeader($session); 
 ?>
+
+<script src="../scripts/showSellOrders.js"></script>
+
+
     <main id="mainPage">
 
 
@@ -15,9 +20,14 @@
             </div>
 
 
-            <div class = "product-list" id = "productList">
-            </div>
+        
+            <div class="featured-items">
 
+
+                <div class = "product-list" id = "productList">
+                </div>
+
+            </div>
         </section>
 
         <section class="about">
@@ -25,6 +35,7 @@
             <p>We are here for you</p>
         </section>
     </main>
+
 <?php
     drawFooter();
 ?>
