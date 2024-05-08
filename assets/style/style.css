@@ -612,6 +612,14 @@ main {
 
 }
 
+.sell-order-show .sell-order-seller{
+    display: flex;
+}
+
+.sell-order-show .sell-order-seller img{
+    max-width: 5em;
+}
+
 @keyframes fadeInAnimation {
     from {
         opacity: 0;

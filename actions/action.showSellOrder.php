@@ -29,6 +29,14 @@ $data = json_decode($json, true);
 
         $sellOrders['image_src'] = $query->fetch()['image_url'];
 
+        $query = $db->prepare('SELECT * FROM users WHERE user_id = ?');
+        $query->execute([$sellOrders['seller_id']]);
+
+        $user = $query->fetch();
+
+        $sellOrders['seller_pfp'] = $user['profile_picture'];
+        $sellOrders['seller_name'] = $user['username'];
+
         echo json_encode($sellOrders);
 
 
