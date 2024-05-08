@@ -16,6 +16,9 @@ $db = getDatabaseConnection();
 drawHeader($session);
 ?>
 
+<script src="../scripts/addSellOrderWithImage.js"></script>
+<script src="../scripts/sellOrder.js"></script>
+
 <body>
     <div class = "sell-order-create">
 
@@ -31,57 +34,71 @@ drawHeader($session);
                 </div>
 
                 <div class = "sell-order-item" id = "Sellbody">
-                    
-                    <label for="name">Name:</label>
-                    <input type="text" name="name" id="name" required>
+
+                    <div class = "line">
+                        <label for="name">Name:</label>
+                        <textarea type="text" name="name" id="name" class = "lineInput" required></textarea>
+                    </div>
 
 
-                    <label for="category">Category:</label>
-                    <select name = "category" id = "category" required>
-                        <option value = "">Select a Category</option>
-                        <?php
-                        $stmt = $db->query("SELECT * FROM categories");
-                        $categories = $stmt->fetchAll();
-                        foreach ($categories as $category) {
-                            echo "<option value='{$category['id']}'>{$category['name']}</option>";
-                        }
-                        ?>
-                    </select>
+                    <div class = "line">
+                        <label for="category">Category:</label>
+                        <select name = "category" id = "category" class = "lineInput" required>
+                            <option value = "">Select a Category</option>
+                            <?php
+                            $stmt = $db->query("SELECT * FROM categories");
+                            $categories = $stmt->fetchAll();
+                            foreach ($categories as $category) {
+                                echo "<option value='{$category['id']}'>{$category['name']}</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
 
-                    <label for="condition">Condition:</label>
-                    <select name = "condition" id = "condition" required>
-                        <option value = "">Select a Condition</option>
-                        <?php
-                        $stmt = $db->query("SELECT * FROM conditions");
-                        $conditions = $stmt->fetchAll();
-                        foreach ($conditions as $condition) {
-                            echo "<option value='{$condition['id']}'>{$condition['name']}</option>";
-                        }
-                        ?>
-                    </select>
+                    <div class = "line">
+                        <label for="condition">Condition:</label>
+                        <select name = "condition" id = "condition" class = "lineInput" required>
+                            <option value = "">Select a Condition</option>
+                            <?php
+                            $stmt = $db->query("SELECT * FROM conditions");
+                            $conditions = $stmt->fetchAll();
+                            foreach ($conditions as $condition) {
+                                echo "<option value='{$condition['id']}'>{$condition['name']}</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
 
-                    <label for="size">Size:</label>
-                    <select name = "size" id = "size" required>
-                        <option value = "">Select a Size</option>
-                        <?php
-                        $stmt = $db->query("SELECT * FROM sizes");
-                        $sizes = $stmt->fetchAll();
-                        foreach ($sizes as $size) {
-                            echo "<option value='{$size['id']}'>{$size['name']}</option>";
-                        }
-                        ?>
-                    </select>
+                    <div class = "line">
+                        <label for="size">Size:</label>
+                        <select name = "size" id = "size" class = "lineInput" required>
+                            <option value = "">Select a Size</option>
+                            <?php
+                            $stmt = $db->query("SELECT * FROM sizes");
+                            $sizes = $stmt->fetchAll();
+                            foreach ($sizes as $size) {
+                                echo "<option value='{$size['id']}'>{$size['name']}</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
 
-                    <label for="model">Model:</label>
-                    <input type="text" name="model" id="model" required>
+                    <div class = "line">
+                        <label for="model">Model:</label>
+                        <textarea type="text" name="model" id="model" class = "lineInput" required></textarea>
+                    </div>
 
-                    <label for="price">Price:</label>
-                    <input type="text" name="price" id="price" required>
+                    <div class = "line">
+                        <label for="price">Price:</label>
+                        <textarea type="text" name="price" id="price" class = "lineInput" required></textarea>
+                    </div>
 
-                    <label for="description">Description:</label>
-                    <input type="text" name="description" id="description" required>
+                    <div class = "line">
+                        <label for="description">Description:</label>
+                        <textarea style = "height: 3em" type="text" name="description" id="description" class = "lineInput" required></textarea>
+                    </div>
 
-                    <button type = "submit" name = "register">Submit</button>
+                    <button type = "submit" name = "register" style = "margin-top: 1em">Submit</button>
                 </div>
             </div>
         </form>

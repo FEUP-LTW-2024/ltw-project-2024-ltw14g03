@@ -15,6 +15,8 @@ $userDetails = $session->getUserDetails();
 drawHeader($session);
 ?>
 
+<script src="../scripts/editProfile.js"></script>
+
 <body>
     <div class="profile-info">
         <h1>User Profile</h1>
@@ -26,22 +28,25 @@ drawHeader($session);
             </div>
         </div>
 
+        <div class = "profile-text">
 
-        <div class="profile-detail">
-            <label for="username">Username:</label>
-            <span id="username"><?php echo htmlspecialchars($userDetails['username']); ?></span>
+            <div class="profile-detail">
+                <h2 id="username"><?php echo htmlspecialchars($userDetails['username']); ?></h2>
+            </div>
+
+            <div class="profile-detail">
+                <label for="email">Email:</label>
+                <span id="email"><?php echo htmlspecialchars($userDetails['email']); ?></span>
+            </div>
+
+            <div class="profile-detail">
+                <label for="fullName">Full Name:</label>
+                <span id="fullName"><?php echo htmlspecialchars($userDetails['firstname'] . ' ' . $userDetails['lastname']); ?></span>
+            </div>
         </div>
 
-        <div class="profile-detail">
-            <label for="email">Email:</label>
-            <span id="email"><?php echo htmlspecialchars($userDetails['email']); ?></span>
-        </div>
-
-        <div class="profile-detail">
-            <label for="fullName">Full Name:</label>
-            <span id="fullName"><?php echo htmlspecialchars($userDetails['firstname'] . ' ' . $userDetails['lastname']); ?></span>
-        </div>
         <button class="profile-button" id="editProfileBtn">Edit Profile</button>
+
     </div>
 </body>
 

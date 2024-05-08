@@ -17,19 +17,19 @@
     <link rel="stylesheet" href="../assets/style/responsive.css">
 
     <script src="../scripts/logout.js"></script>
-    <?php if($_SERVER['REQUEST_URI']== "/ltw-project-2024-ltw14g03/pages/register.php"){?>
+    <?php if($_SERVER['REQUEST_URI']== "/pages/register.php"){?>
       <script src="../scripts/validatePassword.js"></script>
     <?php } ?>
 
-    <?php if($_SERVER['REQUEST_URI']== "/ltw-project-2024-ltw14g03/pages/add_sell_order.php"){?>
+    <?php if($_SERVER['REQUEST_URI']== "/pages/add_sell_order.php"){?>
       <script src="../scripts/addSellOrderWithImage.js"></script>
     <?php } ?>
 
-    <?php if($_SERVER['REQUEST_URI']== "/ltw-project-2024-ltw14g03/pages/profile.php"){?>
+    <?php if($_SERVER['REQUEST_URI']== "/pages/profile.php"){?>
       <script src="../scripts/editProfile.js"></script>
     <?php } ?>
 
-    <?php if($_SERVER['REQUEST_URI']== "/ltw-project-2024-ltw14g03/pages/index.php"){?>
+    <?php if($_SERVER['REQUEST_URI']== "/pages/index.php"){?>
       <script src="../scripts/showSellOrders.js"></script>
     <?php } ?>
     <?php if($_SERVER['REQUEST_URI']=="/pages/browse.php"){?>

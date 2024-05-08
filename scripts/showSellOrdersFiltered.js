@@ -2,7 +2,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('searchForm');
     const resultDiv = document.querySelector('.searchResult');
 
-    form.addEventListener('submit', function(event) {
+    //Load when the page is opened
+        const formData = new FormData(form);
+
+        fetch('../actions/action.getSellOrdersFilter.php', { // Adjust the path to your actual PHP action file
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Data received:', data);
+                displayResults(data);
+            })
+            .catch(error => console.error('Error:', error));
+
+    form.addEventListener('change', function(event) {
         event.preventDefault();
         
         const formData = new FormData(form);
@@ -29,18 +43,32 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         // Create and append a div for each item
+
+        let itemsHTML = '';
+        let count  = 0;
         data.forEach(item => {
-            const itemDiv = document.createElement('div');
-            itemDiv.className = 'item'; // Add a class for styling if necessary
-            itemDiv.innerHTML = `
-                <img src="${item.images}" alt="Item Image">
-                <p>Price: $${item.price}</p>
-                <p>Category: ${item.category_id} (ID)</p>
-                <p>Condition: ${item.condition_id} (ID)</p>
-                <p>Size: ${item.size_id} (ID)</p>
-                <p>Description: ${item.description}</p>
+            itemsHTML += `
+
+                    <div class = "item" style = "animation-delay: ${count/8}s">
+
+                        <img src = " ${item.images}" alt="Item Image">
+                        
+                        <div class = "desc">
+                            <h3>${item.name}</h3>
+                            <p style = "margin-top: 0.2em">"${item.description}"</p>
+                            
+                            <div class = "details">
+                                <p>Price: ${item.price}€</p>
+                                <p>Condition: ${item.condition_id}</p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                
             `; // Customize according to your data attributes and needs
-            resultDiv.appendChild(itemDiv);
+
+            count += 1;
         });
+        resultDiv.innerHTML = itemsHTML;
     }
 });
