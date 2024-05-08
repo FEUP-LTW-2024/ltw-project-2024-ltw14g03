@@ -51,15 +51,13 @@ function selectSellOrder(itemID) {
       ID : itemID,
     };
 
-    console.log(params)
-
     fetch('../actions/action.showSellOrder.php', {
         method: 'POST',
         body: JSON.stringify(params),
     })
         .then(response => {
             window.location.href = '../pages/sellOrder.php'
-            return response;
+            return response.text();
         })
         .then(data =>{
             console.log(data);

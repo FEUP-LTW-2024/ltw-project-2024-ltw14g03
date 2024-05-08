@@ -5,6 +5,7 @@ require_once(__DIR__ . '/../templates/common.tpl.php');
 $session = new Session();
 
 $sellOrderDetails = $session->getSellOrder();
+$otherUser = $session->getOtherUser();
 
 drawHeader($session);
 ?>
@@ -16,6 +17,7 @@ drawHeader($session);
     <div class = "sell-order-show">
         <h2 id="username"><?php echo $sellOrderDetails['name']; ?></h2>
         <img src = "<?php echo $sellOrderDetails['image_src']; ?>">
+        <img src = "<?php echo $otherUser['profile_picture']; ?>">
         <h3 id = "description"><?php echo $sellOrderDetails['description']; ?></h3>
     </div>
 </body>

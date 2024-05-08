@@ -17,16 +17,22 @@ $data = json_decode($json, true);
 
     $itemID = $data['ID'];
 
-    $query = $db->prepare('SELECT * FROM items WHERE item_id = ?');
-    $query->execute([$itemID]);
+    //Get Post Info
 
-    $sellOrders = $query->fetch();
+        $query = $db->prepare('SELECT * FROM items WHERE item_id = ?');
+        $query->execute([$itemID]);
 
-    $query = $db->prepare('SELECT * FROM item_images WHERE item_id = ?');
-    $query->execute([$itemID]);
+        $sellOrders = $query->fetch();
 
-    $sellOrders['image_src'] = $query->fetch()['image_url'];
+        $query = $db->prepare('SELECT * FROM item_images WHERE item_id = ?');
+        $query->execute([$itemID]);
 
-    $session->setParam("sellOrder", json_encode($sellOrders));
+        $sellOrders['image_src'] = $query->fetch()['image_url'];
+
+        $session->setParam("sellOrder", json_encode($sellOrders));
+
+    //Get the Post's creator
+
+        echo $session->fetchOtherUser($db, intval($sellOrders['seller_id']));
 
 ?>
