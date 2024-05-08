@@ -3,8 +3,6 @@ if(document.URL.includes("index.php")){
 
     document.addEventListener('DOMContentLoaded', function() {
 
-        console.log("lol");
-
         fetch('../actions/action.getSellOrders.php')
             .then(response => {
                 if (!response.ok) {
@@ -15,12 +13,11 @@ if(document.URL.includes("index.php")){
             .then(data => {
 
                 const container = document.getElementById('productList');
-                let itemsHtml = '';
                 let count  = 0;
                 data.forEach(item => {
                     const imageSrc = item.image ? item.image : '../assets/style/images/default_image.jpg'; // Use default image if item.image is falsy
-                    itemsHtml += `
-                                <div class="item" id="items" data-product-id = "${item.item_id}" val = "${item.seller_id}" style = "animation-delay: ${count/8}s">
+                    container.innerHTML += `
+                                <div class="item" onclick="selectSellOrder(this.dataset.value)" id = "item_${item.item_id}" data-value= "${item.item_id}" style = "animation-delay: ${count/8}s">
                                     <img src = " ${imageSrc}" alt="Item Image">
                                     <div class = "desc">
                                         <h3>${item.name}</h3>
@@ -34,8 +31,9 @@ if(document.URL.includes("index.php")){
                     `;
 
                     count +=1;
+
+
                 });
-                container.innerHTML = itemsHtml;
 
                 // Add console log to track data
                 console.log(data);
@@ -44,4 +42,29 @@ if(document.URL.includes("index.php")){
                 alert('Error loading data: ' + error);
             });
     });
+}
+
+
+function selectSellOrder(itemID) {
+
+    const params = {
+      ID : itemID,
+    };
+
+    console.log(params)
+
+    fetch('../actions/action.showSellOrder.php', {
+        method: 'POST',
+        body: JSON.stringify(params),
+    })
+        .then(response => {
+            window.location.href = '../pages/sellOrder.php'
+            return response;
+        })
+        .then(data =>{
+            console.log(data);
+        })
+
+
+    //your existing code goes here
 }

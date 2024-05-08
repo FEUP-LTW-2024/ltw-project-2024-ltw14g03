@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
             fetch('../actions/action.add_sellorder.php', {
                 method: 'POST',
                 body: formData,
-            }).then(r => {history.back();})
+            }).then(r => {window.location.href = '../pages/index.php';})
 
         });
     } else {

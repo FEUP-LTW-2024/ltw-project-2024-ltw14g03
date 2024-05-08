@@ -34,6 +34,16 @@
 
         return $details;
     }
+
+    public function getSellOrder(): array
+    {
+
+
+
+      $details = json_decode($this->getParam('sellOrder'), true);
+
+      return $details;
+    }
   
 
     public function setError(string $error) {

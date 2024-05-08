@@ -62,8 +62,16 @@ header h1 {
     padding: 1em;
     border-radius: 20px;
 
+    transition: min-width 0.5s, max-width 0.5s;
+
     opacity: 0;
     animation: fadeInAnimation 0.3s ease-in forwards, moveUpAnimation 0.3s cubic-bezier(0.5, 1, 0.89, 1) forwards 0.2s;
+
+}
+
+.featured-items .product-list .item:hover{
+    min-width: 20em;
+    max-width: 35em;
 
 }
 
@@ -571,6 +579,28 @@ main {
 
 .searchResult{
     padding: 2em;
+}
+
+/* ------------------------ */
+
+/* END OF SEARCH PAGE */
+
+
+
+/* SELLORDER PAGE */
+
+
+.sell-order-show {
+
+    align-content: center;
+    max-width: 600px;
+    margin: 2em auto;
+    margin-bottom: auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
 }
 
 @keyframes fadeInAnimation {
