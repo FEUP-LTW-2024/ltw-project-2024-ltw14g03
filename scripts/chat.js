@@ -10,20 +10,25 @@ $(document).ready(function() {
 
 function fetchMessages() {
     $.ajax({
-        url: 'getMessages.php',
+        url: '../actions/getMessage.php',
         type: 'GET',
-        data: {receiver_id: window.receiverId},
+        data: {
+            sender_id: window.userId,
+            receiver_id: window.receiverId
+        },
         success: function(data) {
             var messages = JSON.parse(data);
             $('#chat-box').html('');
             messages.forEach(function(message) {
                 var messageClass = message.sender_id == window.userId ? 'sender' : 'receiver';
-                $('#chat-box').append(`<div class="message ${messageClass}">${message.message}</div>`);
+                var messageAlignment = message.sender_id == window.userId ? 'align-right' : 'align-left';
+                $('#chat-box').append(`<div class="message ${messageClass} ${messageAlignment}">${message.message}</div>`);
             });
             scrollToBottom();
         }
     });
 }
+
 
 function sendMessage() {
     var message = $('#message-input').val();
@@ -37,7 +42,7 @@ function sendMessage() {
     scrollToBottom();
 
     $.ajax({
-        url: 'sendMessage.php',
+        url: '../actions/sendMessage.php',
         type: 'POST',
         data: {
             message: message,
