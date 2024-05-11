@@ -29,11 +29,6 @@
 
             </div>
         </section>
-
-        <section class="about">
-            <h2>Looking somewhere to but or sell pre-loved items?</h2>
-            <p>We are here for you</p>
-        </section>
     </main>
 
 <?php

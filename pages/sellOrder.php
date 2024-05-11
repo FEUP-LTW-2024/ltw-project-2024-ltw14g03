@@ -13,6 +13,7 @@ drawHeader($session);
 <body>
 
     <div class = "sell-order-show" id = "sell-order-show">
+
     </div>
 </body>
 
