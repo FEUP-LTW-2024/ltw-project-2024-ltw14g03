@@ -15,7 +15,15 @@
         <section class="featured-items">
 
             <div class = "featured-header">
-                <h2>Featured Items</h2>
+                <h1>Featured Items</h1>
+
+                <div class = "pageSelect">
+                    <list>
+                        <li><h2><a href = "#" onclick = "changePage(0)">1</a></h2></li>
+                        <li><h2><a href = "#" onclick = "changePage(1)">2</a></h2></li>
+                        <li><h2><a href = "#" onclick = "changePage(2)">3</a></h2></li>
+                    </list>
+                </div>
             </div>
 
 
@@ -26,14 +34,6 @@
                 <div class = "product-list" id = "productList">
                 </div>
 
-            </div>
-
-            <div class = "pageSelect">
-                <list>
-                    <li><h3><a href = "#" onclick = "changePage(0)">1</a></h3></li>
-                    <li><h3><a href = "#" onclick = "changePage(1)">2</a></h3></li>
-                    <li><h3><a href = "#" onclick = "changePage(2)">3</a></h3></li>
-                </list>
             </div>
 
         </section>

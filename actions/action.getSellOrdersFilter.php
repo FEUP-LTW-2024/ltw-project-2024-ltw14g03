@@ -21,7 +21,7 @@ $params = [];
 
 if (!empty($name)) {
     $query .= " AND name LIKE :name";
-    $params[':name'] = $name;
+    $params[':name'] = '%' . $name . '%';
 }
 
 

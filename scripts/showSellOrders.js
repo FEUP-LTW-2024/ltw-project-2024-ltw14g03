@@ -59,7 +59,7 @@ if(document.URL.includes("index.php")){
 function selectSellOrder(itemID) {
 
     const params = {
-      start : itemID,
+      ID : itemID,
     };
 
     fetch('../actions/action.showSellOrder.php', {
@@ -100,8 +100,7 @@ function changePage(val){
 
             const container = document.getElementById('productList');
             container.innerHTML = ``;
-            let count  = 0;
-            let i = 0;
+            let count= 0;
             data.forEach(item => {
 
                 const imageSrc = item.image ? item.image : '../assets/style/images/default_image.jpg'; // Use default image if item.image is falsy
