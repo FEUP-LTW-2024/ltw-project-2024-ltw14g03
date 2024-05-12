@@ -30,7 +30,7 @@
     <?php } ?>
 
     <?php if($_SERVER['REQUEST_URI']== "/pages/index.php"){?>
-      <script src="../scripts/showSellOrders.js"></script>
+      <script src="../scripts/showCategoryItems.js"></script>
     <?php } ?>
     <?php if($_SERVER['REQUEST_URI']=="/pages/browse.php"){?>
       <script src="../scripts/showSellOrdersFiltered.js"></script>

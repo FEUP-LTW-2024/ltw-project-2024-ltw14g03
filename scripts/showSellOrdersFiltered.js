@@ -1,74 +1,56 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('searchForm');
+    const categorySelect = document.getElementById('category');
     const resultDiv = document.querySelector('.searchResult');
+    const form = document.getElementById('searchForm');
 
-    //Load when the page is opened
-        const formData = new FormData(form);
-
-        fetch('../actions/action.getSellOrdersFilter.php', { // Adjust the path to your actual PHP action file
-            method: 'POST',
-            body: formData
-        })
+    // Function to fetch and display results
+    function fetchAndDisplayResults() {
+        const params = new URLSearchParams(new FormData(form)).toString();
+        fetch(`/actions/action.getSellOrdersFilter.php?${params}`)
             .then(response => response.json())
             .then(data => {
-                console.log('Data received:', data);
                 displayResults(data);
+                console.log('Data received:', data);
             })
             .catch(error => console.error('Error:', error));
+    }
 
-    form.addEventListener('change', function(event) {
-        event.preventDefault();
-        
-        const formData = new FormData(form);
-
-        fetch('../actions/action.getSellOrdersFilter.php', { // Adjust the path to your actual PHP action file
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Data received:', data);
-            displayResults(data);
-        })
-        .catch(error => console.error('Error:', error));
-    });
-
+    // Display results helper function
     function displayResults(data) {
-        // Clear previous results
         resultDiv.innerHTML = '';
-
-        // Check if there are no results
         if (data.length === 0) {
             resultDiv.innerHTML = '<p>No results found.</p>';
             return;
         }
-        // Create and append a div for each item
-
         let itemsHTML = '';
-        let count  = 0;
         data.forEach(item => {
             itemsHTML += `
-
-                    <div class = "item" style = "animation-delay: ${count/8}s">
-
-                        <img src = " ${item.images}" alt="Item Image">
-                        
-                        <div class = "desc">
-                            <h3>${item.name}</h3>
-                            <p style = "margin-top: 0.2em">"${item.description}"</p>
-                            
-                            <div class = "details">
-                                <p>Price: ${item.price}€</p>
-                                <p>Condition: ${item.condition_id}</p>
-                            </div>
+                <div class="item">
+                    <img src="${item.images}" alt="Item Image">
+                    <div class="desc">
+                        <h3>${item.name}</h3>
+                        <p>"${item.description}"</p>
+                        <div class="details">
+                            <p>Price: ${item.price}€</p>
+                            <p>Condition: ${item.condition_id}</p>
                         </div>
-                        
                     </div>
-                
-            `; // Customize according to your data attributes and needs
-
-            count += 1;
+                </div>
+            `;
         });
         resultDiv.innerHTML = itemsHTML;
     }
+
+    // Setup initial fetch if category is selected
+    const params = new URLSearchParams(window.location.search);
+    const selectedCategory = params.get('category');
+    if (selectedCategory) {
+        categorySelect.value = selectedCategory;
+        fetchAndDisplayResults(); // Fetch and display results based on initial category selection
+    }
+
+    // Handle form change events
+    form.addEventListener('change', function() {
+        fetchAndDisplayResults(); // Fetch and display results based on form changes
+    });
 });
