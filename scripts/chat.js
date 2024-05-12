@@ -28,16 +28,20 @@ function fetchMessages() {
 
                         if(message.sender_id == window.userId) {
                             main.innerHTML += `
-                                <div class = "sender">
-                                    ${message.message}
+                                <div class = 'message'>
+                                    <div class = "sender">
+                                        ${message.message}
+                                    </div>
                                 </div>
                             `
                         }
                         else
                         {
                             main.innerHTML += `
-                                <div class ="receiver">
-                                    ${message.message}
+                                <div class = 'message'>
+                                    <div class = "sender">
+                                        ${message.message}
+                                    </div>
                                 </div>
                             `
                         }

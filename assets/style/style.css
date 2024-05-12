@@ -627,8 +627,7 @@ main {
 .sell-order-show {
 
     align-content: center;
-    max-width: 600px;
-    margin: 2em auto;
+    margin: 1em auto;
     margin-bottom: auto;
     padding: 20px;
     background-color: #f9f9f9;
@@ -639,10 +638,49 @@ main {
 
 .sell-order-show .sell-order-seller{
     display: flex;
+    margin: 0.2em
 }
+
+.sell-order-show .sell-order-seller .seller{
+    display: flex;
+    margin-left: auto;
+}
+
+.sell-order-show .sell-order-seller .seller h3{
+    align-self: flex-end;
+}
+
+.sell-order-show .sell-order-seller:first-child{
+    margin: 0;
+}
+
+.sell-order-show .sell-order-core .tags{
+    display: flex;
+}
+
+.sell-order-show .sell-order-core .tags .IDs{
+    margin-left: auto;
+}
+
+.sell-order-core {
+    max-width: 80em;
+}
+
+.sell-order-core h3{
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.sell-order-core img{
+    height: 40em;
+    border-radius: 3%;
+}
+
 
 .sell-order-show .sell-order-seller img{
     max-width: 5em;
+    border-radius: 10%;
+    margin-left: 0.5em;
 }
 
 @keyframes fadeInAnimation {
@@ -693,20 +731,32 @@ main {
         #chat-container button:hover {
             background-color: #0056b3;
         }
-        #chat-container .message {
-            padding: 5px 10px;
-            border-radius: 10px;
-            margin-bottom: 8px;
-            width: fit-content;
+        #chat-container {
+            margin: 0.5em;
         }
-        #chat-container .sender {
-            background-color: #dcf8c6;
+
+        #chat-container #chat-box {
+            margin-top: 0.6em;
+        }
+
+        #chat-container #chat-box .message {
+            display: flex;
+        }
+
+        #chat-container #chat-box .message .sender {
+
+            margin: 0.3em 0 0.3em 0;
             margin-left: auto;
-            margin-right: 10px;
+
+            padding: 0;
+            background-color: #dcf8c6;
         }
-        #chat-container .receiver {
+
+        #chat-container #chat-box .receiver {
+
+            margin: 0.3em 0 0.3em 0;
+
             background-color: #e5e5ea;
-            margin-left: 10px;
         }
 
 /* End OF CHAT PAGE */

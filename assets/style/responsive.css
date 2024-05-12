@@ -13,6 +13,9 @@
         padding: 0.3em 0 0 0;
     }
 
+    .sell-order-core img{
+        height: 20em;
+    }
 
     #menu .hamburger {
         display: block;
