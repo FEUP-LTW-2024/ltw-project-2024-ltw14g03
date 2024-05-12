@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const resultDiv = document.querySelector('.searchResult');
     const form = document.getElementById('searchForm');
 
-    // Function to fetch and display results
+
     function fetchAndDisplayResults() {
         const params = new URLSearchParams(new FormData(form)).toString();
         fetch(`/actions/action.getSellOrdersFilter.php?${params}`)
@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
             .catch(error => console.error('Error:', error));
     }
 
-    // Display results helper function
     function displayResults(data) {
         resultDiv.innerHTML = '';
         if (data.length === 0) {
@@ -41,15 +40,15 @@ document.addEventListener('DOMContentLoaded', function() {
         resultDiv.innerHTML = itemsHTML;
     }
 
-    // Setup initial fetch if category is selected
+    // Check for URL parameters to set initial category
     const params = new URLSearchParams(window.location.search);
     const selectedCategory = params.get('category');
     if (selectedCategory) {
         categorySelect.value = selectedCategory;
-        fetchAndDisplayResults(); // Fetch and display results based on initial category selection
     }
 
-    // Handle form change events
+    fetchAndDisplayResults(); // Fetch all or filtered results on page load
+
     form.addEventListener('change', function() {
         fetchAndDisplayResults(); // Fetch and display results based on form changes
     });
