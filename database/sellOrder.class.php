@@ -19,14 +19,14 @@ class SellOrder {
             $stmt->execute([intval($details["id"]), intval($category), intval($condition), $model, $size, intval($price), $description]);
     }
 
-    static function getSellOrders(PDO $db): array {
+    static function getSellOrders(PDO $db, int $start): array {
 
 
         $stmt = $db->prepare('
-                SELECT * FROM items;
+                SELECT * FROM items ORDER BY item_id LIMIT 10 OFFSET (9 * ?);
             ');
 
-        $stmt->execute();
+        $stmt->execute([$start]);
 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }

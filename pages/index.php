@@ -9,7 +9,6 @@
 
 <script src="../scripts/showSellOrders.js"></script>
 
-
     <main id="mainPage">
 
 
@@ -28,6 +27,15 @@
                 </div>
 
             </div>
+
+            <div class = "pageSelect">
+                <list>
+                    <li><h3><a href = "#" onclick = "changePage(0)">1</a></h3></li>
+                    <li><h3><a href = "#" onclick = "changePage(1)">2</a></h3></li>
+                    <li><h3><a href = "#" onclick = "changePage(2)">3</a></h3></li>
+                </list>
+            </div>
+
         </section>
     </main>
 

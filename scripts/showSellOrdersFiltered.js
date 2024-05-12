@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
         data.forEach(item => {
             itemsHTML += `
 
-                    <div class = "item" style = "animation-delay: ${count/8}s">
+                    <div class = "item" onclick = "selectSellOrder(this.dataset.value)" data-value= "${item.item_id}" style = "animation-delay: ${count/8}s">
 
                         <img src = " ${item.images}" alt="Item Image">
                         
@@ -72,3 +72,25 @@ document.addEventListener('DOMContentLoaded', function() {
         resultDiv.innerHTML = itemsHTML;
     }
 });
+
+function selectSellOrder(itemID) {
+
+    const params = {
+        ID : itemID,
+    };
+
+    fetch('../actions/action.showSellOrder.php', {
+        method: 'POST',
+        body: JSON.stringify(params),
+    })
+        .then(response => {
+            return response.json();
+        })
+        .then(data =>{
+            window.location.href = `../pages/sellOrder.php?data=${encodeURIComponent(JSON.stringify(data))}`;
+
+        })
+
+
+    //your existing code goes here
+}

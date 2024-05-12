@@ -82,7 +82,6 @@ header h1 {
 .featured-items .product-list .item:hover{
     min-width: 20em;
     max-width: 35em;
-
 }
 
 .featured-items .product-list .item .desc{
@@ -500,6 +499,8 @@ main {
     gap: 20px
 }
 
+
+
 .search-items .filtered-items .item {
     min-width: 15em;
     max-width: 30em;
@@ -584,8 +585,9 @@ main {
 }
 
 .searchResult .item {
-    width: 250px;
-    height: 400px;
+
+    min-width: 15em;
+    max-width: 30em;
     background-color: #f4f4f4;
     filter: drop-shadow(0 0 1rem #c7cfcc);
     padding: 1em;
@@ -593,9 +595,18 @@ main {
 
     text-align: left;
 
+    transition: min-width 0.5s, max-width 0.5s;
+
     opacity: 0;
     animation: fadeInAnimation 0.3s ease-in forwards, moveUpAnimation 0.3s cubic-bezier(0.5, 1, 0.89, 1) forwards 0.2s;
 }
+
+.searchResult .item:hover{
+    min-width: 20em;
+    max-width: 35em;
+}
+
+
 .searchResult .item .desc{
     margin-top: 0.5em;
 }
@@ -605,9 +616,7 @@ main {
 }
 
 .searchResult .item img {
-
-    width: 200px;
-    height: 250px;
+    width: 100%;
     border-radius: 10%;
 }
 
@@ -760,3 +769,23 @@ main {
         }
 
 /* End OF CHAT PAGE */
+
+
+    .pageSelect{
+        display: flex;
+    }
+
+    .pageSelect list{
+        display: flex;
+        margin-left: auto;
+        list-style: none;
+    }
+
+    .pageSelect list li{
+        margin: 0.3em;
+    }
+
+    .pageSelect list li a{
+        text-decoration: none;
+        color: #70aad1;
+    }
