@@ -1,6 +1,4 @@
 
-if(document.URL.includes("index.php")){
-
     document.addEventListener('DOMContentLoaded', function() {
 
         const container = document.getElementById('productList');
@@ -22,7 +20,7 @@ if(document.URL.includes("index.php")){
             start : 0,
         };
 
-        fetch('../actions/action.getSellOrders.php', {
+        fetch('../actions/action.getWishlist.php', {
 
             method: 'POST',
             body: JSON.stringify(params),
@@ -52,12 +50,7 @@ if(document.URL.includes("index.php")){
                                             <div class = "details">
                                                 <p>Price: ${item.price}€</p>
                                                 <p>Condition: ${item.condition_id}</p>
-                                            </div>
-                                            
-                                            <div class = "wishlistButton" id = "button${count}" data-value = '${item.item_id}'>
-                                                <button type = "button">Wishlist</button>
-                                            </div>
-                                            
+                                            </div>  
                                         </div>
                                     </div>
                                 </div>
@@ -75,7 +68,6 @@ if(document.URL.includes("index.php")){
                 alert('Error loading data: ' + error);
             });
     });
-}
 
 function addWishlist(val){
 
@@ -98,7 +90,7 @@ function addWishlist(val){
 function selectSellOrder(itemID) {
 
     const params = {
-      ID : itemID,
+        ID : itemID,
     };
 
     fetch('../actions/action.showSellOrder.php', {
@@ -123,7 +115,7 @@ function changePage(val){
         start: val,
     }
 
-    fetch('../actions/action.getSellOrders.php', {
+    fetch('../actions/action.getWishlist.php', {
 
         method: 'POST',
         body: JSON.stringify(param),
@@ -156,12 +148,6 @@ function changePage(val){
                                                 <p>Price: ${item.price}€</p>
                                                 <p>Condition: ${item.condition_id}</p>
                                             </div>
-                                            
-                                                
-                                                <div class = "wishlistButton" id = "button${count}" data-value = '${item.item_id}'>
-                                                    <button type = "button">Wishlist</button>
-                                                </div>
-                                               
                                             
                                         </div>
                                         

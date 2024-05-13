@@ -5,6 +5,15 @@
     require_once(__DIR__ . '/../utils/session.php'); // Import the Session class
     $session = new Session();
     $db = getDatabaseConnection();
+
+    // Prepare SQL statement
+    $stmt = $db->prepare('SELECT COUNT(*) AS number FROM items');
+
+    // Execute the statement
+    $stmt->execute();
+
+    // Access the row count
+    $n = $stmt->fetch(PDO::FETCH_ASSOC)['number'];
     
     drawHeader($session); 
 ?>
@@ -14,6 +23,7 @@
 <body>
     <main>
         <div class="browse">
+
             <div class="sidesearch">
                 <h2>Search</h2>
                 <form id="searchForm" action="/action.getSellOrdersFilter.php" method="post">
@@ -66,8 +76,22 @@
                 </form>
             </div>
 
-            <div class="searchResult">
+            <div class = "search-results">
 
+                <div class = "pageSelect">
+                    <list id = "pageSelect" style= "margin: 1em; margin-left: auto">
+
+                        <?php for($i = 0; $i < $n/10; $i++): ?>
+
+                            <li><h2><a href = "#" onclick = "changePage(<?php echo $i?>)"><?php echo $i + 1?></a></h2></li>
+
+                        <?php endfor; ?>
+                    </list>
+                </div>
+
+                <div class="searchResult">
+
+                </div>
             </div>
         </div>
     </main>
