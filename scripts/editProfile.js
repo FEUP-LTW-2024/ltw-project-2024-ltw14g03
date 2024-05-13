@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const profileInfo = document.querySelector('.profile-info');
 
     profileInfo.addEventListener('click', function(event) {
+        event.stopImmediatePropagation();
         if (event.target.id === 'editProfileBtn') {
             toggleEditState(true);
         } else if (event.target.id === 'saveProfileBtn') {

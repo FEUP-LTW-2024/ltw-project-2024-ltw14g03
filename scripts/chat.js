@@ -9,48 +9,70 @@ $(document).ready(function() {
 });
 
 function fetchMessages() {
-    $.ajax({
-        url: 'getMessages.php',
-        type: 'GET',
-        data: {receiver_id: window.receiverId},
-        success: function(data) {
-            var messages = JSON.parse(data);
-            $('#chat-box').html('');
-            messages.forEach(function(message) {
-                var messageClass = message.sender_id == window.userId ? 'sender' : 'receiver';
-                $('#chat-box').append(`<div class="message ${messageClass}">${message.message}</div>`);
-            });
-            scrollToBottom();
-        }
-    });
+
+    const params = {
+        sender_id: window.userId,
+        receiver_id: window.receiverId
+    };
+
+    fetch('../actions/action.getMessage.php', {
+        method: 'POST',
+        body: JSON.stringify(params),
+    })
+        .then(response => {
+            response.json()
+                .then( j => {
+                    const main = document.getElementById("chat-box");
+                    main.innerHTML = ``;
+                    j.forEach(message => {
+
+                        if(message.sender_id == window.userId) {
+                            main.innerHTML += `
+                                <div class = "sender">
+                                    ${message.message}
+                                </div>
+                            `
+                        }
+                        else
+                        {
+                            main.innerHTML += `
+                                <div class ="receiver">
+                                    ${message.message}
+                                </div>
+                            `
+                        }
+                    });
+                });
+        })
 }
+
 
 function sendMessage() {
     var message = $('#message-input').val();
+
     if (message.trim() === '') {
         alert('Message cannot be empty!');
         return;
     }
+
+    const params = {
+        mess: message,
+        receiver_id: window.receiverId
+    };
+
+    fetch("../actions/action.sendMessage.php", {
+        method: 'POST',
+        body: JSON.stringify(params),
+    })
+
     var messageClass = 'sender';
-    $('#chat-box').append(`<div class="message ${messageClass}">${message}</div>`); // Display message instantly
+    //$('#chat-box').append(`<div class="message ${messageClass}">${message}</div>`); // Display message instantly
     $('#message-input').val(''); // Clear input field right after sending
     scrollToBottom();
-
-    $.ajax({
-        url: 'sendMessage.php',
-        type: 'POST',
-        data: {
-            message: message,
-            receiver_id: window.receiverId
-        },
-        success: function(response) {
-            // Optionally handle response
-        }
-    });
 }
 
 function scrollToBottom() {
     $('#chat-box').scrollTop($('#chat-box')[0].scrollHeight);
 }
 
-setInterval(fetchMessages, 5000); // Fetch messages every 5 seconds to update the chat
+setInterval(fetchMessages, 200); // Fetch messages every 5 seconds to update the chat
