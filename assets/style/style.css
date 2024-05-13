@@ -70,8 +70,8 @@ header h1 {
 }
 
 .featured-items .product-list .item{
-    min-width: 15em;
-    max-width: 30em;
+    min-width: 15%;
+    max-width: 30%;
     background-color: #f4f4f4;
     filter: drop-shadow(0 0 1rem #c7cfcc);
     padding: 1em;
@@ -87,8 +87,8 @@ header h1 {
 }
 
 .featured-items .product-list .item:hover{
-    min-width: 20em;
-    max-width: 35em;
+    min-width: 20%;
+    max-width: 35%;
 }
 
 .featured-items .product-list .item .desc{
