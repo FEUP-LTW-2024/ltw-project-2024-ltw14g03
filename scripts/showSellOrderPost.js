@@ -29,7 +29,7 @@
                 
                 <img src="${data.image_src}">
                 <h3>Details:<br>${data.description}</h3>
-                
+                <button onclick="addToWishlist(${data.ID})">Add to Wishlist</button>
             </div>
             
             <div class = "sell-order-seller" onclick = "showUser(this.dataset.value)" data-value = "${data.seller_id}">
@@ -39,12 +39,37 @@
                     <img src = "${data.seller_pfp}">
                 </div>
             </div>
+            
         `;
 
 
 
     });
 
+    function addToWishlist(itemID) {
+        const params = {
+            ID: itemID,
+        };
+    
+        fetch('../actions/action.addToWishlist.php', {
+            method: 'POST',
+            body: JSON.stringify(params),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to add to wishlist');
+            }
+            return response.text();
+        })
+        .then(data => {
+            // Do something after successfully adding to wishlist, if needed
+            console.log(data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+    
     function showUser(userID){
 
         const params = {
