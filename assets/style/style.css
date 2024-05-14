@@ -603,8 +603,8 @@ main {
 
 .searchResult .item {
 
-    min-width: 15em;
-    max-width: 30em;
+    min-width: 15%;
+    max-width: 20%;
     background-color: #f4f4f4;
     filter: drop-shadow(0 0 1rem #c7cfcc);
     padding: 1em;
@@ -620,8 +620,8 @@ main {
 }
 
 .searchResult .item:hover{
-    min-width: 20em;
-    max-width: 35em;
+    min-width: 20%;
+    max-width: 25%;
 }
 
 
@@ -734,14 +734,50 @@ main {
 
         #chat-container {
             padding: 10px;
+            margin-right: 1em;
+            margin-top: 1em;
+            margin-bottom: 1em;
+            flex: 1 1 auto;
             background-color: #f4f4f4;
         }
+
+        .available-chats {
+            width: 15%;
+            margin: 1em;
+            height: 400px;
+        }
+
+        .available-chats .chat_room {
+            margin: 1em;
+            display: flex;
+
+            border-radius: 1em;
+            padding: 0.5em;
+            background-color: #f4f4f4;
+        }
+
+        .available-chats .chat_room img{
+            border-radius: 1em;
+            width: 5em;
+        }
+
+        .available-chats .chat_room a {
+            text-decoration: none;
+            margin: auto;
+
+            color: #0a85d6;
+        }
+
+        .available-chats .chat_room a h2{
+
+        }
+
         #chat-container #chat-box {
             background: white;
             border: 1px solid #ddd;
             padding: 10px;
             margin-bottom: 20px;
-            height: 400px;
+            height: 80%;
             overflow-y: scroll;
         }
         #chat-container #message-input {
@@ -759,9 +795,6 @@ main {
         }
         #chat-container button:hover {
             background-color: #0056b3;
-        }
-        #chat-container {
-            margin: 0.5em;
         }
 
         #chat-container #chat-box {

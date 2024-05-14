@@ -7,7 +7,7 @@ $session = new Session();
 $db = getDatabaseConnection();
 
 // Prepare SQL statement
-$stmt = $db->prepare('SELECT COUNT(*) AS number FROM items');
+$stmt = $db->prepare('SELECT COUNT(*) AS number FROM wishlist');
 
 // Execute the statement
 $stmt->execute();

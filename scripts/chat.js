@@ -8,6 +8,21 @@ $(document).ready(function() {
     });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+
+    const chats = document.getElementById('chats');
+
+    chats.addEventListener("click", function (event) {
+
+        const chat = event.target.closest(".chat_room");
+        if (chat) {
+            changeChat(chat.dataset.value)
+        }
+
+    });
+
+});
+
 function fetchMessages() {
 
     const params = {
@@ -22,32 +37,83 @@ function fetchMessages() {
         .then(response => {
             response.json()
                 .then( j => {
+
+
+                    fetch('../actions/action.getChats.php', {
+                        method: 'POST',
+                        body: JSON.stringify(params),
+                    })
+                        .then(response => {
+                            return response.json()
+                                .then(data => {
+
+                                    console.log(data);
+
+                                    const chats = document.getElementById('chats');
+                                    chats.innerHTML = ``;
+
+                                    data.forEach(chat => {
+
+                                        chats.innerHTML += `
+                                            
+                                            <div class = 'chat_room' data-value = "${chat.user_id}">  
+                                                
+                                                <img src = ${chat.profile_picture}>
+                                                <a href = "#">
+                                                    <h2>
+                                                        ${chat.username}
+                                                    </h2>
+                                                </a>
+                                            
+                                            </div>
+                                        
+                                        `;
+                                    });
+
+                                });
+                        })
+
+
+
                     const main = document.getElementById("chat-box");
                     main.innerHTML = ``;
-                    j.forEach(message => {
 
-                        if(message.sender_id == window.userId) {
-                            main.innerHTML += `
+                    if(window.userId == window.receiverId){
+                        main.innerHTML = 'No Chat Available';
+                    }
+                    else {
+
+                        j.forEach(message => {
+
+                            if (message.sender_id == window.userId) {
+                                main.innerHTML += `
                                 <div class = 'message'>
                                     <div class = "sender">
                                         ${message.message}
                                     </div>
                                 </div>
                             `
-                        }
-                        else
-                        {
-                            main.innerHTML += `
+                            } else {
+                                main.innerHTML += `
                                 <div class = 'message'>
-                                    <div class = "sender">
+                                    <div class = "receiver">
                                         ${message.message}
                                     </div>
                                 </div>
                             `
-                        }
-                    });
+                            }
+                        });
+                    }
                 });
         })
+}
+
+
+
+
+function changeChat(val) {
+    window.receiverId = val;
+    fetchMessages();
 }
 
 

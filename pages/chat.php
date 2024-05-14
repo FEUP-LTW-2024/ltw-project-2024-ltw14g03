@@ -29,17 +29,24 @@ drawHeader($session);
         window.userId = <?php echo json_encode($session->getParam('id')); ?>; // Use the 'id' key to retrieve the user ID from the session
     </script>
 </head>
-<body>
-    <div id="chat-container">
-        <div id="receiver-id-info">Receiver ID (so para testes): <?php echo $receiverId; ?></div>
-        <div id="receiver-id-info">Sender ID (so para testes): <?php echo $session->getParam('id'); ?></div> <!-- Corrected to use $session->getParam('id') -->
 
-        <div id = "chat-box">
+    <div style = "display: flex">
+
+        <div class = "available-chats" id="chats">
 
         </div>
 
-        <textarea id="message-input" placeholder="Type your message here..."></textarea>
-        <button onclick="sendMessage()">Send</button>
+        <div id="chat-container">
+            <div id="receiver-id-info">Receiver ID (so para testes): <?php echo $receiverId; ?></div>
+            <div id="receiver-id-info">Sender ID (so para testes): <?php echo $session->getParam('id'); ?></div> <!-- Corrected to use $session->getParam('id') -->
+
+            <div id = "chat-box">
+
+            </div>
+
+            <textarea id="message-input" placeholder="Type your message here..."></textarea>
+            <button onclick="sendMessage()">Send</button>
+        </div>
     </div>
 </body>
 
