@@ -120,3 +120,13 @@ CREATE TABLE ratings (
     FOREIGN KEY (item_id) REFERENCES items(item_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+
+
+CREATE TABLE shopping_cart (
+    shopping_cart_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    item_id INTEGER NOT NULL,
+    added_at TEXT DEFAULT (datetime('now', 'localtime')),
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (item_id) REFERENCES items(item_id)
+);
