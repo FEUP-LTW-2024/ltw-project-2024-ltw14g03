@@ -37,8 +37,6 @@ drawHeader($session);
         </div>
 
         <div id="chat-container">
-            <div id="receiver-id-info">Receiver ID (so para testes): <?php echo $receiverId; ?></div>
-            <div id="receiver-id-info">Sender ID (so para testes): <?php echo $session->getParam('id'); ?></div> <!-- Corrected to use $session->getParam('id') -->
 
             <div id = "chat-box">
 

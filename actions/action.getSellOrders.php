@@ -27,7 +27,23 @@ try {
         $stmt = $db->prepare("SELECT image_url FROM item_images WHERE item_id = ? LIMIT 1");
         $stmt->execute([$us['item_id']]);
         $us['image'] = $stmt->fetch()['image_url'];
+
+        $stmt = $db->prepare("SELECT * FROM wishlist WHERE item_id = ? LIMIT 1");
+        $stmt->execute([$us['item_id']]);
+        $wish = $stmt->fetch();
+
+        if(empty($wish)){
+            $us['wish'] = "0";
+        }
+        else
+        {
+            $us['wish'] = "1";
+        }
+
     }
+
+
+
 
     echo json_encode($user);
 } catch (Exception $e) {

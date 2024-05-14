@@ -549,10 +549,50 @@ main {
 /* END OF BROWSE PAGE */
 
 
-.wishlistButton{
+.wishlistButton {
+    display: inline-block;
+    padding: 0.5em;
+    border: 2px solid #70aad1; /* Blue border */
+    border-radius: 10px; /* Rounded corners */
+    background-color: #70aad1; /* Blue background */
+    color: #ffffff; /* White text color */
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Smooth transition on hover */
+
     margin-top: auto;
     margin-left: auto;
 }
+
+.wishlistButton:hover {
+    background-color: #0056b3; /* Darker blue background on hover */
+    border-color: #0056b3; /* Darker blue border on hover */
+}
+
+.de-wishlistButton {
+    display: inline-block;
+    padding: 0.5em;
+    border: 2px solid #384955; /* Blue border */
+    border-radius: 10px; /* Rounded corners */
+    background-color: #384955; /* Blue background */
+    color: #ffffff; /* White text color */
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Smooth transition on hover */
+
+    margin-top: auto;
+    margin-left: auto;
+}
+
+.de-wishlistButton:hover {
+    background-color: #333333; /* Darker blue background on hover */
+    border-color: #333333; /* Darker blue border on hover */
+}
+
 
 
 /* SEARCH PAGE */

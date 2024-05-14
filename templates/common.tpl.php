@@ -53,6 +53,7 @@
                   <div class="dropdown-content">
                     <a href="../pages/profile.php">Profile</a>
                       <a href="../pages/add_sell_order.php">Sell</a>
+                      <a href="../pages/chat.php">Message</a>
                     <a href="#" onclick="logoutUser(); return false;">Logout</a>
                   </div>
 
