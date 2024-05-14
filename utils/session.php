@@ -12,6 +12,15 @@
       return isset($_SESSION['username']);
     }
 
+    public function isAdmin(): bool
+    {
+      if ($_SESSION['is_admin']=="0"){
+        return false;
+      }else{
+        return true;
+      }
+    }
+
     public function logout()
     {
       session_destroy();

@@ -47,7 +47,11 @@ drawHeader($session);
 
         <button class="profile-button" id="editProfileBtn">Edit Profile</button>
 
+
     </div>
+
+    
+
 </body>
 
 <?php
