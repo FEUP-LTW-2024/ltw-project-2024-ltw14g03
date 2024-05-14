@@ -16,6 +16,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 method: 'POST',
                 body: formData,
             }).then(r => {window.location.href = '../pages/index.php';})
+            event.preventDefault();
+            event.stopImmediatePropagation();
 
         });
     } else {
