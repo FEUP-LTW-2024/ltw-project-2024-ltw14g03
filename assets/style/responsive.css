@@ -109,5 +109,11 @@
         width: 100%;
     }
 
+    /* ADMIN PAGE */
 
+    .admin-panel{
+        width: 100%;
+        margin: 0;
+    }
+    /* END OF ADMIN PAGE */
 }

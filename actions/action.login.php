@@ -19,6 +19,7 @@ declare(strict_types = 1);
       $session->setParam("firstName", $customer->firstName);
       $session->setParam("lastName", $customer->lastName);
       $session->setParam("pfp", $customer->pfp);
+      $session->setParam("is_admin", strval($customer->isAdmin));
       if ($session->checkIfError()) {
         if($session->getError() == "Invalid username or password"){
           $session->clearError();

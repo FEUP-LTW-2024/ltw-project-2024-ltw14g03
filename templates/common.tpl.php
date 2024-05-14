@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="../assets/style/responsive.css">
 
     <script src="../scripts/logout.js"></script>
+    <script src="../scripts/notification.js" ></script>
+
     <?php if($_SERVER['REQUEST_URI']== "/pages/register.php"){?>
       <script src="../scripts/validatePassword.js"></script>
     <?php } ?>
@@ -35,6 +37,9 @@
     <?php if($_SERVER['REQUEST_URI']=="/pages/browse.php"){?>
       <script src="../scripts/showSellOrdersFiltered.js"></script>
     <?php } ?>
+    <?php if($_SERVER['REQUEST_URI']=="/pages/adminpage.php"){?>
+      <script src="../scripts/adminPanel.js" type="module"></script>
+    <?php } ?>
   </head>
   <body>
   <header>
@@ -45,7 +50,12 @@
             <ul>
                 <li><a href="../pages/index.php">Home</a></li>
                 <li><a href="../pages/browse.php">Browse</a></li>
-                <?php if($session->isLoggedIn()) { ?>
+                <?php 
+                if($session->isAdmin()){?>
+                  <li><a href="../pages/adminpage.php">Admin Panel</a></li>
+                <?php } 
+              
+                if($session->isLoggedIn()) { ?>
                   <li class="dropdown"><img class="profileImageBar" src="<?php echo $session->getParam("pfp")?>"><a href="" id="username-bar"><?php echo  $_SESSION['username']?></a>
                   <div class="dropdown-content">
                     <a href="../pages/profile.php">Profile</a>
@@ -59,6 +69,7 @@
             </ul>
         </nav>
     </header>
+    <div id="notification-bar"></div>
 <?php } ?>
 
 

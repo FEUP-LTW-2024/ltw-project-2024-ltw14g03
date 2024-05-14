@@ -126,6 +126,26 @@ footer {
     width: 100%;
 }
 
+#notification-bar {
+    padding: 10px 20px;
+    color: white;
+    opacity: 0; /* start with invisible */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    font-size: 16px;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: translateY(-100%); /* Start hidden above its initial position */
+    width: 100%; /* Full width */
+    background-color: #333; /* Example background */
+    z-index: 1001; /* Ensure it's on top if needed */
+}
+
+#notification-bar.visible {
+    opacity: 1;
+    transform: translateY(0%); /* Move to original position */
+}
+
+
+
 
 /* MENU BAR */
 
@@ -475,6 +495,7 @@ main {
     cursor: pointer;
 }
 
+
 .profile-button:hover {
     background-color: #0056b3;
 }
@@ -710,3 +731,73 @@ main {
         }
 
 /* End OF CHAT PAGE */
+
+
+
+/* ADMIN PANEL PAGE */
+
+.admin-panel {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 -4px 8px rgba(0,0,0,0.1), 0 4px 8px rgba(0,0,0,0.1);
+    background: #ffffff;
+    border-radius: 8px;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form Styling */
+.admin-form {
+    margin-top: 20px;
+    border-top: 1px solid #eeeeee;
+    padding-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #666;
+}
+
+.text-input, .btn {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.text-input {
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+}
+
+/* Button Styling */
+.btn {
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-green {
+    background-color: #5cb85c;
+    color: white;
+}
+
+.btn-green:hover {
+    background-color: #4cae4c;
+}
+
+.btn-red {
+    background-color: #f44336;
+    color: white;
+}
+
+
+
+/* END OF ADMIN PANEL PAGE */
