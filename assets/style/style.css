@@ -1015,3 +1015,12 @@ label {
 
 
 /* END OF ADMIN PANEL PAGE */
+
+/* MY ITEMS PAGE*/
+
+.title-and-select{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 1em 1em 1em;
+    list-style-type: none;
+}

@@ -34,12 +34,18 @@
     <?php if($_SERVER['REQUEST_URI']== "/pages/index.php"){?>
       <script src="../scripts/showSellOrders.js"></script>
       <script src="../scripts/showCategoryItems.js"></script>
+      <script src="../scripts/itemClickHandler.js"></script>
     <?php } ?>
     <?php if($_SERVER['REQUEST_URI']=="/pages/browse.php"){?>
       <script src="../scripts/showSellOrdersFiltered.js"></script>
+      <script src="../scripts/itemClickHandler.js"></script>
     <?php } ?>
     <?php if($_SERVER['REQUEST_URI']=="/pages/adminpage.php"){?>
       <script src="../scripts/adminPanel.js" type="module"></script>
+    <?php } ?>
+    <?php if($_SERVER['REQUEST_URI']=="/pages/myItems.php"){?>
+      <script src="../scripts/myItems.js"></script>
+      <script src="../scripts/itemClickHandler.js"></script>
     <?php } ?>
   </head>
   <body>
@@ -61,6 +67,7 @@
 
                   <div class="dropdown-content">
                     <a href="../pages/profile.php">Profile</a>
+                    <a href="../pages/myItems.php">My Items</a>
                       <a href="../pages/add_sell_order.php">Sell</a>
                       <a href="../pages/chat.php">Message</a>
                     <a href="#" onclick="logoutUser(); return false;">Logout</a>
