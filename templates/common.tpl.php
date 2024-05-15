@@ -68,8 +68,8 @@
                 <?php } ?>
             </ul>
         </nav>
+        <div id="notification-bar"></div>
     </header>
-    <div id="notification-bar"></div>
 <?php } ?>
 
 

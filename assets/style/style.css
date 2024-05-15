@@ -127,21 +127,46 @@ footer {
 }
 
 #notification-bar {
-    padding: 10px 20px;
+    padding: 0 20px; 
     color: white;
-    opacity: 0; /* start with invisible */
+    visibility: hidden;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     font-size: 16px;
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    transform: translateY(-100%); /* Start hidden above its initial position */
-    width: 100%; /* Full width */
-    background-color: #333; /* Example background */
-    z-index: 1001; /* Ensure it's on top if needed */
+    transition: visibility 0s 0.5s, max-height 0.5s ease, padding 0.3s ease, background-color 0s ease; 
+    max-height: 0;
+    overflow: hidden;
+    width: 100%;
+    background-color: transparent;
+    position: relative;
+    z-index: 1001;
 }
 
 #notification-bar.visible {
-    opacity: 1;
-    transform: translateY(0%); /* Move to original position */
+    padding: 10px 20px; 
+    visibility: visible; 
+    max-height: 50px;
+    transition: visibility 0s 0s, max-height 0.5s ease, padding 0.3s ease, background-color 0s ease;
+}
+
+
+
+
+
+
+.category-button {
+    display: inline-block;
+    padding: 20px 40px; /* Adjust padding as needed */
+    background-color: #f0f0f0; /* Button background color */
+    color: #333; /* Button text color */
+    border: none; /* Remove default button border */
+    border-radius: 999px; /* Make the button round */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+.category-button:hover {
+    background-color: #e0e0e0; /* Button background color on hover */
+    color: #222; /* Button text color on hover */
 }
 
 

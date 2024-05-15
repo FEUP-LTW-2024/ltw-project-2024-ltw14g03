@@ -24,10 +24,10 @@
         </div>
     </section>
 </main>
+</body>
 
 
 <?php
     drawFooter();
 ?>
-</body>
 </html>
