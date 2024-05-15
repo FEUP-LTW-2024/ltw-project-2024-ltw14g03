@@ -29,6 +29,10 @@
         animation: fadeInAnimation 1s ease-in forwards;
     }
 
+    #featured-buttons{
+        margin: 0;
+    }
+
     
     #menu .hamburger:before {
         content:'\2630';
