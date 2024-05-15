@@ -13,7 +13,8 @@
         <div class="featured-header">
             <h2>Featured Items</h2>
         </div>
-        <div class="featured-items" id="featured-buttons">
+        <div class="featured-items"></div>
+            <div id ="featured-buttons">
             <?php
                 $stmt = $db->query("SELECT * FROM categories");
                 $categories = $stmt->fetchAll();
@@ -21,6 +22,7 @@
                     echo "<button class='category-button' data-category-id='" . $category['category_id'] ."'>" . htmlspecialchars($category['name']) . "</button>";
                 }
             ?>
+            </div>
         </div>
     </section>
 </main>
