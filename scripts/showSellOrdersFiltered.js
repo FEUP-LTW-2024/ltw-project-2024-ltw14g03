@@ -1,5 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', function() {
+<<<<<<< HEAD
 
     const form = document.getElementById('searchForm');
 
@@ -18,22 +19,32 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     let start = 0;
+=======
+    const categorySelect = document.getElementById('category');
+    const resultDiv = document.querySelector('.searchResult');
+    const form = document.getElementById('searchForm');
+>>>>>>> main
 
-    //Load when the page is opened
-        const formData = new FormData(form);
 
+<<<<<<< HEAD
         formData.append('start', '0');
 
         fetch('../actions/action.getSellOrdersFilter.php', { // Adjust the path to your actual PHP action file
             method: 'POST',
             body: formData
         })
+=======
+    function fetchAndDisplayResults() {
+        const params = new URLSearchParams(new FormData(form)).toString();
+        fetch(`/actions/action.getSellOrdersFilter.php?${params}`)
+>>>>>>> main
             .then(response => response.json())
             .then(data => {
-                console.log('Data received:', data);
                 displayResults(data);
+                console.log('Data received:', data);
             })
             .catch(error => console.error('Error:', error));
+<<<<<<< HEAD
 
 
 
@@ -179,3 +190,45 @@ function selectSellOrder(itemID) {
 
     //your existing code goes here
 }
+=======
+    }
+
+    function displayResults(data) {
+        resultDiv.innerHTML = '';
+        if (data.length === 0) {
+            resultDiv.innerHTML = '<p>No results found.</p>';
+            return;
+        }
+        let itemsHTML = '';
+        data.forEach(item => {
+            itemsHTML += `
+                <div class="item">
+                    <img src="${item.images}" alt="Item Image">
+                    <div class="desc">
+                        <h3>${item.name}</h3>
+                        <p>"${item.description}"</p>
+                        <div class="details">
+                            <p>Price: ${item.price}€</p>
+                            <p>Condition: ${item.condition_id}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        resultDiv.innerHTML = itemsHTML;
+    }
+
+    // Check for URL parameters to set initial category
+    const params = new URLSearchParams(window.location.search);
+    const selectedCategory = params.get('category');
+    if (selectedCategory) {
+        categorySelect.value = selectedCategory;
+    }
+
+    fetchAndDisplayResults(); // Fetch all or filtered results on page load
+
+    form.addEventListener('change', function() {
+        fetchAndDisplayResults(); // Fetch and display results based on form changes
+    });
+});
+>>>>>>> main

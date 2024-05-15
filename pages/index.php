@@ -19,17 +19,24 @@
     drawHeader($session); 
 ?>
 
-<script src="../scripts/showSellOrders.js"></script>
 
-    <main id="mainPage">
-
-
-        <section class="featured-items">
-
-            <div class = "featured-header">
-                <h1>Featured Items</h1>
-
-                <div class = "pageSelect">
+<main id="mainPage">
+    <section class="featured-items">
+        <h2>Categories</h2>
+        <div class="featured-header">
+            <div id ="featured-buttons">
+            <?php
+                $stmt = $db->query("SELECT * FROM categories");
+                $categories = $stmt->fetchAll();
+                foreach ($categories as $category) {
+                    echo "<button class='category-button' data-category-id='" . $category['category_id'] ."'>" . htmlspecialchars($category['name']) . "</button>";
+                }
+            ?>
+            </div>
+        </div>
+        <div class="featured-items"></div>
+            <h2>Featured Items</h2>
+            <div class = "pageSelect">
                     <list>
 
                         <?php for($i = 0; $i < $n/10; $i++): ?>
@@ -39,23 +46,14 @@
                         <?php endfor; ?>
                     </list>
                 </div>
+            <div class = "product-list" id = "productList">
             </div>
-
-
-        
-            <div class="featured-items">
-
-
-                <div class = "product-list" id = "productList">
-                </div>
-
-            </div>
-
-        </section>
-    </main>
+        </div>
+    </section>
+</main>
+</body>
 
 <?php
     drawFooter();
 ?>
-</body>
 </html>

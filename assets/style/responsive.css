@@ -32,6 +32,10 @@
         animation: fadeInAnimation 1s ease-in forwards;
     }
 
+    #featured-buttons{
+        margin: 0;
+    }
+
     
     #menu .hamburger:before {
         content:'\2630';
@@ -112,5 +116,11 @@
         width: 100%;
     }
 
+    /* ADMIN PAGE */
 
+    .admin-panel{
+        width: 100%;
+        margin: 0;
+    }
+    /* END OF ADMIN PAGE */
 }

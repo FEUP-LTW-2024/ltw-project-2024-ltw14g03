@@ -49,7 +49,7 @@ drawHeader($session);
                             $stmt = $db->query("SELECT * FROM categories");
                             $categories = $stmt->fetchAll();
                             foreach ($categories as $category) {
-                                echo "<option value='{$category['id']}'>{$category['name']}</option>";
+                                echo "<option value='{$category['category_id']}'>{$category['name']}</option>";
                             }
                             ?>
                         </select>
@@ -63,7 +63,7 @@ drawHeader($session);
                             $stmt = $db->query("SELECT * FROM conditions");
                             $conditions = $stmt->fetchAll();
                             foreach ($conditions as $condition) {
-                                echo "<option value='{$condition['id']}'>{$condition['name']}</option>";
+                                echo "<option value='{$condition['condition_id']}'>{$condition['name']}</option>";
                             }
                             ?>
                         </select>
@@ -77,7 +77,7 @@ drawHeader($session);
                             $stmt = $db->query("SELECT * FROM sizes");
                             $sizes = $stmt->fetchAll();
                             foreach ($sizes as $size) {
-                                echo "<option value='{$size['id']}'>{$size['name']}</option>";
+                                echo "<option value='{$size['size_id']}'>{$size['name']}</option>";
                             }
                             ?>
                         </select>

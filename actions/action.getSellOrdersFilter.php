@@ -25,10 +25,8 @@ $params = [];
 
 if (!empty($name)) {
     $query .= " AND name LIKE :name";
-    $c .= " AND name LIKE :name";
-    $params[':name'] = '%' . $name . '%';
+    $params[':name'] = "%$name%";
 }
-
 
 if (!empty($category)) {
     $query .= " AND category_id = :category_id";
@@ -69,7 +67,7 @@ $sellOrders = $stmt->fetchAll();
 foreach ($sellOrders as &$sellOrder) {
     $stmt = $db->prepare("SELECT image_url FROM item_images WHERE item_id = :item_id LIMIT 1;");
     $stmt->execute([':item_id' => $sellOrder['item_id']]);
-    $sellOrder['images'] = $stmt->fetch()['image_url'];
+    $sellOrder['images'] = $stmt->fetch()['image_url'] ?? 'no-image.png'; // Ensure there is a default image if none is found.
 }
 
 $sellOrders['n'] = $count->fetch()['number'];

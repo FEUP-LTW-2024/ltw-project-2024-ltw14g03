@@ -26,7 +26,7 @@
 
             <div class="sidesearch">
                 <h2>Search</h2>
-                <form id="searchForm" action="/action.getSellOrdersFilter.php" method="post">
+                <form id="searchForm" action="/action.getSellOrdersFilter.php" method="get">
 
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name">
@@ -39,7 +39,7 @@
                             $stmt = $db->query("SELECT * FROM categories");
                             $categories = $stmt->fetchAll();
                                 foreach ($categories as $category) {
-                                    echo "<option value='{$category['id']}'>{$category['name']}</option>";
+                                    echo "<option value='{$category['category_id']}'>{$category['name']}</option>";
                                 }
                         ?>
                     </select>
@@ -51,7 +51,7 @@
                             $stmt = $db->query("SELECT * FROM conditions");
                             $conditions = $stmt->fetchAll();
                             foreach ($conditions as $condition) {
-                                    echo "<option value='{$condition['id']}'>{$condition['name']}</option>";
+                                    echo "<option value='{$condition['condition_id']}'>{$condition['name']}</option>";
                                 }
                         ?>
                     </select>
@@ -63,7 +63,7 @@
                             $stmt = $db->query("SELECT * FROM brands");
                             $brands = $stmt->fetchAll();
                             foreach ($brands as $brand) {
-                                echo "<option value='{$brand['id']}'>{$brand['name']}</option>";
+                                echo "<option value='{$brand['brand_id']}'>{$brand['name']}</option>";
                             }
                         ?>
                     </select>

@@ -94,10 +94,47 @@ CREATE TABLE wishlist (
     FOREIGN KEY (user_id) REFERENCES users(user_id),
     FOREIGN KEY (item_id) REFERENCES items(item_id)
 );
- 
--- INDEX
- 
--- TRIGGER
- 
--- VIEW
- 
+
+CREATE TABLE transactions (
+    transaction_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    buyer_id INTEGER NOT NULL,
+    item_id INTEGER NOT NULL,
+    status TEXT NOT NULL DEFAULT 'pending',
+    transaction_date TEXT DEFAULT (datetime('now', 'localtime')),
+    FOREIGN KEY (buyer_id) REFERENCES users(user_id),
+    FOREIGN KEY (item_id) REFERENCES items(item_id)
+);
+
+CREATE TABLE messages (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    sender_id INTEGER NOT NULL,
+    item_id INTEGER NOT NULL,
+    receiver_id INTEGER NOT NULL,
+    message TEXT NOT NULL,
+    timestamp DATETIME DEFAULT (datetime('now', 'localtime')),
+    FOREIGN KEY (item_id) REFERENCES items(item_id),
+    FOREIGN KEY (sender_id) REFERENCES users(user_id),
+    FOREIGN KEY (receiver_id) REFERENCES users(user_id)
+);
+
+
+CREATE TABLE ratings (
+    rating_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    item_id INTEGER NOT NULL,
+    user_id INTEGER NOT NULL,
+    rating INTEGER NOT NULL CHECK (rating >= 1 AND rating <= 5),
+    review TEXT,
+    created_at TEXT DEFAULT (datetime('now', 'localtime')),
+    FOREIGN KEY (item_id) REFERENCES items(item_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+
+CREATE TABLE shopping_cart (
+    shopping_cart_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    item_id INTEGER NOT NULL,
+    added_at TEXT DEFAULT (datetime('now', 'localtime')),
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (item_id) REFERENCES items(item_id)
+);
