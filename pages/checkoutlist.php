@@ -39,6 +39,7 @@ drawHeader($session);
                     <?php endfor; ?>
                 </list>
             </div>
+            <button id="clearCartButton" class="clear-cart">Purchase Cart</button>
         </div>
 
 

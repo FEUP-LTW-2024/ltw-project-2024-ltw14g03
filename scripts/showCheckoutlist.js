@@ -5,9 +5,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     container.addEventListener("click", function(event) {
         const checkoutlistButton = event.target.closest(".de-checkoutlistButton");
+        const clearCartButton = document.getElementById('clearCartButton');
         if (checkoutlistButton) {
             event.stopPropagation();
             removeCheckoutlist(checkoutlistButton.dataset.value);
+        }
+        else if (clearCartButton){
+            event.stopPropagation();
+            clearCart();
         } else {
             const itemElement = event.target.closest(".item");
             if (itemElement) {
@@ -69,6 +74,24 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Error loading data: ' + error);
         });
 });
+
+function clearCart() {
+    fetch('../actions/action.clearCheckoutlist.php', {
+        method: 'POST',
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Cart has been cleared.');
+            document.getElementById('productList').innerHTML = ''; // Clear the display
+        } else {
+            throw new Error(data.error || 'Unknown error');
+        }
+    })
+    .catch(error => {
+        alert('Error: ' + error);
+    });
+}
 
 function removeCheckoutlist(val){
     params = {
