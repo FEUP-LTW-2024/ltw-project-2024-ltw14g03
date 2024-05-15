@@ -73,23 +73,21 @@
             </div>
 
             <div class = "search-results">
-
                 <div class = "pageSelect">
                     <list id = "pageSelect" style= "margin: 1em; margin-left: auto">
 
                         <?php for($i = 0; $i < $n/10; $i++): ?>
-
-                            <li><h2><a href = "#" onclick = "changePage(<?php echo ($i)?>)"><?php echo $i + 1?></a></h2></li>
+                        
+                        <li><h2><a href = "#" onclick = "changePage(<?php echo ($i)?>)"><?php echo $i + 1?></a></h2></li>
 
                         <?php endfor; ?>
                     </list>
                 </div>
 
                 <div class="searchResult">
-
                 </div>
 
-        </div>
+            </div>
     </main>
 
     <?php
