@@ -57,6 +57,7 @@
               
                 if($session->isLoggedIn()) { ?>
                 <li><a href="../pages/wishlist.php">Wishlist</a></li>
+                <li><a href="../pages/checkoutlist.php">Checkout</a></li>
                   <li class="dropdown"><img class="profileImageBar" src="<?php echo $session->getParam("pfp")?>"><a href="" id="username-bar"><?php echo  $_SESSION['username']?></a>
                   <div class="dropdown-content">
                     <a href="../pages/profile.php">Profile</a>
