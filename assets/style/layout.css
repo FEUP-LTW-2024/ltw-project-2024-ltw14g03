@@ -25,18 +25,16 @@ body{
 /*MAIN PAGE LAYOUT*/
 
 #mainPage{
-    display: flex;
+    /*display: flex;*/
     flex-direction: row;
 }
 
 .featured-items{
     text-align: center;
-    width: 100%;
 }
 
 .about{
     text-align: center;
-    width: 35%;
 }
 
 

@@ -10,12 +10,12 @@ header('Content-Type: application/json');
 
 $db = getDatabaseConnection();
 
-// Change to $_GET to match the form method
 $name = $_GET['name'] ?? '';
 $category = $_GET['category'] ?? '';
 $condition = $_GET['condition'] ?? '';
 $brand = $_GET['brand'] ?? '';
 $size = $_GET['size'] ?? '';
+$start = $_GET['start'] ?? '0';
 
 $query = "SELECT * FROM items WHERE 1=1";
 $params = [];
@@ -45,15 +45,18 @@ if (!empty($size)) {
     $params[':size_id'] = $size;
 }
 
+$query .= ' ORDER BY item_id LIMIT 10 OFFSET :start';
+$params[':start'] = (int) $start * 10;
+
 $stmt = $db->prepare($query);
 $stmt->execute($params);
 
-$sellOrders = $stmt->fetchAll();
+$sellOrders = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 foreach ($sellOrders as &$sellOrder) {
     $stmt = $db->prepare("SELECT image_url FROM item_images WHERE item_id = :item_id LIMIT 1;");
     $stmt->execute([':item_id' => $sellOrder['item_id']]);
-    $sellOrder['images'] = $stmt->fetch()['image_url'] ?? 'no-image.png'; // Ensure there is a default image if none is found.
+    $sellOrder['images'] = $stmt->fetch()['image_url'] ?? 'no-image.png'; // Default image if none
 }
 
 echo json_encode($sellOrders);

@@ -32,6 +32,7 @@
     <?php } ?>
 
     <?php if($_SERVER['REQUEST_URI']== "/pages/index.php"){?>
+      <script src="../scripts/showSellOrders.js"></script>
       <script src="../scripts/showCategoryItems.js"></script>
     <?php } ?>
     <?php if($_SERVER['REQUEST_URI']=="/pages/browse.php"){?>
@@ -57,11 +58,14 @@
               
                 if($session->isLoggedIn()) { ?>
                   <li class="dropdown"><img class="profileImageBar" src="<?php echo $session->getParam("pfp")?>"><a href="" id="username-bar"><?php echo  $_SESSION['username']?></a>
+
                   <div class="dropdown-content">
                     <a href="../pages/profile.php">Profile</a>
                       <a href="../pages/add_sell_order.php">Sell</a>
+                      <a href="../pages/chat.php">Message</a>
                     <a href="#" onclick="logoutUser(); return false;">Logout</a>
                   </div>
+
                   </li>
                 <?php } else { ?>
                   <li><a href="../pages/login.php">Sign In/Sign Up</a></li>

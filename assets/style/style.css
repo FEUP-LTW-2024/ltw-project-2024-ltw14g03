@@ -44,6 +44,11 @@ header h1 {
     justify-content: center;
 }
 
+.featured-items .featured-header h1{
+    margin-right: auto;
+    font-size: 2em;
+}
+
 .featured-items .featured-header #browse{
     height:2em
 }
@@ -72,6 +77,8 @@ header h1 {
     padding: 1em;
     border-radius: 20px;
 
+    cursor: pointer;
+
     transition: min-width 0.5s, max-width 0.5s;
 
     opacity: 0;
@@ -82,7 +89,6 @@ header h1 {
 .featured-items .product-list .item:hover{
     min-width: 20em;
     max-width: 35em;
-
 }
 
 .featured-items .product-list .item .desc{
@@ -562,6 +568,8 @@ main {
     gap: 20px
 }
 
+
+
 .search-items .filtered-items .item {
     min-width: 15em;
     max-width: 30em;
@@ -569,6 +577,8 @@ main {
     filter: drop-shadow(0 0 1rem #c7cfcc);
     padding: 1em;
     border-radius: 20px;
+
+    cursor: pointer;
 }
 
 .search-items .filtered-items .item img{
@@ -601,12 +611,60 @@ main {
 /* END OF BROWSE PAGE */
 
 
+.wishlistButton {
+    display: inline-block;
+    padding: 0.5em;
+    border: 2px solid #70aad1; /* Blue border */
+    border-radius: 10px; /* Rounded corners */
+    background-color: #70aad1; /* Blue background */
+    color: #ffffff; /* White text color */
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Smooth transition on hover */
+
+    margin-top: auto;
+    margin-left: auto;
+}
+
+.wishlistButton:hover {
+    background-color: #0056b3; /* Darker blue background on hover */
+    border-color: #0056b3; /* Darker blue border on hover */
+}
+
+.de-wishlistButton {
+    display: inline-block;
+    padding: 0.5em;
+    border: 2px solid #384955; /* Blue border */
+    border-radius: 10px; /* Rounded corners */
+    background-color: #384955; /* Blue background */
+    color: #ffffff; /* White text color */
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Smooth transition on hover */
+
+    margin-top: auto;
+    margin-left: auto;
+}
+
+.de-wishlistButton:hover {
+    background-color: #333333; /* Darker blue background on hover */
+    border-color: #333333; /* Darker blue border on hover */
+}
+
+
 
 /* SEARCH PAGE */
 
 .browse {
-    height: 75vh; 
     box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+}
+
+.browse .pageSelect{
+    max-height: 1em;
 }
 
 .sidesearch{
@@ -646,18 +704,29 @@ main {
 }
 
 .searchResult .item {
-    width: 250px;
-    height: 400px;
+
+    min-width: 15%;
+    max-width: 20%;
     background-color: #f4f4f4;
     filter: drop-shadow(0 0 1rem #c7cfcc);
     padding: 1em;
     border-radius: 20px;
 
     text-align: left;
+    cursor: pointer;
+
+    transition: min-width 0.5s, max-width 0.5s;
 
     opacity: 0;
     animation: fadeInAnimation 0.3s ease-in forwards, moveUpAnimation 0.3s cubic-bezier(0.5, 1, 0.89, 1) forwards 0.2s;
 }
+
+.searchResult .item:hover{
+    min-width: 20%;
+    max-width: 25%;
+}
+
+
 .searchResult .item .desc{
     margin-top: 0.5em;
 }
@@ -667,9 +736,7 @@ main {
 }
 
 .searchResult .item img {
-
-    width: 200px;
-    height: 250px;
+    width: 100%;
     border-radius: 10%;
 }
 
@@ -689,8 +756,7 @@ main {
 .sell-order-show {
 
     align-content: center;
-    max-width: 600px;
-    margin: 2em auto;
+    margin: 1em auto;
     margin-bottom: auto;
     padding: 20px;
     background-color: #f9f9f9;
@@ -701,10 +767,51 @@ main {
 
 .sell-order-show .sell-order-seller{
     display: flex;
+    margin: 0.2em
 }
+
+.sell-order-show .sell-order-seller .seller{
+    display: flex;
+    margin-left: auto;
+    cursor: pointer;
+
+}
+
+.sell-order-show .sell-order-seller .seller h3{
+    align-self: flex-end;
+}
+
+.sell-order-show .sell-order-seller:first-child{
+    margin: 0;
+}
+
+.sell-order-show .sell-order-core .tags{
+    display: flex;
+}
+
+.sell-order-show .sell-order-core .tags .IDs{
+    margin-left: auto;
+}
+
+.sell-order-core {
+    max-width: 80em;
+}
+
+.sell-order-core h3{
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.sell-order-core img{
+    height: 40em;
+    border-radius: 3%;
+}
+
 
 .sell-order-show .sell-order-seller img{
     max-width: 5em;
+    border-radius: 10%;
+    margin-left: 0.5em;
 }
 
 @keyframes fadeInAnimation {
@@ -729,14 +836,50 @@ main {
 
         #chat-container {
             padding: 10px;
+            margin-right: 1em;
+            margin-top: 1em;
+            margin-bottom: 1em;
+            flex: 1 1 auto;
             background-color: #f4f4f4;
         }
+
+        .available-chats {
+            width: 15%;
+            margin: 1em;
+            height: 400px;
+        }
+
+        .available-chats .chat_room {
+            margin: 1em;
+            display: flex;
+
+            border-radius: 1em;
+            padding: 0.5em;
+            background-color: #f4f4f4;
+        }
+
+        .available-chats .chat_room img{
+            border-radius: 1em;
+            width: 5em;
+        }
+
+        .available-chats .chat_room a {
+            text-decoration: none;
+            margin: auto;
+
+            color: #0a85d6;
+        }
+
+        .available-chats .chat_room a h2{
+
+        }
+
         #chat-container #chat-box {
             background: white;
             border: 1px solid #ddd;
             padding: 10px;
             margin-bottom: 20px;
-            height: 400px;
+            height: 80%;
             overflow-y: scroll;
         }
         #chat-container #message-input {
@@ -755,22 +898,52 @@ main {
         #chat-container button:hover {
             background-color: #0056b3;
         }
-        #chat-container .message {
-            padding: 5px 10px;
-            border-radius: 10px;
-            margin-bottom: 8px;
-            width: fit-content;
-        }
-        #chat-container .sender {
-            background-color: #dcf8c6;
-            margin-left: auto;
-            margin-right: 10px;
-        }
-        #chat-container .receiver {
-            background-color: #e5e5ea;
-            margin-left: 10px;
+
+        #chat-container #chat-box {
+            margin-top: 0.6em;
         }
 
+        #chat-container #chat-box .message {
+            display: flex;
+        }
+
+        #chat-container #chat-box .message .sender {
+
+            margin: 0.3em 0 0.3em 0;
+            margin-left: auto;
+
+            padding: 0;
+            background-color: #dcf8c6;
+        }
+
+        #chat-container #chat-box .receiver {
+
+            margin: 0.3em 0 0.3em 0;
+
+            background-color: #e5e5ea;
+        }
+
+/* End OF CHAT PAGE */
+
+
+    .pageSelect{
+        display: flex;
+    }
+
+    .pageSelect list{
+        display: flex;
+        margin-left: auto;
+        list-style: none;
+    }
+
+    .pageSelect list li{
+        margin: 0.3em;
+    }
+
+    .pageSelect list li a{
+        text-decoration: none;
+        color: #70aad1;
+    }
 /* End OF CHAT PAGE */
 
 
