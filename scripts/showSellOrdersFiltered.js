@@ -2,6 +2,8 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     const form = document.getElementById('searchForm');
+    categorySelect = document.getElementById('category');
+
 
     const resultDiv = document.querySelector('.searchResult');
     resultDiv.addEventListener("click", function(event) {
@@ -20,37 +22,46 @@ document.addEventListener('DOMContentLoaded', function() {
     let start = 0;
 
     const formData = new FormData(form);
-        formData.append('start', '0');
+    formData.append('start', '0');
+    const urlParams = new URLSearchParams(window.location.search);
+    selectedCategory = urlParams.get('category');
+    if (selectedCategory) {
+        formData.append('category', urlParams.get('category'));
+        categorySelect.value = selectedCategory;
+    }
 
-        fetch('../actions/action.getSellOrdersFilter.php', { // Adjust the path to your actual PHP action file
-            method: 'POST',
-            body: formData
-        })
-            .then(response => response.json())
-            .then(data => {
-                displayResults(data);
-                console.log('Data received:', data);
-            })
-            .catch(error => console.error('Error:', error));
+    const params = new URLSearchParams(formData).toString();
+    console.log(params);
+
+    fetch(`../actions/action.getSellOrdersFilter.php?${params}`, { 
+        method: 'GET' 
+    })
+    .then(response => response.json())
+    .then(data => {
+        displayResults(data);
+        console.log('Data received:', data);
+    })
+    .catch(error => console.error('Error:', error));
 
 
 
     form.addEventListener('change', function(event) {
         event.preventDefault();
-        
+                
         const formData = new FormData(form);
         formData.append('start', '0');
-
-        fetch('../actions/action.getSellOrdersFilter.php', { // Adjust the path to your actual PHP action file
-            method: 'POST',
-            body: formData
+            
+        // Convert form data to URL parameters
+        const params = new URLSearchParams(formData).toString();
+            
+        fetch(`../actions/action.getSellOrdersFilter.php?${params}`, { // Append the parameters to the URL
+            method: 'GET' // Change the method to GET
         })
         .then(response => response.json()
-            .then(data => {
-                console.log('Data received:', data);
-                displayResults(data);
-
-            }))
+        .then(data => {
+            console.log('Data received:', data);
+            displayResults(data);
+        }))
         .catch(error => console.error('Error:', error));
     });
 
@@ -136,24 +147,24 @@ function addWishlist(val){
 
 }
 
-function changePage(val){
-
+function changePage(val) {
     const form = document.getElementById('searchForm');
 
     const formData = new FormData(form);
     formData.append('start', val);
 
-    fetch('../actions/action.getSellOrdersFilter.php', { // Adjust the path to your actual PHP action file
-        method: 'POST',
-        body: formData
-    })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Data received:', data);
-            displayResults(data);
-        })
-        .catch(error => console.error('Error:', error));
+    // Convert form data to URL parameters
+    const params = new URLSearchParams(formData).toString();
 
+    fetch(`../actions/action.getSellOrdersFilter.php?${params}`, { // Append the parameters to the URL
+        method: 'GET' // Change the method to GET
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Data received:', data);
+        displayResults(data);
+    })
+    .catch(error => console.error('Error:', error));
 }
 
 function selectSellOrder(itemID) {
@@ -175,5 +186,4 @@ function selectSellOrder(itemID) {
         })
 
 
-    //your existing code goes here
 }
