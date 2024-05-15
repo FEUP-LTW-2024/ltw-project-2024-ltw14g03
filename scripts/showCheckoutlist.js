@@ -4,10 +4,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const container = document.getElementById('productList');
 
     container.addEventListener("click", function(event) {
-        const checkoutlistButton = event.target.closest(".checkoutlistButton");
+        const checkoutlistButton = event.target.closest(".de-checkoutlistButton");
         if (checkoutlistButton) {
             event.stopPropagation();
-            addWishlist(checkoutlistButton.dataset.value);
+            removeCheckoutlist(checkoutlistButton.dataset.value);
         } else {
             const itemElement = event.target.closest(".item");
             if (itemElement) {
@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                             <p>Price: ${item.price}€</p>
                                             <p>Condition: ${item.condition_id}</p>
                                         </div>  
+                                        <button class="de-checkoutlistButton" data-value="${item.item_id}">Remove from Cart</button>
                                     </div>
                                 </div>
                             </div>
@@ -69,22 +70,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 });
 
-function addCheckoutlist(val){
+function removeCheckoutlist(val){
+    params = {
+        ID: val,
+    }
 
-params = {
-    ID: val,
-}
-
-fetch('../actions/action.addCheckoutlist.php', {
-    method: 'POST',
-    body: JSON.stringify(params),
-})
+    fetch('../actions/action.removeCheckoutlist.php', {
+        method: 'POST',
+        body: JSON.stringify(params),
+    })
     .then(response => {
         return response.text()
             .then(t => {console.log(t)});
     })
-
-
 }
 
 function selectSellOrder(itemID) {
