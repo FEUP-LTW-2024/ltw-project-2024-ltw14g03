@@ -13,6 +13,9 @@
         padding: 0.3em 0 0 0;
     }
 
+    .sell-order-core img{
+        height: 20em;
+    }
 
     #menu .hamburger {
         display: block;
@@ -27,10 +30,6 @@
 
         opacity: 0;
         animation: fadeInAnimation 1s ease-in forwards;
-    }
-
-    #featured-buttons{
-        margin: 0;
     }
 
     
@@ -113,11 +112,5 @@
         width: 100%;
     }
 
-    /* ADMIN PAGE */
 
-    .admin-panel{
-        width: 100%;
-        margin: 0;
-    }
-    /* END OF ADMIN PAGE */
 }
