@@ -903,7 +903,6 @@ main {
             margin-top: 0.6em;
         }
 
-<<<<<<< HEAD
         #chat-container #chat-box .message {
             display: flex;
         }
@@ -945,7 +944,6 @@ main {
         text-decoration: none;
         color: #70aad1;
     }
-=======
 /* End OF CHAT PAGE */
 
 
@@ -1017,4 +1015,3 @@ label {
 
 
 /* END OF ADMIN PANEL PAGE */
->>>>>>> main
