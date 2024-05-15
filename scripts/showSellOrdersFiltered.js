@@ -71,19 +71,6 @@ function displayResults(data) {
 
     const resultDiv = document.querySelector('.searchResult');
 
-    const sel = document.getElementById('pageSelect');
-
-    sel.innerHTML = ``;
-
-    for(let i = 0; i < (data.n)/10; i++){
-
-        sel.innerHTML += `
-            <li><h2><a href = "#" onclick = "changePage(${i})">${i + 1}</a></h2></li>
-        `;
-
-    }
-
-    // Clear previous results
     resultDiv.innerHTML = '';
 
     // Check if there are no results
