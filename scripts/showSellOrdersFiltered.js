@@ -1,6 +1,5 @@
 
 document.addEventListener('DOMContentLoaded', function() {
-
     const form = document.getElementById('searchForm');
     categorySelect = document.getElementById('category');
 
@@ -11,21 +10,18 @@ document.addEventListener('DOMContentLoaded', function() {
         if (wishlistButton) {
             event.stopPropagation();
             addWishlist(wishlistButton.dataset.value);
-        } else {
-            const itemElement = event.target.closest(".item");
-            if (itemElement) {
-                selectSellOrder(itemElement.dataset.value);
-            }
-        }
+        } 
     });
 
-    let start = 0;
+    let start = 0; 
+    console.log('Form:', form);
 
     const formData = new FormData(form);
     formData.append('start', '0');
     const urlParams = new URLSearchParams(window.location.search);
     selectedCategory = urlParams.get('category');
     if (selectedCategory) {
+        console.log('Selected category:', selectedCategory);
         formData.append('category', urlParams.get('category'));
         categorySelect.value = selectedCategory;
     }

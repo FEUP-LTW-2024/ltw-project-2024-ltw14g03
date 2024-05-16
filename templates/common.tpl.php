@@ -36,10 +36,14 @@
       <script src="../scripts/showCategoryItems.js"></script>
       <script src="../scripts/itemClickHandler.js"></script>
     <?php } ?>
-    <?php if($_SERVER['REQUEST_URI']=="/pages/browse.php"){?>
-      <script src="../scripts/showSellOrdersFiltered.js"></script>
-      <script src="../scripts/itemClickHandler.js"></script>
+    
+    <?php
+    if ($_SERVER['REQUEST_URI'] === "/pages/browse.php" || !empty($_SERVER['QUERY_STRING'])) {
+    ?>
+    <script src="../scripts/showSellOrdersFiltered.js"></script>
+    <script src="../scripts/itemClickHandler.js"></script>
     <?php } ?>
+
     <?php if($_SERVER['REQUEST_URI']=="/pages/adminpage.php"){?>
       <script src="../scripts/adminPanel.js" type="module"></script>
     <?php } ?>
