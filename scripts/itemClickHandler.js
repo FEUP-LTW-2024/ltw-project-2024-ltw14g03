@@ -86,6 +86,7 @@ function showModal(data) {
     closeButton.innerHTML = '&times;';
     closeButton.onclick = function() {
         modalContainer.style.display = 'none';
+        modalContainer.remove();
     };
     sellerInfoDiv.appendChild(closeButton); // Append close button to seller info div
 
