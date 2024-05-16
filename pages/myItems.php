@@ -40,7 +40,6 @@ drawHeader($session);
             <div class = "product-list" id = "myItems">
             </div>
 </div>
-    
 
 </body>
 

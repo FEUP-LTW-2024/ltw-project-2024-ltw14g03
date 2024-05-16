@@ -103,12 +103,6 @@ if (document.URL.includes("index.php")) {
                 event.stopPropagation();
                 removeWishlist(dewishlistButton.dataset.value, dewishlistButton.dataset.page);
             }
-            else{
-                const itemElement = event.target.closest(".item");
-                if (itemElement) {
-                    selectSellOrder(itemElement.dataset.value);
-                }
-            }
         });
     });
 }

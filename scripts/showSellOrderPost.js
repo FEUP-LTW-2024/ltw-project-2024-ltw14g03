@@ -1,4 +1,7 @@
-    document.addEventListener('DOMContentLoaded', function() {
+   /* UNUSED RIGHT NOW */
+   
+   
+   document.addEventListener('DOMContentLoaded', function() {
 
         const main = document.getElementById("sell-order-show");
 
