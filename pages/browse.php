@@ -15,6 +15,8 @@
     drawHeader($session); 
 ?>
 
+<script src="../scripts/showSellOrdersFiltered.js"></script>
+<script src="../scripts/itemClickHandler.js"></script>
 
 <body>
     <main>

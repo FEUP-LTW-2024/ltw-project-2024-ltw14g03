@@ -11,7 +11,6 @@
         const data = JSON.parse(jsonDataString);
 
 
-
         main.innerHTML = `
             
           

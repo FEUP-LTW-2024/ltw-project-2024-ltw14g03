@@ -19,38 +19,11 @@
     <script src="../scripts/logout.js"></script>
     <script src="../scripts/notification.js" ></script>
 
-    <?php if($_SERVER['REQUEST_URI']== "/pages/register.php"){?>
-      <script src="../scripts/validatePassword.js"></script>
-    <?php } ?>
+      <script>
+          window.userId = <?php echo json_encode($session->getParam('id')); ?>; // Use the 'id' key to retrieve the user ID from the session
+      </script>
 
-    <?php if($_SERVER['REQUEST_URI']== "/pages/add_sell_order.php"){?>
-      <script src="../scripts/addSellOrderWithImage.js"></script>
-    <?php } ?>
-
-    <?php if($_SERVER['REQUEST_URI']== "/pages/profile.php"){?>
-      <script src="../scripts/editProfile.js"></script>
-    <?php } ?>
-
-    <?php if($_SERVER['REQUEST_URI']== "/pages/index.php"){?>
-      <script src="../scripts/showSellOrders.js"></script>
-      <script src="../scripts/showCategoryItems.js"></script>
-      <script src="../scripts/itemClickHandler.js"></script>
-    <?php } ?>
-    
-    <?php
-    if ($_SERVER['REQUEST_URI'] === "/pages/browse.php" || !empty($_SERVER['QUERY_STRING'])) {
-    ?>
-    <script src="../scripts/showSellOrdersFiltered.js"></script>
-    <script src="../scripts/itemClickHandler.js"></script>
-    <?php } ?>
-
-    <?php if($_SERVER['REQUEST_URI']=="/pages/adminpage.php"){?>
-      <script src="../scripts/adminPanel.js" type="module"></script>
-    <?php } ?>
-    <?php if($_SERVER['REQUEST_URI']=="/pages/myItems.php"){?>
-      <script src="../scripts/myItems.js"></script>
-      <script src="../scripts/itemClickHandler.js"></script>
-    <?php } ?>
+      
   </head>
   <body>
   <header>
@@ -61,12 +34,14 @@
             <ul>
                 <li><a href="../pages/index.php">Home</a></li>
                 <li><a href="../pages/browse.php">Browse</a></li>
-                <?php 
-                if($session->isAdmin()){?>
-                  <li><a href="../pages/adminpage.php">Admin Panel</a></li>
-                <?php } 
-              
-                if($session->isLoggedIn()) { ?>
+                <?php if($session->isLoggedIn()) {?>
+
+                    <li><a href="../pages/wishlist.php">Wishlist</a></li>
+
+                    <?php if($session->isAdmin()){?>
+                        <li><a href="../pages/adminpage.php">Admin Panel</a></li>
+                    <?php }?>
+
                   <li class="dropdown"><img class="profileImageBar" src="<?php echo $session->getParam("pfp")?>"><a href="" id="username-bar"><?php echo  $_SESSION['username']?></a>
 
                   <div class="dropdown-content">

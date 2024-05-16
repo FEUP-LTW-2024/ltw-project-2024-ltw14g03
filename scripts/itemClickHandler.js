@@ -1,14 +1,85 @@
 document.addEventListener('DOMContentLoaded', function() {
+
     document.addEventListener('click', function(event) {
-        event.stopImmediatePropagation();
+
         const itemElement = event.target.closest('.item');
-        
-        if (itemElement) {
-            const itemID = itemElement.getAttribute('data-value');
+        const wishlistButton = event.target.closest(".wishlistButton");
+        const dewishlistButton = event.target.closest(".de-wishlistButton");
+
+        event.stopPropagation();
+
+        if (wishlistButton) {
+            addWishlist(wishlistButton.dataset.value, wishlistButton.dataset.page);
+
+            const wishlistDIV = event.target.closest(".wishlist");
+
+            wishlistDIV.innerHTML = `
+                
+                <button class="de-wishlistButton" id="button${wishlistButton.dataset.ID}" data-value="${wishlistButton.dataset.value}" data-page="${wishlistButton.dataset.page}" data-ID="${wishlistButton.dataset.ID}" type="button">De-Wishlist</button>
             
+            `;
+
+        } else if (dewishlistButton) {
+
+            removeWishlist(dewishlistButton.dataset.value, dewishlistButton.dataset.page);
+
+            const wishlistDIV = event.target.closest(".wishlist");
+
+            wishlistDIV.innerHTML = `
+                
+                <button class="wishlistButton" id="button${dewishlistButton.dataset.ID}" data-value="${dewishlistButton.dataset.value}" data-page="${dewishlistButton.dataset.page}" data-ID="${dewishlistButton.dataset.ID}">Wishlist</button>
+            
+            `;
+
+        } else if (itemElement) {
+            const itemID = itemElement.getAttribute('data-value');
+
             selectsSellOrder(itemID);
         }
+
     });
+
+
+    function addWishlist(val, page) {
+
+        params = {
+            ID: val,
+        }
+
+        fetch('../actions/action.addWishlist.php', {
+            method: 'POST',
+            body: JSON.stringify(params),
+        })
+            .then(response => {
+                return response.text()
+                    .then(t => {
+                        console.log("lmao");
+                    });
+            })
+
+
+    }
+
+    function removeWishlist(val, page){
+
+        params = {
+            ID: val,
+        }
+
+        fetch('../actions/action.removeWishlist.php', {
+            method: 'POST',
+            body: JSON.stringify(params),
+        })
+            .then(response => {
+                return response.text()
+                    .then(t => {
+                        console.log("lol");
+                    });
+            })
+
+
+    }
+
 });
 
 function selectsSellOrder(itemID) {
@@ -103,21 +174,35 @@ function showModal(data) {
     sellerInfoDiv.appendChild(sellerName);
 
     // CHAT WITH SELLER
-    const profileButton = document.createElement('button');
-    profileButton.textContent = 'View Seller Profile';
-    profileButton.classList.add('modal-contact-button');
-    profileButton.onclick = function() {
-        showUser(sellOrder.seller.user_id);
+    if(window.userId != sellOrder.seller.user_id) {
+        const profileButton = document.createElement('button');
+        profileButton.textContent = 'View Seller Profile';
+        profileButton.classList.add('modal-contact-button');
+        profileButton.onclick = function () {
+            showUser(sellOrder.seller.user_id);
+        }
+        sellerInfoDiv.appendChild(profileButton);
     }
-    sellerInfoDiv.appendChild(profileButton);
+    else
+    {
+        const profileButton = document.createElement('button');
+        profileButton.textContent = 'View Seller Profile';
+        profileButton.classList.add('modal-contact-button');
+        profileButton.onclick = function () {
+            window.location.href = `../pages/profile.php`;
+        }
+        sellerInfoDiv.appendChild(profileButton);
+    }
 
-    const contactButton = document.createElement('button');
-    contactButton.textContent = 'Chat with Seller';
-    contactButton.classList.add('modal-contact-button');
-    contactButton.onclick = function() {
-        redirectToChat(sellOrder.seller.user_id);
+    if(window.userId != sellOrder.seller.user_id) {
+        const contactButton = document.createElement('button');
+        contactButton.textContent = 'Chat with Seller';
+        contactButton.classList.add('modal-contact-button');
+        contactButton.onclick = function () {
+            redirectToChat(sellOrder.seller.user_id);
+        }
+        sellerInfoDiv.appendChild(contactButton);
     }
-    sellerInfoDiv.appendChild(contactButton);
 
     modalContent.appendChild(sellerInfoDiv);
     modalContainer.appendChild(modalContent);

@@ -19,33 +19,44 @@
     drawHeader($session); 
 ?>
 
+<script src="../scripts/showSellOrders.js"></script>
+<script src="../scripts/showCategoryItems.js"></script>
+<script src="../scripts/itemClickHandler.js"></script>
+
 
 <main id="mainPage">
     <section class="featured-items">
-        <h2>Categories</h2>
         <div class="featured-header">
-            <div id ="featured-buttons">
-            <?php
-                $stmt = $db->query("SELECT * FROM categories");
-                $categories = $stmt->fetchAll();
-                foreach ($categories as $category) {
-                    echo "<button class='category-button' data-category-id='" . $category['category_id'] ."'>" . htmlspecialchars($category['name']) . "</button>";
-                }
-            ?>
-            </div>
-        </div>
-        <div class="featured-items"></div>
-            <h2>Featured Items</h2>
+
+            <h1>Featured Items</h1>
+
+            <h1 class="center-header">Categories</h1>
+
             <div class = "pageSelect">
-                    <list>
+                <list>
 
-                        <?php for($i = 0; $i < $n/10; $i++): ?>
+                    <?php for($i = 0; $i < $n/10; $i++): ?>
 
-                            <li><h2><a href = "#" onclick = "changePage(<?php echo $i?>)"><?php echo $i + 1?></a></h2></li>
+                        <li><h2><a href = "#" onclick = "changePage(<?php echo $i?>)"><?php echo $i + 1?></a></h2></li>
 
-                        <?php endfor; ?>
-                    </list>
-                </div>
+                    <?php endfor; ?>
+                </list>
+            </div>
+
+        </div>
+
+        <div id ="featured-buttons">
+            <?php
+            $stmt = $db->query("SELECT * FROM categories");
+            $categories = $stmt->fetchAll();
+            foreach ($categories as $category) {
+                echo "<button class='category-button' data-category-id='" . $category['category_id'] ."'>" . htmlspecialchars($category['name']) . "</button>";
+            }
+            ?>
+        </div>
+
+        <div class="featured-items"></div>
+
             <div class = "product-list" id = "productList">
             </div>
         </div>

@@ -20,6 +20,7 @@ drawHeader($session);
 ?>
 
 <script src="../scripts/showWishlist.js"></script>
+<script src="../scripts/itemClickHandler.js"></script>
 
 <main id="mainPage">
 

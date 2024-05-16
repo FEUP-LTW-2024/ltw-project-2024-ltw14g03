@@ -20,6 +20,9 @@ $totalPages = ceil($totalItems / $itemsPerPage);
 drawHeader($session);
 ?>
 
+<script src="../scripts/myItems.js"></script>
+<script src="../scripts/itemClickHandler.js"></script>
+
 <body>
 
 <script>

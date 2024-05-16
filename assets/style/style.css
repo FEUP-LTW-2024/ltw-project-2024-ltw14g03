@@ -45,7 +45,6 @@ header h1 {
 }
 
 .featured-items .featured-header h1{
-    margin-right: auto;
     font-size: 2em;
 }
 
@@ -53,7 +52,7 @@ header h1 {
     height:2em
 }
 
-.featured-items h2 {
+.featured-items h1 {
     color: #333;
     margin: 0;
 }
@@ -101,7 +100,7 @@ header h1 {
 }
 
 .featured-items .product-list .item .details{
-    margin-top: 0.5em;
+    margin-top: 1em;
     text-align: left;
 }
 
@@ -112,13 +111,23 @@ header h1 {
 }
 
 #featured-buttons{
-    margin-left: 25%;
-    margin-right: 25%;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     flex-wrap: wrap;
+
+    align-self: center;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
+
     padding: 10px; 
+}
+
+.center-header {
+    margin: 0 auto;
+    position: absolute;  /* Take out of document flow to center independently */
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 
@@ -611,6 +620,11 @@ main {
 /* END OF BROWSE PAGE */
 
 
+.wishlist{
+    margin-top: auto;
+    margin-left: auto;
+}
+
 .wishlistButton {
     display: inline-block;
     padding: 0.5em;
@@ -732,7 +746,7 @@ main {
 }
 
 .searchResult .item .details{
-    margin-top: 0.5em;
+    margin-top: 1em;
 }
 
 .searchResult .item img {
@@ -927,6 +941,7 @@ main {
 
 
     .pageSelect{
+        margin-left: auto;
         display: flex;
     }
 
@@ -1043,18 +1058,21 @@ label {
 }
 
 .seller-info {
-    flex: 1;
-    padding: 20px;
-    background-color: #f8f8f8;
     display: flex;
     flex-direction: column;
+    flex: 1;
+    padding: 20px;
+
+    background-color: #f8f8f8;
     align-items: center;
     justify-content: center;
     position: relative;
+
     border-top-right-radius: 10px; /* Apply border-radius to top-right corner */
     border-bottom-right-radius: 10px; /* Apply border-radius to bottom-right corner */
     border-left: 1px solid #e7e7e7;
 }
+
 
 .item-info {
     flex: 2;
@@ -1066,14 +1084,13 @@ label {
 }
 
 .item-info img {
-    width: 300px;
-    height: auto;
+    min-width: 30%;
+    max-width: 100%;
 }
 
 
 .seller-info img {
-    width: 100px;
-    height: auto;
+    width: 40%;
     border-radius: 50%;
     margin-bottom: 10px;
 }

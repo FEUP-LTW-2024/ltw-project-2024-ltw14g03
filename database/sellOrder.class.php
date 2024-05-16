@@ -21,12 +21,11 @@ class SellOrder {
 
     static function getSellOrders(PDO $db, int $start): array {
 
-
         $stmt = $db->prepare('
-                SELECT * FROM items ORDER BY item_id LIMIT 10 OFFSET (9 * ?);
+                SELECT * FROM items ORDER BY item_id LIMIT 10 OFFSET ?;
             ');
 
-        $stmt->execute([$start]);
+        $stmt->execute([$start * 10]);
 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }

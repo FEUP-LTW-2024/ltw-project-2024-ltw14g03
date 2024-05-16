@@ -18,6 +18,8 @@ if (!$session->isAdmin()) {
 drawHeader($session);
 ?>
 
+<script src="../scripts/adminPanel.js" type="module"></script>
+
 <main class="admin-panel">
     <h1>Admin Panel</h1>
 
