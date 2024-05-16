@@ -37,6 +37,7 @@
                 <?php if($session->isLoggedIn()) {?>
 
                     <li><a href="../pages/wishlist.php">Wishlist</a></li>
+                    <li><a href="../pages/checkout.php">Checkout</a></li>
 
                     <?php if($session->isAdmin()){?>
                         <li><a href="../pages/adminpage.php">Admin Panel</a></li>

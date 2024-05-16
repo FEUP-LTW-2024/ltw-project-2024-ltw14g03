@@ -5,6 +5,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const itemElement = event.target.closest('.item');
         const wishlistButton = event.target.closest(".wishlistButton");
         const dewishlistButton = event.target.closest(".de-wishlistButton");
+        
+        const checkoutButton = event.target.closest(".checkoutlistButton");
+        const decheckoutButton = event.target.closest(".de-checkoutButton");
 
         event.stopPropagation();
 
@@ -28,6 +31,32 @@ document.addEventListener('DOMContentLoaded', function() {
             wishlistDIV.innerHTML = `
                 
                 <button class="wishlistButton" id="button${dewishlistButton.dataset.ID}" data-value="${dewishlistButton.dataset.value}" data-page="${dewishlistButton.dataset.page}" data-ID="${dewishlistButton.dataset.ID}">Wishlist</button>
+            
+            `;
+
+        }
+        else if (checkoutButton) {
+
+            addcheckout(checkoutButton.dataset.value, checkoutButton.dataset.page);
+
+            const checkoutDIV = event.target.closest(".checkout");
+
+            checkoutDIV.innerHTML = `
+                
+                <button class="wishlistButton" id="button${checkoutButton.dataset.ID}" data-value="${checkoutButton.dataset.value}" data-page="${checkoutButton.dataset.page}" data-ID="${checkoutButton.dataset.ID}">Wishlist</button>
+            
+            `;
+
+        }
+        else if (decheckoutButton) {
+
+            removecheckout(decheckoutButton.dataset.value, decheckoutButton.dataset.page);
+
+            const checkoutDIV = event.target.closest(".checkout");
+
+            checkoutDIV.innerHTML = `
+                
+                <button class="wishlistButton" id="button${decheckoutButton.dataset.ID}" data-value="${decheckoutButton.dataset.value}" data-page="${decheckoutButton.dataset.page}" data-ID="${decheckoutButton.dataset.ID}">Wishlist</button>
             
             `;
 
@@ -81,6 +110,47 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 });
+
+function addcheckout(val, page){
+
+    params = {
+        ID: val,
+    }
+
+    fetch('../actions/action.addCheckoutlist.php', {
+        method: 'POST',
+        body: JSON.stringify(params),
+    })
+        .then(response => {
+            return response.text()
+                .then(t => {
+                    fetchSellOrders(parseInt(page), false);
+                });
+        })
+        .catch(error => {
+            console.error('Error adding to checkout list: ', error);
+        });
+}
+
+function removecheckout(val, page){
+
+    params = {
+        ID: val,
+    }
+
+    fetch('../actions/action.removeCheckoutlist.php', {
+        method: 'POST',
+        body: JSON.stringify(params),
+    })
+        .then(response => {
+            return response.text()
+                .then(t => {
+                    fetchSellOrders(parseInt(page), false);
+                });
+        })
+
+
+}
 
 function selectsSellOrder(itemID) {
     const params = {
