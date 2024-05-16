@@ -65,6 +65,10 @@ function displayItems(items) {
         const conditionP = document.createElement('p');
         conditionP.textContent = 'Condition: ' + item.condition_id;
 
+        const removeButton = document.createElement('button');
+        removeButton.textContent = 'Remove Item';
+        removeButton.onclick = () => removeItem(item.item_id);
+
         detailsDiv.appendChild(priceP);
         detailsDiv.appendChild(conditionP);
 
@@ -74,6 +78,8 @@ function displayItems(items) {
 
         itemElement.appendChild(imgElement);
         itemElement.appendChild(descDiv);
+
+        itemElement.appendChild(removeButton);
 
         itemsDiv.appendChild(itemElement);
     });
