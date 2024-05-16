@@ -669,6 +669,55 @@ main {
     border-color: #333333; /* Darker blue border on hover */
 }
 
+.checkout{
+    margin-top: auto;
+    margin-left: auto;
+}
+
+.checkoutlistButton {
+    display: inline-block;
+    padding: 0.5em;
+    border: 2px solid #f3e11f; /* Blue border */
+    border-radius: 10px; /* Rounded corners */
+    background-color: #f3e11f; /* Blue background */
+    color: #ffffff; /* White text color */
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Smooth transition on hover */
+
+    margin-top: auto;
+    margin-left: auto;
+}
+
+.checkoutlistButton:hover {
+    background-color: #736b0e; /* Darker blue background on hover */
+    border-color: #736b0e; /* Darker blue border on hover */
+}
+
+.de-checkoutButton {
+    display: inline-block;
+    padding: 0.5em;
+    border: 2px solid #384955; /* Blue border */
+    border-radius: 10px; /* Rounded corners */
+    background-color: #384955; /* Blue background */
+    color: #ffffff; /* White text color */
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Smooth transition on hover */
+
+    margin-top: auto;
+    margin-left: auto;
+}
+
+.de-checkoutButton:hover {
+    background-color: #333333; /* Darker blue background on hover */
+    border-color: #333333; /* Darker blue border on hover */
+}
+
 
 
 /* SEARCH PAGE */
@@ -1145,3 +1194,39 @@ label {
     max-width: 100%;
     height: auto;
 }
+
+
+/* CHECKOUT PAGE */
+
+.total-price-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    
+}
+
+.total-price-container p {
+    font-size: 1.2em;
+    color: #333;
+    margin: 0;
+    margin-right: 20px; /* Space between the price and button */
+}
+
+.clear-cart {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.clear-cart:hover {
+    background-color: #218838;
+}
+
+/* END OF CHECKOUT PAGE */

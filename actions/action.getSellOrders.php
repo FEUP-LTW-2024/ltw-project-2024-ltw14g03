@@ -51,12 +51,22 @@ try {
         $stmt->execute([$us['item_id']]);
         $wish = $stmt->fetch();
 
+        $stmt = $db->prepare("SELECT * FROM shopping_cart WHERE item_id = ? LIMIT 1");
+        $stmt->execute([$us['item_id']]);
+        $cartItem = $stmt->fetch();
+
         if(empty($wish)){
             $us['wish'] = "0";
         }
         else
         {
             $us['wish'] = "1";
+        }
+
+        if (empty($cartItem)) {
+            $us['cart'] = "0";
+        } else {
+            $us['cart'] = "1";
         }
 
         if($session->getParam('id') == $us['seller_id']){
