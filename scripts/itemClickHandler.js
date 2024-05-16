@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const checkoutButton = event.target.closest(".checkoutlistButton");
         const decheckoutButton = event.target.closest(".de-checkoutButton");
 
+        const removeButton = event.target.closest(".removeButton");
+
         event.stopPropagation();
 
         if (wishlistButton) {
@@ -60,7 +62,14 @@ document.addEventListener('DOMContentLoaded', function() {
             
             `;
 
-        } else if (itemElement) {
+        }
+        else if (removeButton) {
+            event.stopPropagation(); // Prevent event propagation
+            const itemId = removeButton.dataset.value;
+            removeItem(itemId);
+
+        } 
+        else if (itemElement) {
             const itemID = itemElement.getAttribute('data-value');
 
             selectsSellOrder(itemID);
@@ -150,6 +159,34 @@ function removecheckout(val, page){
         })
 
 
+}
+
+async function removeItem(itemId) {
+    console.log('Removing item with ID:', itemId);
+    try {
+        const response = await fetch('../actions/action.removeItem.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ item_id: itemId })
+        });
+
+        if (!response.ok) {
+            throw new Error('Error removing item: ' + response.statusText);
+        }
+
+        const data = await response.json();
+        console.log('Remove response data:', data);
+
+        if (data.success) {
+            fetchItems(0); // Refresh items list
+        } else {
+            console.error('Failed to remove item:', data.message);
+        }
+    } catch (error) {
+        console.error('Error removing item:', error);
+    }
 }
 
 function selectsSellOrder(itemID) {
