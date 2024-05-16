@@ -3,18 +3,7 @@
 
         const container = document.getElementById('productList');
 
-        container.addEventListener("click", function(event) {
-            const wishlistButton = event.target.closest(".wishlistButton");
-            if (wishlistButton) {
-                event.stopPropagation();
-                addWishlist(wishlistButton.dataset.value);
-            } else {
-                const itemElement = event.target.closest(".item");
-                if (itemElement) {
-                    selectSellOrder(itemElement.dataset.value);
-                }
-            }
-        });
+
 
         const params = {
             start : 0,

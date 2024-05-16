@@ -35,11 +35,41 @@ function fetchSellOrders(start, animate = true) {
                                                 <div style="display: flex">
                                                     <div class="details">
                                                         <p>Price: ${item.price}€</p>
-                                                        <p>Condition: ${item.condition_id}</p>
+                                                        <p>Condition: ${item.condition.name}</p>
+                                                        <p>Category: ${item.category.name}</p>
+                                                        <p>Brand: ${item.brand.name}</p>
+                                                        <p>Size: ${item.size.name}</p>
                                                     </div>
-                
-                                                    <button class="wishlistButton" id="button${count}" data-value="${item.item_id}" data-page="${start}">Wishlist</button>
+                                                    
+                                                    <div class = 'wishlist'>
+                                                        <button class="wishlistButton" id="button${count}" data-value="${item.item_id}" data-page="${start}" data-ID="${count}">Wishlist</button>
+                                                    </div>
       
+                                                </div>
+                                            </div>
+                                        </div>
+                                    `;
+                }
+                else if(item.wish == '1')
+                {
+                    container.innerHTML += `
+                                        <div class="item" id="item_${item.item_id}" data-value="${item.item_id}" style="animation-delay: ${count / 8}s">
+                                            <img src="${imageSrc}" alt="Item Image">
+                                            <div class="desc">
+                                                <h3>${item.name}</h3>
+                                                <p style="margin-top: 0.2em">${item.description}</p>
+                                                <div style="display: flex">
+                                                    <div class="details">
+                                                        <p>Price: ${item.price}€</p>
+                                                        <p>Condition: ${item.condition.name}</p>
+                                                        <p>Category: ${item.category.name}</p>
+                                                        <p>Brand: ${item.brand.name}</p>
+                                                        <p>Size: ${item.size.name}</p>
+                                                    </div>
+                                                    
+                                                    <div class = 'wishlist'>
+                                                        <button class="de-wishlistButton" id="button${count}" data-value="${item.item_id}" data-page="${start}" data-ID="${count}" type="button">De-Wishlist</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -56,10 +86,11 @@ function fetchSellOrders(start, animate = true) {
                                                 <div style="display: flex">
                                                     <div class="details">
                                                         <p>Price: ${item.price}€</p>
-                                                        <p>Condition: ${item.condition_id}</p>
+                                                        <p>Condition: ${item.condition.name}</p>
+                                                        <p>Category: ${item.category.name}</p>
+                                                        <p>Brand: ${item.brand.name}</p>
+                                                        <p>Size: ${item.size.name}</p>
                                                     </div>
-
-                                                    <button class="de-wishlistButton" id="button${count}" data-value="${item.item_id}" data-page="${start}" type="button">De-Wishlist</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -87,64 +118,7 @@ if (document.URL.includes("index.php")) {
 
         // Fetch sell orders when DOM is loaded
         fetchSellOrders(0);
-
-        // Add click event listener to wishlist buttons
-        container.addEventListener("click", function(event) {
-            const wishlistButton = event.target.closest(".wishlistButton");
-
-            const dewishlistButton = event.target.closest(".de-wishlistButton");
-
-            if (wishlistButton) {
-                event.stopPropagation();
-                addWishlist(wishlistButton.dataset.value, wishlistButton.dataset.page);
-            }
-            else if(dewishlistButton)
-            {
-                event.stopPropagation();
-                removeWishlist(dewishlistButton.dataset.value, dewishlistButton.dataset.page);
-            }
-        });
     });
-}
-
-function addWishlist(val, page){
-
-    params = {
-        ID: val,
-    }
-
-    fetch('../actions/action.addWishlist.php', {
-        method: 'POST',
-        body: JSON.stringify(params),
-    })
-        .then(response => {
-            return response.text()
-                .then(t => {
-                    fetchSellOrders(parseInt(page), false);
-                });
-        })
-
-
-}
-
-function removeWishlist(val, page){
-
-    params = {
-        ID: val,
-    }
-
-    fetch('../actions/action.removeWishlist.php', {
-        method: 'POST',
-        body: JSON.stringify(params),
-    })
-        .then(response => {
-            return response.text()
-                .then(t => {
-                    fetchSellOrders(parseInt(page), false);
-                });
-        })
-
-
 }
 
 function changePage(val){

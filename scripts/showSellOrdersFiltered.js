@@ -4,15 +4,6 @@ document.addEventListener('DOMContentLoaded', function() {
     categorySelect = document.getElementById('category');
 
 
-    const resultDiv = document.querySelector('.searchResult');
-    resultDiv.addEventListener("click", function(event) {
-        const wishlistButton = event.target.closest(".wishlistButton");
-        if (wishlistButton) {
-            event.stopPropagation();
-            addWishlist(wishlistButton.dataset.value);
-        } 
-    });
-
     let start = 0; 
     console.log('Form:', form);
 
@@ -55,15 +46,14 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => response.json()
         .then(data => {
-            console.log('Data received:', data);
-            displayResults(data);
+            displayResults(data, 0);
         }))
         .catch(error => console.error('Error:', error));
     });
 
 });
 
-function displayResults(data) {
+function displayResults(data, start = 0) {
 
     const resultDiv = document.querySelector('.searchResult');
 
@@ -79,9 +69,12 @@ function displayResults(data) {
     resultDiv.innerHTML = ``;
     let count  = 0;
     Object.values(data).forEach(item => {
-        resultDiv.innerHTML += `
 
-                    <div class = "item" data-value= "${item.item_id}" style = "animation-delay: ${count/8}s">
+        if(item.wish === '0') {
+
+            resultDiv.innerHTML += `
+
+                    <div class = "item" data-value= "${item.item_id}" style = "animation-delay: ${count / 8}s">
 
                         <img src = " ${item.images}" alt="Item Image">
                         
@@ -92,11 +85,14 @@ function displayResults(data) {
                             <div style= "display: flex">
                                             <div class = "details">
                                                 <p>Price: ${item.price}€</p>
-                                                <p>Condition: ${item.condition_id}</p>
+                                                        <p>Condition: ${item.condition.name}</p>
+                                                        <p>Category: ${item.category.name}</p>
+                                                        <p>Brand: ${item.brand.name}</p>
+                                                        <p>Size: ${item.size.name}</p>
                                             </div>
                                             
-                                <div class = "wishlistButton" data-value = '${item.item_id}'>
-                                    <button type = "button">Wishlist</button>
+                                <div class = "wishlist">
+                                    <button class="wishlistButton" id="button${count}" data-value="${item.item_id}" data-page="${start}" data-ID="${count}">Wishlist</button>
                                 </div>
                                             
                             </div>
@@ -106,6 +102,69 @@ function displayResults(data) {
                     </div>
                 
             `; // Customize according to your data attributes and needs
+        }
+        else if(item.wish === '1')
+        {
+            resultDiv.innerHTML += `
+
+                    <div class = "item" data-value= "${item.item_id}" style = "animation-delay: ${count / 8}s">
+
+                        <img src = " ${item.images}" alt="Item Image">
+                        
+                        <div class = "desc">
+                            <h3>${item.name}</h3>
+                            <p style = "margin-top: 0.2em">"${item.description}"</p>
+                            
+                            <div style= "display: flex">
+                                            <div class = "details">
+                                                <p>Price: ${item.price}€</p>
+                                                        <p>Condition: ${item.condition.name}</p>
+                                                        <p>Category: ${item.category.name}</p>
+                                                        <p>Brand: ${item.brand.name}</p>
+                                                        <p>Size: ${item.size.name}</p>
+                                            </div>
+                                            
+                                <div class = "wishlist">
+                                    <button class="de-wishlistButton" id="button${count}" data-value="${item.item_id}" data-page="${start}" data-ID="${count}" type="button">De-Wishlist</button>
+                                </div>
+                                            
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                
+            `; // Customize according to your data attributes and needs
+        }
+        else
+        {
+            resultDiv.innerHTML += `
+
+                    <div class = "item" data-value= "${item.item_id}" style = "animation-delay: ${count / 8}s">
+
+                        <img src = " ${item.images}" alt="Item Image">
+                        
+                        <div class = "desc">
+                            <h3>${item.name}</h3>
+                            <p style = "margin-top: 0.2em">"${item.description}"</p>
+                            
+                            <div style= "display: flex">
+                                            <div class = "details">
+                                                <p>Price: ${item.price}€</p>
+                                                        <p>Condition: ${item.condition.name}</p>
+                                                        <p>Category: ${item.category.name}</p>
+                                                        <p>Brand: ${item.brand.name}</p>
+                                                        <p>Size: ${item.size.name}</p>
+                                            </div>  
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                
+            `; // Customize according to your data attributes and needs
+        }
+
 
         count += 1;
     });
@@ -145,7 +204,7 @@ function changePage(val) {
     .then(response => response.json())
     .then(data => {
         console.log('Data received:', data);
-        displayResults(data);
+        displayResults(data, val);
     })
     .catch(error => console.error('Error:', error));
 }

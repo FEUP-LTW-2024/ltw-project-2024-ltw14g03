@@ -5,6 +5,8 @@ $session = new Session();
 drawHeader($session);
 ?>
 
+<script src="../scripts/validatePassword.js"></script>
+
 <body>
     <div class="login-form" id="registerForm">
 
