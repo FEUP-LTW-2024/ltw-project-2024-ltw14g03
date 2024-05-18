@@ -796,6 +796,7 @@ main {
     transition: min-width 0.5s, max-width 0.5s;
     opacity: 0;
     animation: fadeInAnimation 0.3s ease-in forwards, moveUpAnimation 0.3s cubic-bezier(0.5, 1, 0.89, 1) forwards 0.2s;
+    flex-shrink: 0;
 }
 
 .searchResult .item:hover {

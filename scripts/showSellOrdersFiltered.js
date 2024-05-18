@@ -1,3 +1,17 @@
+let fetchResults = null; // Declare fetchResults variable in the global scope
+
+
+function updateFormData(form, startValue = '0') {
+    const formData = new FormData(form);
+    formData.append('start', startValue);
+    let selectedCategory = null; // Declare selectedCategory variable
+    if (selectedCategory) {
+        formData.append('category', selectedCategory);
+        categorySelect.value = selectedCategory;
+    }
+    return new URLSearchParams(formData).toString();
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('searchForm');
     const categorySelect = document.getElementById('category');
@@ -8,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
     const selectedCategory = urlParams.get('category');
 
-    const fetchResults = (params) => {
+    fetchResults = (params) => { // Assign fetchResults function in the global scope
         fetch(`../actions/action.getSellOrdersFilter.php?${params}`, { method: 'GET' })
             .then(response => response.json())
             .then(data => {
@@ -16,16 +30,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('Data received:', data);
             })
             .catch(error => console.error('Error:', error));
-    };
-
-    const updateFormData = (form, startValue = '0') => {
-        const formData = new FormData(form);
-        formData.append('start', startValue);
-        if (selectedCategory) {
-            formData.append('category', selectedCategory);
-            categorySelect.value = selectedCategory;
-        }
-        return new URLSearchParams(formData).toString();
     };
 
     const params = updateFormData(form);
@@ -74,20 +78,23 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
         });
     }
-
-    function addWishlist(val) {
-        fetch('../actions/action.addWishlist.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ ID: val }),
-        })
-        .then(response => response.text())
-        .then(console.log)
-        .catch(error => console.error('Error:', error));
-    }
-
-    function changePage(val) {
-        const params = updateFormData(form, val.toString());
-        fetchResults(params);
-    }
 });
+
+// Define changePage function in the global scope
+function changePage(val) {
+    console.log("Change page to: ", val);
+    const form = document.getElementById('searchForm'); // Retrieve form element
+    const params = updateFormData(form, val.toString()); // Generate updated params with new start value
+    fetchResults(params); // Fetch results with updated params
+}
+
+function addWishlist(val) {
+    fetch('../actions/action.addWishlist.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ID: val }),
+    })
+    .then(response => response.text())
+    .then(console.log)
+    .catch(error => console.error('Error:', error));
+}
