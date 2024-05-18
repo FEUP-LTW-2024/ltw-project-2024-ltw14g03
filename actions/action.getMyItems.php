@@ -15,10 +15,8 @@ if ($userId === null) {
     exit();
 }
 
-// Read the raw input
 $json = file_get_contents('php://input');
 
-// Decode the JSON data
 $data = json_decode($json, true);
 
 $page = isset($data['page']) ? intval($data['page']) : 0;

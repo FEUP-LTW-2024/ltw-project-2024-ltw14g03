@@ -661,7 +661,6 @@ main {
     transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Smooth transition on hover */
 
     margin-top: auto;
-    margin-left: auto;
 }
 
 .wishlistButton:hover {
@@ -683,7 +682,6 @@ main {
     transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Smooth transition on hover */
 
     margin-top: auto;
-    margin-left: auto;
 }
 
 .de-wishlistButton:hover {
@@ -710,7 +708,6 @@ main {
     transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Smooth transition on hover */
 
     margin-top: auto;
-    margin-left: auto;
 }
 
 .checkoutlistButton:hover {
@@ -732,7 +729,6 @@ main {
     transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Smooth transition on hover */
 
     margin-top: auto;
-    margin-left: auto;
 }
 
 .de-checkoutButton:hover {
@@ -823,6 +819,14 @@ main {
 .searchResult .item img {
     width: 100%;
     border-radius: 10%;
+}
+
+.searchResult .actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    margin-top: 1em; /* Ensure there's some space between details and actions */
+    align-items: center; /* Align items to the center horizontally */
 }
 
 .searchResult{

@@ -132,4 +132,14 @@
         position: fixed;
         bottom: 0;
     }
+
+    /* BROWSE   */
+    .browse{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sidesearch{
+        width: 100%;
+    }
 }
