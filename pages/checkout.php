@@ -7,19 +7,25 @@ $session = new Session();
 $db = getDatabaseConnection();
 
 // Prepare SQL statement
-$stmt = $db->prepare('SELECT COUNT(*) AS number FROM shopping_cart');
+$stmt = $db->prepare('SELECT COUNT(*) AS number FROM shopping_cart WHERE user_id = ?');
 
 // Execute the statement
-$stmt->execute();
+$stmt->execute([$session->getParam('id')]);
 
 // Access the row count
 $n = $stmt->fetch(PDO::FETCH_ASSOC)['number'];
+
+if($n == 0){
+    header('Location: ../pages/index.php');
+    exit();
+}
 
 
 drawHeader($session);
 ?>
 
 <script src="../scripts/showCheckoutlist.js"></script>
+<script src="../scripts/itemClickHandler.js"></script>
 
 <main id="mainPage">
 

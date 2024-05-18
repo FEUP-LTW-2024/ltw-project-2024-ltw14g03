@@ -36,21 +36,21 @@ document.addEventListener('DOMContentLoaded', function() {
             
             `;
 
-        }
-        else if (checkoutButton) {
+        } else if (checkoutButton) {
 
             addcheckout(checkoutButton.dataset.value, checkoutButton.dataset.page);
+
+            console.log("loasdasd")
 
             const checkoutDIV = event.target.closest(".checkout");
 
             checkoutDIV.innerHTML = `
                 
-                <button class="wishlistButton" id="button${checkoutButton.dataset.ID}" data-value="${checkoutButton.dataset.value}" data-page="${checkoutButton.dataset.page}" data-ID="${checkoutButton.dataset.ID}">Wishlist</button>
+                <button class="de-checkoutButton" id="button${checkoutButton.dataset.ID}" data-value="${checkoutButton.dataset.value}" data-page="${checkoutButton.dataset.page}" data-ID="${checkoutButton.dataset.ID}">Remove from Cart</button>
             
             `;
 
-        }
-        else if (decheckoutButton) {
+        } else if (decheckoutButton) {
 
             removecheckout(decheckoutButton.dataset.value, decheckoutButton.dataset.page);
 
@@ -58,9 +58,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
             checkoutDIV.innerHTML = `
                 
-                <button class="wishlistButton" id="button${decheckoutButton.dataset.ID}" data-value="${decheckoutButton.dataset.value}" data-page="${decheckoutButton.dataset.page}" data-ID="${decheckoutButton.dataset.ID}">Wishlist</button>
+                <button class="checkoutlistButton" id="button${decheckoutButton.dataset.ID}" data-value="${decheckoutButton.dataset.value}" data-page="${decheckoutButton.dataset.page}" data-ID="${decheckoutButton.dataset.ID}">Add to Cart</button>
             
             `;
+
 
         }
         else if (removeButton) {
@@ -94,9 +95,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         console.log("lmao");
                     });
             })
-
-
     }
+
+
 
     function removeWishlist(val, page){
 
@@ -130,15 +131,6 @@ function addcheckout(val, page){
         method: 'POST',
         body: JSON.stringify(params),
     })
-        .then(response => {
-            return response.text()
-                .then(t => {
-                    fetchSellOrders(parseInt(page), false);
-                });
-        })
-        .catch(error => {
-            console.error('Error adding to checkout list: ', error);
-        });
 }
 
 function removecheckout(val, page){
@@ -151,12 +143,6 @@ function removecheckout(val, page){
         method: 'POST',
         body: JSON.stringify(params),
     })
-        .then(response => {
-            return response.text()
-                .then(t => {
-                    fetchSellOrders(parseInt(page), false);
-                });
-        })
 
 
 }

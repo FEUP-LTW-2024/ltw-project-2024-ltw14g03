@@ -1,5 +1,7 @@
 async function fetchItems(page) {
+
     console.log('Fetching items for page:', page);
+
     try {
         const response = await fetch('../actions/action.getMyItems.php', {
             method: 'POST',
@@ -65,9 +67,13 @@ function displayItems(items) {
         const conditionP = document.createElement('p');
         conditionP.textContent = 'Condition: ' + item.condition_id;
 
+        const removeButtonDiv = document.createElement('div')
+        removeButtonDiv.classList.add('removePost')
+
         const removeButton = document.createElement('button');
+        removeButton.classList.add('removeButton')
+        removeButton.dataset.value = item.item_id;
         removeButton.textContent = 'Remove Item';
-        removeButton.onclick = () => removeItem(item.item_id);
 
         detailsDiv.appendChild(priceP);
         detailsDiv.appendChild(conditionP);
@@ -79,7 +85,9 @@ function displayItems(items) {
         itemElement.appendChild(imgElement);
         itemElement.appendChild(descDiv);
 
-        itemElement.appendChild(removeButton);
+
+        removeButtonDiv.appendChild(removeButton)
+        itemElement.appendChild(removeButtonDiv);
 
         itemsDiv.appendChild(itemElement);
     });

@@ -33,7 +33,7 @@ drawHeader($session);
             <div class = "pageSelect">
                 <list>
 
-                    <?php for($i = 0; $i < $n/10; $i++): ?>
+                    <?php for($i = 0; $i < ($n - 1)/10; $i++): ?>
 
                         <li><h2><a href = "#" onclick = "changePage(<?php echo $i?>)"><?php echo $i + 1?></a></h2></li>
 

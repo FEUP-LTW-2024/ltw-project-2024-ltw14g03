@@ -84,6 +84,7 @@ function fetchSellOrders(start, animate = true) {
                                                 }
                 }
                 else if(item.wish == '1'){
+
                     if(item.cart == '0'){ // in wishlist but not in checkout
                     container.innerHTML += `
                                         <div class="item" id="item_${item.item_id}" data-value="${item.item_id}" style="animation-delay: ${count / 8}s">

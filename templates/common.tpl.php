@@ -1,7 +1,8 @@
 <?php 
   declare(strict_types = 1); 
 
-  require_once(__DIR__ . '/../utils/session.php');
+    require_once(__DIR__ . '/../utils/session.php');
+    require_once(__DIR__ . '/../database/connection.db.php');
   
 ?>
 
@@ -37,9 +38,23 @@
                 <?php if($session->isLoggedIn()) {?>
 
                     <li><a href="../pages/wishlist.php">Wishlist</a></li>
-                    <li><a href="../pages/checkout.php">Checkout</a></li>
 
-                    <?php if($session->isAdmin()){?>
+                    <?php
+                        $db = getDatabaseConnection();
+                        $stmt = $db->prepare('SELECT COUNT(*) AS number FROM shopping_cart WHERE user_id = ?');
+
+                        $stmt->execute([$session->getParam('id')]);
+
+                        $n = $stmt->fetch(PDO::FETCH_ASSOC)['number'];
+
+                        if($n > 0){
+                    ?>
+
+                        <li><a href="../pages/checkout.php">Checkout</a></li>
+
+                    <?php
+                            }
+                        if($session->isAdmin()){?>
                         <li><a href="../pages/adminpage.php">Admin Panel</a></li>
                     <?php }?>
 

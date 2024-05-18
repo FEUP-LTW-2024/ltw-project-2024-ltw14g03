@@ -15,12 +15,18 @@ if ($userId === null) {
     exit();
 }
 
-$page = isset($_GET['page']) ? intval($_GET['page']) : 1;
-$perPage = 10;
-$offset = ($page - 1) * $perPage;
+// Read the raw input
+$json = file_get_contents('php://input');
 
-$stmt = $db->prepare("SELECT * FROM items WHERE seller_id = ? LIMIT ?, ?");
-$stmt->execute([$userId, $offset, $perPage]);
+// Decode the JSON data
+$data = json_decode($json, true);
+
+$page = isset($data['page']) ? intval($data['page']) : 0;
+$perPage = 10;
+$offset = $page;
+
+$stmt = $db->prepare("SELECT * FROM items WHERE seller_id = ? LIMIT 10 OFFSET (9 * ?)");
+$stmt->execute([$userId, $offset]);
 
 $items = $stmt->fetchAll();
 if($items === false) {

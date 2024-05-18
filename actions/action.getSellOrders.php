@@ -45,8 +45,6 @@ try {
         $stmt->execute([$us['category_id']]);
         $us['category'] = $stmt->fetch();
 
-
-
         $stmt = $db->prepare("SELECT * FROM wishlist WHERE item_id = ? LIMIT 1");
         $stmt->execute([$us['item_id']]);
         $wish = $stmt->fetch();

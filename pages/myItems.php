@@ -15,7 +15,7 @@ $stmt = $db->prepare('SELECT COUNT(*) AS number FROM items WHERE seller_id = ?')
 $stmt->execute([$session->getParam('id')]);
 $totalItems = $stmt->fetch(PDO::FETCH_ASSOC)['number'];
 $itemsPerPage = 10;
-$totalPages = ceil($totalItems / $itemsPerPage);
+$totalPages = ceil(($totalItems - 1) / $itemsPerPage);
 
 drawHeader($session);
 ?>
@@ -34,11 +34,18 @@ drawHeader($session);
 <div class="featured-items">
         <div class="title-and-select">
             <h2>My Items</h2>
+
             <div class = "pageSelect">
-                <?php for ($i = 0; $i < $totalPages; $i++): ?>
-                    <li><h2><a href = "#" onclick = "fetchItems(<?php echo $i?>)"><?php echo $i + 1?></a></h2></li>
-                <?php endfor; ?>
+                <list>
+
+                    <?php for($i = 0; $i < $totalPages; $i++): ?>
+
+                        <li><h2><a href = "#" onclick = "fetchItems(<?php echo $i?>)"><?php echo $i + 1?></a></h2></li>
+
+                    <?php endfor; ?>
+                </list>
             </div>
+
         </div>
             <div class = "product-list" id = "myItems">
             </div>

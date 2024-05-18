@@ -58,7 +58,7 @@ foreach ($sellOrders as &$sellOrder) {
 
     $stmt = $db->prepare("SELECT image_url FROM item_images WHERE item_id = :item_id LIMIT 1;");
     $stmt->execute([':item_id' => $sellOrder['item_id']]);
-    $sellOrder['images'] = $stmt->fetch()['image_url'] ?? 'no-image.png'; // Default image if none
+    $sellOrder['image'] = $stmt->fetch()['image_url'] ?? 'no-image.png'; // Default image if none
 
     $stmt = $db->prepare("SELECT * FROM wishlist WHERE item_id = ? LIMIT 1");
     $stmt->execute([$sellOrder['item_id']]);
