@@ -750,6 +750,7 @@ main {
 
 .sidesearch{
     background-color: #f4f4f4; 
+    padding-bottom: auto;
 }
 
 .sidesearch h2 {
@@ -785,7 +786,7 @@ main {
 }
 
 .searchResult .item {
-    min-width: calc(15% + 100px);
+    min-width: calc(15% + 150px);
     max-width: 20%;
     background-color: #f4f4f4;
     filter: drop-shadow(0 0 1rem #c7cfcc);
@@ -800,7 +801,7 @@ main {
 }
 
 .searchResult .item:hover {
-    min-width: calc(20% + 100px);
+    min-width: calc(20% + 150px);
     max-width: 25%;
 }
 

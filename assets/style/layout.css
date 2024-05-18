@@ -42,10 +42,14 @@ body{
 
 .browse {
     display: flex;
+    height: 100%;
 }
 
+
+.search-results{
+    width: 100%;
+}
 .sidesearch {
-    width: 40%;
     display: flex;
     flex-direction: column;
     gap: 20px; /* Vertical spacing between elements within the sidebar */
