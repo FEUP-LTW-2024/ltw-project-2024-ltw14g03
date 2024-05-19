@@ -11,11 +11,22 @@ if (!$session->isLoggedIn()) {
 }
 
 $db = getDatabaseConnection();
-$stmt = $db->prepare('SELECT COUNT(*) AS number FROM items WHERE seller_id = ?');
+$itemsPerPage = 10;
+
+$stmt = $db->prepare('SELECT COUNT(*) AS number FROM items WHERE seller_id = ? And status = "listed"');
 $stmt->execute([$session->getParam('id')]);
 $totalItems = $stmt->fetch(PDO::FETCH_ASSOC)['number'];
-$itemsPerPage = 10;
 $totalPages = ceil(($totalItems - 1) / $itemsPerPage);
+
+$stmt = $db->prepare('SELECT COUNT(*) AS number FROM items WHERE seller_id = ? And status = "sold"');
+$stmt->execute([$session->getParam('id')]);
+$totalItems = $stmt->fetch(PDO::FETCH_ASSOC)['number'];
+$totalSolds = ceil(($totalItems - 1) / $itemsPerPage);
+
+$stmt = $db->prepare('SELECT COUNT(*) AS number FROM items WHERE seller_id = ? And status = "sold_processing"');
+$stmt->execute([$session->getParam('id')]);
+$totalItems = $stmt->fetch(PDO::FETCH_ASSOC)['number'];
+$totalPSolds = ceil(($totalItems - 1) / $itemsPerPage);
 
 drawHeader($session);
 ?>
@@ -28,31 +39,36 @@ drawHeader($session);
 <body>
 
 <script>
-    window.onload = function() {
-        fetchItems(0);
-        fetchItemsProcessing(0);
-        fetchItemsSold(0);
+    window.onload = async function () {
+        await fetchItemsProcessing(0);
+        await fetchItems(0);
+        await fetchItemsSold(0);
     }
 </script>
 
 <div class="featured-items">
-<div class="title-and-select">
-            <h2>Processing Items</h2>
 
-            <div class = "pageSelect">
-                <list>
+        <?php if($totalPSolds > 0): ?>
+            <div class="title-and-select">
+                <h2>Processing Items</h2>
 
-                    <?php for($i = 0; $i < $totalPages; $i++): ?>
+                <div class = "pageSelect">
+                    <list>
 
-                        <li><h2><a href = "#" onclick = "fetchItemsProcessing(<?php echo $i?>)"><?php echo $i + 1?></a></h2></li>
+                        <?php for($i = 0; $i < $totalPSolds; $i++): ?>
 
-                    <?php endfor; ?>
-                </list>
+                            <li><h2><a href = "#" onclick = "fetchItemsProcessing(<?php echo $i?>)"><?php echo $i + 1?></a></h2></li>
+
+                        <?php endfor; ?>
+                    </list>
+                </div>
+
             </div>
-
-        </div>
             <div class = "product-list" id = "myItemsProcessing">
+
             </div>
+
+        <?php endif; ?>
 
         <div class="title-and-select">
             <h2>My Items</h2>
@@ -72,23 +88,25 @@ drawHeader($session);
             <div class = "product-list" id = "myItems">
             </div>
 
+        <?php if($totalSolds > 0): ?>
             <div class="title-and-select">
-            <h2>Sold Items</h2>
+                <h2>Sold Items</h2>
 
-            <div class = "pageSelect">
-                <list>
+                <div class = "pageSelect">
+                    <list>
 
-                    <?php for($i = 0; $i < $totalPages; $i++): ?>
+                        <?php for($i = 0; $i < $totalPages; $i++): ?>
 
-                        <li><h2><a href = "#" onclick = "fetchItemsSold(<?php echo $i?>)"><?php echo $i + 1?></a></h2></li>
+                            <li><h2><a href = "#" onclick = "fetchItemsSold(<?php echo $i?>)"><?php echo $i + 1?></a></h2></li>
 
-                    <?php endfor; ?>
-                </list>
+                        <?php endfor; ?>
+                    </list>
+                </div>
             </div>
 
-        </div>
             <div class = "product-list" id = "myItemsSold">
             </div>
+        <?php endif; ?>
 </div>
 
 <div id="shippingFormContainer" style="display:none;">

@@ -29,7 +29,7 @@ drawHeader($session);
 
                 <div class = "sell-order-item" id = "SellImage">
                     <img id = "imageSell" src = "https://via.placeholder.com/150">
-                    <input type="file" id = "imageInput" name="image[]" accept="image/*" multiple>
+                    <input type="file" id = "imageInput" name="image[]" accept="image/*" required>
                 </div>
 
                 <div class = "sell-order-item" id = "Sellbody">

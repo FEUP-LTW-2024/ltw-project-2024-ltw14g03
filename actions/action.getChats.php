@@ -14,16 +14,15 @@ function objectExistsInArray($obj, $array) {
     return false;
 }
 
-$db = getDatabaseConnection();
-$session = new Session();
+    $db = getDatabaseConnection();
+    $session = new Session();
 
-$json = file_get_contents('php://input');
+    $json = file_get_contents('php://input');
 
-$data = json_decode($json, true);
+    $data = json_decode($json, true);
 
-
-$userID = $data['sender_id'];
-$other = $data['receiver_id'];
+    $userID = $data['sender_id'];
+    $other = $data['receiver_id'];
 
     $query = $db->prepare('SELECT DISTINCT receiver_id AS id FROM messages WHERE sender_id = ?');
     $query->execute([$userID]);

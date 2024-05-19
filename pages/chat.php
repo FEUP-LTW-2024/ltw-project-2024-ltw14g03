@@ -43,6 +43,7 @@ drawHeader($session);
 
             <textarea id="message-input" placeholder="Type your message here..."></textarea>
             <button onclick="sendMessage()">Send</button>
+
         </div>
     </div>
 </body>
