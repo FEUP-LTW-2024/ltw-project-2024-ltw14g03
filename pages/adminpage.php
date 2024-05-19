@@ -50,6 +50,13 @@ drawHeader($session);
         <button type="submit" name="removeCondition" class="btn btn-red">Remove Condition</button>
     </form>
 
+    <form method="post" action="" class="admin-form">
+        <label for="sizeName">Size Name:</label>
+        <input type="text" id="sizeName" name="sizeName" class="text-input">
+        <button type="submit" name="addSize" class="btn btn-green">Add Size</button>
+        <button type="submit" name="removeSize" class="btn btn-red">Remove Size</button>
+    </form>
+
 </main>
 
 
