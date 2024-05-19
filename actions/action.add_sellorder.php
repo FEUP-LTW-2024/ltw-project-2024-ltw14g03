@@ -12,16 +12,17 @@ $response = ['success' => false, 'uploaded' => []];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $db = getDatabaseConnection();
-    $stmt = $db->prepare("INSERT INTO items (name, seller_id, category_id, condition_id, model, size_id, price, description) VALUES (:name, :seller_id, :category_id, :condition_id, :model, :size_id, :price, :description)");
+    $stmt = $db->prepare("INSERT INTO items (name, seller_id, category_id, condition_id, model, size_id, price, description, brand_id) VALUES (:name, :seller_id, :category_id, :condition_id, :model, :size_id, :price, :description, :brand)");
     if ($stmt->execute([
         'name' => $_POST['name'],
         'seller_id' => $user_id, 
         ':category_id' => $_POST['category'], 
         ':condition_id' => $_POST['condition'], 
         ':model' => $_POST['model'], 
-        ':size_id' => $_POST['size_'], 
+        ':size_id' => $_POST['size'], 
         ':price' => $_POST['price'], 
-        ':description' => $_POST['description']
+        ':description' => $_POST['description'],
+        ':brand' => $_POST['brand']
     ])) {
         $item_id = $db->lastInsertId();
         $response['item_id'] = $item_id;

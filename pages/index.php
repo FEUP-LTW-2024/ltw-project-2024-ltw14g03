@@ -26,11 +26,20 @@
 
 <main id="mainPage">
     <section class="featured-items">
+    <h1 class="center-header">Categories</h1>
+        <div id ="featured-buttons">
+            <?php
+            $stmt = $db->query("SELECT * FROM categories");
+            $categories = $stmt->fetchAll();
+            foreach ($categories as $category) {
+                echo "<button class='category-button' data-category-id='" . $category['category_id'] ."'>" . htmlspecialchars($category['name']) . "</button>";
+            }
+            ?>
+        </div>
+
         <div class="featured-header">
 
             <h1>Featured Items</h1>
-
-            <h1 class="center-header">Categories</h1>
 
             <div class = "pageSelect">
                 <list>
@@ -43,16 +52,6 @@
                 </list>
             </div>
 
-        </div>
-
-        <div id ="featured-buttons">
-            <?php
-            $stmt = $db->query("SELECT * FROM categories");
-            $categories = $stmt->fetchAll();
-            foreach ($categories as $category) {
-                echo "<button class='category-button' data-category-id='" . $category['category_id'] ."'>" . htmlspecialchars($category['name']) . "</button>";
-            }
-            ?>
         </div>
 
         <div class="featured-items"></div>

@@ -15,12 +15,6 @@ $stmt->execute([$session->getParam('id')]);
 // Access the row count
 $n = $stmt->fetch(PDO::FETCH_ASSOC)['number'];
 
-if($n == 0){
-    header('Location: ../pages/index.php');
-    exit();
-}
-
-
 drawHeader($session);
 ?>
 

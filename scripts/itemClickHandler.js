@@ -14,110 +14,17 @@ document.addEventListener('DOMContentLoaded', function() {
         event.stopPropagation();
 
         if (wishlistButton) {
-            addWishlist(wishlistButton.dataset.value, wishlistButton.dataset.page);
-
-            const wishlistDIV = event.target.closest(".wishlist");
-
-            wishlistDIV.innerHTML = `
-                
-                <button class="de-wishlistButton" id="button${wishlistButton.dataset.ID}" data-value="${wishlistButton.dataset.value}" data-page="${wishlistButton.dataset.page}" data-ID="${wishlistButton.dataset.ID}" type="button">De-Wishlist</button>
-            
-            `;
-
         } else if (dewishlistButton) {
-
-            removeWishlist(dewishlistButton.dataset.value, dewishlistButton.dataset.page);
-
-            const wishlistDIV = event.target.closest(".wishlist");
-
-            wishlistDIV.innerHTML = `
-                
-                <button class="wishlistButton" id="button${dewishlistButton.dataset.ID}" data-value="${dewishlistButton.dataset.value}" data-page="${dewishlistButton.dataset.page}" data-ID="${dewishlistButton.dataset.ID}">Wishlist</button>
-            
-            `;
-
         } else if (checkoutButton) {
-
-            addcheckout(checkoutButton.dataset.value, checkoutButton.dataset.page);
-
-            console.log("loasdasd")
-
-            const checkoutDIV = event.target.closest(".checkout");
-
-            checkoutDIV.innerHTML = `
-                
-                <button class="de-checkoutButton" id="button${checkoutButton.dataset.ID}" data-value="${checkoutButton.dataset.value}" data-page="${checkoutButton.dataset.page}" data-ID="${checkoutButton.dataset.ID}">Remove from Cart</button>
-            
-            `;
-
         } else if (decheckoutButton) {
-
-            removecheckout(decheckoutButton.dataset.value, decheckoutButton.dataset.page);
-
-            const checkoutDIV = event.target.closest(".checkout");
-
-            checkoutDIV.innerHTML = `
-                
-                <button class="checkoutlistButton" id="button${decheckoutButton.dataset.ID}" data-value="${decheckoutButton.dataset.value}" data-page="${decheckoutButton.dataset.page}" data-ID="${decheckoutButton.dataset.ID}">Add to Cart</button>
-            
-            `;
-
-
-        }
-        else if (removeButton) {
-            event.stopPropagation(); // Prevent event propagation
-            const itemId = removeButton.dataset.value;
-            removeItem(itemId);
-
-        } 
-        else if (itemElement) {
+        }else if (removeButton) {
+        } else if (itemElement) {
             const itemID = itemElement.getAttribute('data-value');
 
             selectsSellOrder(itemID);
         }
 
     });
-
-
-    function addWishlist(val, page) {
-
-        params = {
-            ID: val,
-        }
-
-        fetch('../actions/action.addWishlist.php', {
-            method: 'POST',
-            body: JSON.stringify(params),
-        })
-            .then(response => {
-                return response.text()
-                    .then(t => {
-                        console.log("lmao");
-                    });
-            })
-    }
-
-
-
-    function removeWishlist(val, page){
-
-        params = {
-            ID: val,
-        }
-
-        fetch('../actions/action.removeWishlist.php', {
-            method: 'POST',
-            body: JSON.stringify(params),
-        })
-            .then(response => {
-                return response.text()
-                    .then(t => {
-                        console.log("lol");
-                    });
-            })
-
-
-    }
 
 });
 

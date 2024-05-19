@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 require_once(__DIR__ . '/../utils/session.php');
@@ -15,16 +14,31 @@ if (!$session->isLoggedIn()) {
     exit();
 }
 
-// Read the raw input
 $json = file_get_contents('php://input');
-
-// Decode the JSON data
 $data = json_decode($json, true);
 
-$db = getDatabaseConnection();
+if (!isset($data['item_id'])) {
+    http_response_code(400);
+    echo json_encode(['error' => 'Item ID not provided']);
+    exit();
+}
 
-$stmt = $db->prepare("DELETE FROM shopping_cart WHERE user_id = ? AND item_id = ?");
-$stmt->execute([$session->getParam('id'), $data['ID']]);
+$itemId = (int)$data['item_id'];
+$userId = $session->getParam('id');
 
-echo 'lol';
+try {
+    $db = getDatabaseConnection();
+    $stmt = $db->prepare('DELETE FROM shopping_cart WHERE user_id = ? AND item_id = ?');
+    $stmt->execute([$userId, $itemId]);
+
+    if ($stmt->rowCount() > 0) {
+        echo json_encode(['success' => true]);
+    } else {
+        http_response_code(404);
+        echo json_encode(['error' => 'Item not found in shopping cart']);
+    }
+} catch (Exception $e) {
+    http_response_code(500);
+    echo json_encode(['error' => 'Failed to remove item from shopping cart', 'message' => $e->getMessage()]);
+}
 ?>

@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="../assets/style/style.css">
     <link rel="stylesheet" href="../assets/style/layout.css">
     <link rel="stylesheet" href="../assets/style/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <script src="../scripts/logout.js"></script>
     <script src="../scripts/notification.js" ></script>
@@ -37,27 +38,14 @@
                 <li><a href="../pages/browse.php">Browse</a></li>
                 <?php if($session->isLoggedIn()) {?>
 
-                    <li><a href="../pages/wishlist.php">Wishlist</a></li>
 
                     <?php
-                        $db = getDatabaseConnection();
-                        $stmt = $db->prepare('SELECT COUNT(*) AS number FROM shopping_cart WHERE user_id = ?');
-
-                        $stmt->execute([$session->getParam('id')]);
-
-                        $n = $stmt->fetch(PDO::FETCH_ASSOC)['number'];
-
-                        if($n > 0){
-                    ?>
-
-                        <li><a href="../pages/checkout.php">Checkout</a></li>
-
-                    <?php
-                            }
                         if($session->isAdmin()){?>
                         <li><a href="../pages/adminpage.php">Admin Panel</a></li>
                     <?php }?>
-
+                    
+                  <li class="pushToRight"><a href="../pages/wishlist.php"><i class="fas fa-heart"></i> </a></li>
+                  <li><a href="../pages/checkout.php"><i class="fas fa-shopping-cart"></i></a></li>
                   <li class="dropdown"><img class="profileImageBar" src="<?php echo $session->getParam("pfp")?>"><a href="" id="username-bar"><?php echo  $_SESSION['username']?></a>
 
                   <div class="dropdown-content">

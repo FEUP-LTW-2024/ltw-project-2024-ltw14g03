@@ -6,8 +6,9 @@
     $session = new Session();
     $db = getDatabaseConnection();
 
-    $stmt = $db->prepare('SELECT COUNT(*) AS number FROM items');
-
+    $stmt = $db->prepare('SELECT COUNT(*) AS number FROM items WHERE seller_id != :user_id');
+    $user_id = $session->getParam('id');
+    $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
     $stmt->execute();
 
     $n = $stmt->fetch(PDO::FETCH_ASSOC)['number'];
