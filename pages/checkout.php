@@ -6,7 +6,7 @@ $session = new Session();
 
 $db = getDatabaseConnection();
 
-$stmt = $db->prepare('SELECT COUNT(*) AS number FROM shopping_cart WHERE user_id = ?');
+$stmt = $db->prepare('SELECT COUNT(*) AS number FROM shopping_cart WHERE user_id = ? ');
 
 $stmt->execute([$session->getParam('id')]);
 

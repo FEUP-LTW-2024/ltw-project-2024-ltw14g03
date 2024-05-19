@@ -6,8 +6,13 @@
 
     $db = getDatabaseConnection();
 
-    $stmt = $db->prepare('SELECT COUNT(*) AS number FROM items');
+    // Prepare SQL statement
+    $stmt = $db->prepare('SELECT COUNT(*) AS number FROM items WHERE seller_id != :user_id AND status = "listed"');
+
+    // Execute the statement
     $stmt->execute();
+
+    // Access the row count
     $n = $stmt->fetch(PDO::FETCH_ASSOC)['number'];
 
 
@@ -21,7 +26,8 @@
 
 <main id="mainPage">
     <section class="featured-items">
-    <h1 class="center-header">Categories</h1>
+        
+        <h1>Categories </h1>
         <div id ="featured-buttons">
             <?php
             $stmt = $db->query("SELECT * FROM categories");
@@ -36,10 +42,12 @@
 
             <h1>Featured Items</h1>
 
+            <h1 class="center-header">Categories</h1>
+
             <div class = "pageSelect">
                 <list>
 
-                    <?php for($i = 0; $i < ($n - 1)/10; $i++): ?>
+                    <?php for($i = 0; $i < max((($n - 1)/10),1); $i++): ?>
 
                         <li><h2><a href = "#" onclick = "changePage(<?php echo $i?>)"><?php echo $i + 1?></a></h2></li>
 
