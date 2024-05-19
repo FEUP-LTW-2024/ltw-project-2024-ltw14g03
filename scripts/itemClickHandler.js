@@ -9,6 +9,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const checkoutButton = event.target.closest(".checkoutlistButton");
         const decheckoutButton = event.target.closest(".de-checkoutButton");
 
+        const finishSaleButton = event.target.closest(".finishSale");
+        const shippingForm = event.target.closest(".shippingForm");
+
+
         const removeButton = event.target.closest(".removeButton");
 
         event.stopPropagation();
@@ -18,7 +22,9 @@ document.addEventListener('DOMContentLoaded', function() {
         } else if (checkoutButton) {
         } else if (decheckoutButton) {
         }else if (removeButton) {
-        } else if (itemElement) {
+        } else if (finishSaleButton) {
+        } else if (shippingForm) {
+        }else if (itemElement) {
             const itemID = itemElement.getAttribute('data-value');
 
             selectsSellOrder(itemID);

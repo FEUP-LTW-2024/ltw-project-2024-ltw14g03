@@ -22,8 +22,8 @@ $data = json_decode($json, true);
 $page = isset($data['page']) ? intval($data['page']) : 0;
 $perPage = 10;
 $offset = $page;
-
-$stmt = $db->prepare("SELECT * FROM items WHERE seller_id = ? AND status = 'listed' LIMIT 10 OFFSET (9 * ?)");
+ 
+$stmt = $db->prepare("SELECT * FROM items WHERE seller_id = ? AND status='sold_processing' LIMIT 10 OFFSET (9 * ?)");
 $stmt->execute([$userId, $offset]);
 
 $items = $stmt->fetchAll();

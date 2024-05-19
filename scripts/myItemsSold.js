@@ -1,9 +1,9 @@
-async function fetchItems(page) {
+async function fetchItemsSold(page) {
 
     console.log('Fetching items for page:', page);
 
     try {
-        const response = await fetch('../actions/action.getMyItems.php', {
+        const response = await fetch('../actions/action.getMyItemsSold.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -19,7 +19,7 @@ async function fetchItems(page) {
         console.log('Response data:', data);
 
         if (data.success && Array.isArray(data.items)) {
-            displayItems(data.items);
+            displayItemsSold(data.items);
         } else {
             console.error('Invalid response data:', data);
         }
@@ -29,14 +29,14 @@ async function fetchItems(page) {
 }
 
 
-function displayItems(items) {
+function displayItemsSold(items) {
     console.log("Items: ",items);
     if (!Array.isArray(items)) {
         console.error('Items is not an array:', items);
         return;
     }
 
-    const itemsDiv = document.getElementById('myItems');
+    const itemsDiv = document.getElementById('myItemsSold');
     itemsDiv.innerHTML = ''; 
 
     items.forEach((item, index) => {
@@ -75,43 +75,7 @@ function displayItems(items) {
         brandP.textContent = 'Brand: ' + item.brand.name;
 
         const sizeP = document.createElement('p');
-        sizeP.textContent = 'Size: ' + item.size.name;
-
-        const removeButtonDiv = document.createElement('div')
-        removeButtonDiv.classList.add('removePost')
-
-        const removeButton = document.createElement('button');
-        removeButton.classList.add('removeButton')
-        removeButton.dataset.value = item.item_id;
-        removeButton.textContent = 'Remove Item';
-        removeButton.addEventListener('click', async () => {
-            try {
-                const response = await fetch('../actions/action.removeItem.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ item_id: item.item_id })
-                });
-
-                if (!response.ok) {
-                    throw new Error('Error removing item: ' + response.statusText);
-                }
-
-                const data = await response.json();
-                console.log('Response data:', data);
-
-                if (data.success) {
-                    console.log('Item removed:', item.item_id);
-                    fetchItems(0);
-                } else {
-                    console.error('Failed to remove item:', data.error);
-                }
-            } catch (error) {
-                console.error('Error removing item:', error);
-            }
-        }
-        );
+        sizeP.textContent = 'Size: ' + item.size.name;   
 
         detailsDiv.appendChild(priceP);
         detailsDiv.appendChild(conditionP);7
@@ -127,9 +91,6 @@ function displayItems(items) {
         itemElement.appendChild(imgElement);
         itemElement.appendChild(descDiv);
 
-
-        removeButtonDiv.appendChild(removeButton)
-        itemElement.appendChild(removeButtonDiv);
 
         itemsDiv.appendChild(itemElement);
     });

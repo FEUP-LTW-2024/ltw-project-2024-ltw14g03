@@ -1,9 +1,9 @@
-async function fetchItems(page) {
+async function fetchItemsProcessing(page) {
 
-    console.log('Fetching items for page:', page);
+    console.log('Fetching items for page processing:', page);
 
     try {
-        const response = await fetch('../actions/action.getMyItems.php', {
+        const response = await fetch('../actions/action.getMyItemsProcessing.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -19,7 +19,7 @@ async function fetchItems(page) {
         console.log('Response data:', data);
 
         if (data.success && Array.isArray(data.items)) {
-            displayItems(data.items);
+            displayItemsProcessing(data.items);
         } else {
             console.error('Invalid response data:', data);
         }
@@ -29,14 +29,13 @@ async function fetchItems(page) {
 }
 
 
-function displayItems(items) {
-    console.log("Items: ",items);
+function displayItemsProcessing(items) {
     if (!Array.isArray(items)) {
         console.error('Items is not an array:', items);
         return;
     }
 
-    const itemsDiv = document.getElementById('myItems');
+    const itemsDiv = document.getElementById('myItemsProcessing');
     itemsDiv.innerHTML = ''; 
 
     items.forEach((item, index) => {
@@ -77,39 +76,41 @@ function displayItems(items) {
         const sizeP = document.createElement('p');
         sizeP.textContent = 'Size: ' + item.size.name;
 
-        const removeButtonDiv = document.createElement('div')
-        removeButtonDiv.classList.add('removePost')
+        const shippingFormDiv = document.createElement('div');
 
-        const removeButton = document.createElement('button');
-        removeButton.classList.add('removeButton')
-        removeButton.dataset.value = item.item_id;
-        removeButton.textContent = 'Remove Item';
-        removeButton.addEventListener('click', async () => {
-            try {
-                const response = await fetch('../actions/action.removeItem.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ item_id: item.item_id })
-                });
+        const shippingForm = document.createElement('button');
+        shippingForm.classList.add('shippingForm')
+        shippingForm.dataset.value = item.item_id;
+        shippingForm.textContent = 'Shipping Form';
+        
 
-                if (!response.ok) {
-                    throw new Error('Error removing item: ' + response.statusText);
-                }
+        const finishSaleDiv = document.createElement('div');
 
-                const data = await response.json();
-                console.log('Response data:', data);
-
+        const finishSaleButton = document.createElement('button');
+        finishSaleButton.classList.add('finishSale')
+        finishSaleButton.dataset.value = item.item_id;
+        finishSaleButton.textContent = "Finish Sale";
+        finishSaleButton.addEventListener('click', () => {
+            fetch('../actions/action.finishSale.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ item_id: item.item_id }),
+            })
+            .then(response => response.json())
+            .then(data => {
                 if (data.success) {
-                    console.log('Item removed:', item.item_id);
-                    fetchItems(0);
+                    console.log('Item sale finished successfully!');
+                    fetchItemsProcessing(0);
+
+                    const itemElement = document.querySelector(`.item[data-value="${item.item_id}"]`);
+                    itemElement.remove();
+
+                    fetchItemsSold(0);
                 } else {
-                    console.error('Failed to remove item:', data.error);
+                    console.log('Failed to finish sale: ' + data.error);
                 }
-            } catch (error) {
-                console.error('Error removing item:', error);
-            }
+            })
+            .catch(error => console.log('Error:', error));
         }
         );
 
@@ -128,8 +129,11 @@ function displayItems(items) {
         itemElement.appendChild(descDiv);
 
 
-        removeButtonDiv.appendChild(removeButton)
-        itemElement.appendChild(removeButtonDiv);
+        shippingFormDiv.appendChild(shippingForm);
+        itemElement.appendChild(shippingFormDiv);
+
+        finishSaleDiv.appendChild(finishSaleButton);
+        itemElement.appendChild(finishSaleDiv);
 
         itemsDiv.appendChild(itemElement);
     });
