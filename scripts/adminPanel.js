@@ -34,6 +34,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 case 'removeCondition':
                     actionPath = '../actions/action.removeCondition.php';
                     break;
+                case 'addSize':
+                    actionPath = '../actions/action.addSize.php';
+                    break;
+                case 'removeSize':
+                    actionPath = '../actions/action.removeSize.php';
+                    break;
             }
 
             fetch(actionPath, {
