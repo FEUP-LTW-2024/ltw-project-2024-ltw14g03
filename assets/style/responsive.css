@@ -1,5 +1,27 @@
 
+@media (max-width: 1700px) {
+    .available-chats .chat_room a h2 {
+        display: none;
+        width: 0;
+
+    }
+
+    .available-chats .chat_room-sel a h2 {
+        display: none;
+        width: 0;
+    }
+}
+
 @media (max-width: 800px) {
+
+    .available-chats .chat_room{
+        margin-left: 0;
+
+    }
+
+    .available-chats .chat_room-sel {
+        margin-left: 0;
+    }
 
     #mainPage{
         flex-direction: column;

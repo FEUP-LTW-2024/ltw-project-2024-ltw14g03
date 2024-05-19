@@ -989,6 +989,7 @@ main {
             border-radius: 1em;
             padding: 0.5em;
             background-color: #f4f4f4;
+            min-width: 6em;
 
             transition: background-color 0.3s;
 
@@ -1010,8 +1011,17 @@ main {
             border-radius: 1em;
             padding: 0.5em;
             background-color: #384955;
+            min-width: 6em;
 
             transition: background-color 0.3s;
+        }
+
+        .available-chats .chat_room a h2{
+            font-size: 1vw;
+        }
+
+        .available-chats .chat_room-sel a h2{
+            font-size: 1vw;
         }
 
         .available-chats .chat_room-sel:hover {
