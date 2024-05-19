@@ -95,5 +95,10 @@
       $otherUser = $query->fetch();
       $this->setParam("otherUser", json_encode($otherUser));
     }
+
+    public function generate_random_token() {
+      $this->setParam('crf_token',bin2hex(openssl_random_pseudo_bytes(32)));
+    }
   }
+
 ?>

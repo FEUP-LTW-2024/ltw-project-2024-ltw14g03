@@ -8,6 +8,12 @@ $session = new Session();
 $user = $session->getUserDetails();
 $user_id = $user['id'];
 
+if ($_POST['csrf'] !== $session->getParam('crf_token')) {
+    echo "<cript>console.log('CSRF token mismatch')</script>";
+    exit();
+  }
+
+
 $response = ['success' => false, 'uploaded' => []];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -27,8 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $item_id = $db->lastInsertId();
         $response['item_id'] = $item_id;
 
-        // Handle file upload
-        if (isset($_FILES['image']) && $_FILES['image']['error'][0] != 4) { // Check if image is uploaded and not empty
+        if (isset($_FILES['image']) && $_FILES['image']['error'][0] != 4) { 
             $target_dir = "../assets/images/";
             foreach ($_FILES["image"]["name"] as $key => $value) {
                 if ($_FILES['image']['error'][$key] == 0) {
