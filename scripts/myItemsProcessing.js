@@ -1,6 +1,5 @@
 async function fetchItemsProcessing(page) {
-
-    console.log('Fetching items for page processing:', page);
+    console.log('Fetching items for page:', page);
 
     try {
         const response = await fetch('../actions/action.getMyItemsProcessing.php', {
@@ -16,7 +15,7 @@ async function fetchItemsProcessing(page) {
         }
 
         const data = await response.json();
-        console.log('Response data:', data);
+        console.log('Response data processing:', data);
 
         if (data.success && Array.isArray(data.items)) {
             displayItemsProcessing(data.items);
@@ -28,7 +27,6 @@ async function fetchItemsProcessing(page) {
     }
 }
 
-
 function displayItemsProcessing(items) {
     if (!Array.isArray(items)) {
         console.error('Items is not an array:', items);
@@ -36,7 +34,7 @@ function displayItemsProcessing(items) {
     }
 
     const itemsDiv = document.getElementById('myItemsProcessing');
-    itemsDiv.innerHTML = ''; 
+    itemsDiv.innerHTML = '';
 
     items.forEach((item, index) => {
         const itemElement = document.createElement('div');
@@ -78,16 +76,33 @@ function displayItemsProcessing(items) {
 
         const shippingFormDiv = document.createElement('div');
 
-        const shippingForm = document.createElement('button');
-        shippingForm.classList.add('shippingForm')
-        shippingForm.dataset.value = item.item_id;
-        shippingForm.textContent = 'Shipping Form';
-        
+        const shippingFormButton = document.createElement('button');
+        shippingFormButton.classList.add('shippingForm');
+        shippingFormButton.dataset.value = item.item_id;
+        shippingFormButton.textContent = 'Shipping Form';
+        shippingFormButton.addEventListener('click', () => {
+            fetch('../actions/action.getShippingDetails.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ item_id: item.item_id })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    generateShippingForm(data.details);
+                } else {
+                    console.error('Failed to fetch shipping details:', data.error);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
 
         const finishSaleDiv = document.createElement('div');
 
         const finishSaleButton = document.createElement('button');
-        finishSaleButton.classList.add('finishSale')
+        finishSaleButton.classList.add('finishSale');
         finishSaleButton.dataset.value = item.item_id;
         finishSaleButton.textContent = "Finish Sale";
         finishSaleButton.addEventListener('click', () => {
@@ -111,11 +126,10 @@ function displayItemsProcessing(items) {
                 }
             })
             .catch(error => console.log('Error:', error));
-        }
-        );
+        });
 
         detailsDiv.appendChild(priceP);
-        detailsDiv.appendChild(conditionP);7
+        detailsDiv.appendChild(conditionP);
         detailsDiv.appendChild(categoryP);
         detailsDiv.appendChild(brandP);
         detailsDiv.appendChild(sizeP);
@@ -124,12 +138,10 @@ function displayItemsProcessing(items) {
         descDiv.appendChild(pElement);
         descDiv.appendChild(detailsDiv);
 
-
         itemElement.appendChild(imgElement);
         itemElement.appendChild(descDiv);
 
-
-        shippingFormDiv.appendChild(shippingForm);
+        shippingFormDiv.appendChild(shippingFormButton);
         itemElement.appendChild(shippingFormDiv);
 
         finishSaleDiv.appendChild(finishSaleButton);
@@ -137,4 +149,34 @@ function displayItemsProcessing(items) {
 
         itemsDiv.appendChild(itemElement);
     });
+}
+
+function generateShippingForm(details) {
+    const content = `
+        <div class="shipping-form">
+            <h1 class="shipping-form-title">Shipping Form</h1>
+            <h2 class="shipping-form-section-title">Item Details</h2>
+            <p class="shipping-form-detail"><strong>Name:</strong> ${details.item.name}</p>
+            <p class="shipping-form-detail"><strong>Description:</strong> ${details.item.description}</p>
+            <p class="shipping-form-detail"><strong>Price:</strong> ${details.item.price}€</p>
+            <p class="shipping-form-detail"><strong>Condition:</strong> ${details.item.condition.name}</p>
+            <p class="shipping-form-detail"><strong>Category:</strong> ${details.item.category.name}</p>
+            <p class="shipping-form-detail"><strong>Brand:</strong> ${details.item.brand.name}</p>
+            <p class="shipping-form-detail"><strong>Size:</strong> ${details.item.size.name}</p>
+            <h2 class="shipping-form-section-title">Buyer Details</h2>
+            <p class="shipping-form-detail"><strong>Name:</strong> ${details.buyer.firstName} ${details.buyer.lastName}</p>
+            <p class="shipping-form-detail"><strong>Email:</strong> ${details.buyer.email}</p>
+            <p class="shipping-form-detail"><strong>Address:</strong> ${details.buyer.zip}</p>
+        </div>
+    `;
+
+    const shippingFormContent = document.getElementById('shippingFormContent');
+    shippingFormContent.innerHTML = content;
+
+    const shippingFormContainer = document.getElementById('shippingFormContainer');
+    shippingFormContainer.style.display = 'block';
+
+    window.print();
+
+    shippingFormContainer.style.display = 'none';
 }

@@ -91,6 +91,11 @@ drawHeader($session);
             </div>
 </div>
 
+<div id="shippingFormContainer" style="display:none;">
+    <div id="shippingFormContent"></div>
+</div>
+
+
 </body>
 
 <?php
