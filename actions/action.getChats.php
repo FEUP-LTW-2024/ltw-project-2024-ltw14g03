@@ -53,7 +53,15 @@ function objectExistsInArray($obj, $array) {
         if(!objectExistsInArray($us, $users)){
             $users[] = $us;
         }
+    }
 
+    $query = $db->prepare('SELECT * FROM users WHERE user_id = ?');
+    $query->execute([$other]);
+
+    $us = $query->fetch();
+
+    if(!objectExistsInArray($us, $users)){
+        $users[] = $us;
     }
 
     echo json_encode($users);

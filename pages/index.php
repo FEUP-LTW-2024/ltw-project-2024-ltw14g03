@@ -7,10 +7,10 @@
     $db = getDatabaseConnection();
 
     // Prepare SQL statement
-    $stmt = $db->prepare('SELECT COUNT(*) AS number FROM items WHERE seller_id != :user_id AND status = "listed"');
+    $stmt = $db->prepare('SELECT COUNT(*) AS number FROM items WHERE seller_id != ? AND status = "listed"');
 
     // Execute the statement
-    $stmt->execute();
+    $stmt->execute([$session->getParam('id')]);
 
     // Access the row count
     $n = $stmt->fetch(PDO::FETCH_ASSOC)['number'];
@@ -45,7 +45,7 @@
             <div class = "pageSelect">
                 <list>
 
-                    <?php for($i = 0; $i < max((($n - 1)/10),1); $i++): ?>
+                    <?php for($i = 0; $i < max((($n)/10),1); $i++): ?>
 
                         <li><h2><a href = "#" onclick = "changePage(<?php echo $i?>)"><?php echo $i + 1?></a></h2></li>
 

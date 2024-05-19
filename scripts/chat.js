@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function getChats(val = window.receiverId) {
+
     const params = {
         sender_id: window.userId,
         receiver_id: (val ? val : window.userId),
@@ -72,7 +73,6 @@ function getChats(val = window.receiverId) {
 }
 
 function fetchMessages(val = window.receiverId) {
-
 
     if(!val || val === window.userId){
 
@@ -176,8 +176,14 @@ function scrollToBottom() {
 
 async function initializeChat() {
     try {
-        await getChats();
-        await fetchMessages();
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const dat = urlParams.get('receiver_id');
+        if(dat)window.receiverId = dat;
+
+
+        await getChats(dat);
+        await fetchMessages(dat);
         setInterval(gettexts, 200);
     } catch (error) {
         console.error('Error in initializeChat:', error);  // Debugging log

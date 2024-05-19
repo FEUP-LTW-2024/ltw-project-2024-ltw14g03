@@ -271,7 +271,6 @@ function showUser(userID){
         })
         .then(data =>{
             window.location.href = `../pages/profileseller.php?data=${encodeURIComponent(JSON.stringify(data))}`;
-
         })
 
 }

@@ -16,17 +16,17 @@ $itemsPerPage = 10;
 $stmt = $db->prepare('SELECT COUNT(*) AS number FROM items WHERE seller_id = ? And status = "listed"');
 $stmt->execute([$session->getParam('id')]);
 $totalItems = $stmt->fetch(PDO::FETCH_ASSOC)['number'];
-$totalPages = ceil(($totalItems - 1) / $itemsPerPage);
+$totalPages = ceil(($totalItems) / $itemsPerPage);
 
 $stmt = $db->prepare('SELECT COUNT(*) AS number FROM items WHERE seller_id = ? And status = "sold"');
 $stmt->execute([$session->getParam('id')]);
 $totalItems = $stmt->fetch(PDO::FETCH_ASSOC)['number'];
-$totalSolds = ceil(($totalItems - 1) / $itemsPerPage);
+$totalSolds = ceil(($totalItems) / $itemsPerPage);
 
 $stmt = $db->prepare('SELECT COUNT(*) AS number FROM items WHERE seller_id = ? And status = "sold_processing"');
 $stmt->execute([$session->getParam('id')]);
 $totalItems = $stmt->fetch(PDO::FETCH_ASSOC)['number'];
-$totalPSolds = ceil(($totalItems - 1) / $itemsPerPage);
+$totalPSolds = ceil(($totalItems) / $itemsPerPage);
 
 drawHeader($session);
 ?>

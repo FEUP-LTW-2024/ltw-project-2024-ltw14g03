@@ -24,8 +24,8 @@ drawHeader($session);
     <script src="../scripts/chat.js"></script>
 
     <script>
-        window.receiverId = <?php echo json_encode($receiverId); ?>;
-        window.userId = <?php echo json_encode($session->getParam('id')); ?>;
+        if(!window.receiverId)window.receiverId = <?php echo json_encode($receiverId); ?>;
+        if(!window.userId)window.userId = <?php echo json_encode($session->getParam('id')); ?>;
     </script>
 </head>
 

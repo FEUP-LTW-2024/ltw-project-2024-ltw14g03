@@ -792,6 +792,7 @@ main {
 .sidesearch{
     background-color: #f4f4f4; 
     padding-bottom: auto;
+    width: 20%;
 }
 
 .sidesearch h2 {
