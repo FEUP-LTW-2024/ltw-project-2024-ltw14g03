@@ -21,6 +21,8 @@ drawHeader($session);
 ?>
 
 <script src="../scripts/myItems.js"></script>
+<script src="../scripts/myItemsProcessing.js"></script>   
+<script src="../scripts/myItemsSold.js"></script>
 <script src="../scripts/itemClickHandler.js"></script>
 
 <body>
@@ -28,10 +30,30 @@ drawHeader($session);
 <script>
     window.onload = function() {
         fetchItems(0);
+        fetchItemsProcessing(0);
+        fetchItemsSold(0);
     }
 </script>
 
 <div class="featured-items">
+<div class="title-and-select">
+            <h2>Processing Items</h2>
+
+            <div class = "pageSelect">
+                <list>
+
+                    <?php for($i = 0; $i < $totalPages; $i++): ?>
+
+                        <li><h2><a href = "#" onclick = "fetchItemsProcessing(<?php echo $i?>)"><?php echo $i + 1?></a></h2></li>
+
+                    <?php endfor; ?>
+                </list>
+            </div>
+
+        </div>
+            <div class = "product-list" id = "myItemsProcessing">
+            </div>
+
         <div class="title-and-select">
             <h2>My Items</h2>
 
@@ -48,6 +70,24 @@ drawHeader($session);
 
         </div>
             <div class = "product-list" id = "myItems">
+            </div>
+
+            <div class="title-and-select">
+            <h2>Sold Items</h2>
+
+            <div class = "pageSelect">
+                <list>
+
+                    <?php for($i = 0; $i < $totalPages; $i++): ?>
+
+                        <li><h2><a href = "#" onclick = "fetchItemsSold(<?php echo $i?>)"><?php echo $i + 1?></a></h2></li>
+
+                    <?php endfor; ?>
+                </list>
+            </div>
+
+        </div>
+            <div class = "product-list" id = "myItemsSold">
             </div>
 </div>
 

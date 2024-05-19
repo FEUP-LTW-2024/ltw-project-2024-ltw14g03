@@ -42,7 +42,7 @@ function loadCheckoutList(params, container) {
             }
 
             if (item.cart === 'false') {
-                checkoutButton = `<button class="checkoutButton" data-value="${item.item_id}" onclick="addCart(${item.item_id})">Add to cart</button>`;
+                checkoutButton = `<button class="checkoutlistButton" data-value="${item.item_id}" onclick="addCart(${item.item_id})">Add to cart</button>`;
             } else if (item.cart === 'true') {
                 checkoutButton = `<button class="de-checkoutButton" data-value="${item.item_id}" onclick="removeCart(${item.item_id})">Remove from Cart</button>`;
             }

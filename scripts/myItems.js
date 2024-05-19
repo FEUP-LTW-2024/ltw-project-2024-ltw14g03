@@ -30,6 +30,7 @@ async function fetchItems(page) {
 
 
 function displayItems(items) {
+    console.log("Items: ",items);
     if (!Array.isArray(items)) {
         console.error('Items is not an array:', items);
         return;
