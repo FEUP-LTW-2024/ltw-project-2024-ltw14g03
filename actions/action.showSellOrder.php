@@ -9,15 +9,11 @@ require_once(__DIR__ . '/../database/sellOrder.class.php');
 $db = getDatabaseConnection();
 $session = new Session();
 
-// Read the raw input
 $json = file_get_contents('php://input');
 
-// Decode the JSON data
 $data = json_decode($json, true);
 
     $itemID = $data['ID'];
-
-    //Get Post Info
 
         $query = $db->prepare('SELECT * FROM items WHERE item_id = ?');
         $query->execute([$itemID]);

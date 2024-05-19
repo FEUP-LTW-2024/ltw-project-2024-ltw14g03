@@ -16,8 +16,6 @@ drawHeader($session);
     </div>
         </div>
 
-        <!-- You can add more profile details here as needed -->
-
     </div>
 </body>
 

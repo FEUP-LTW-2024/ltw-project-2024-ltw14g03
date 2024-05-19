@@ -6,13 +6,8 @@
 
     $db = getDatabaseConnection();
 
-    // Prepare SQL statement
     $stmt = $db->prepare('SELECT COUNT(*) AS number FROM items');
-
-    // Execute the statement
     $stmt->execute();
-
-    // Access the row count
     $n = $stmt->fetch(PDO::FETCH_ASSOC)['number'];
 
 

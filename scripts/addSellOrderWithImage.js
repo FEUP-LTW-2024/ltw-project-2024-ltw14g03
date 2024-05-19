@@ -7,9 +7,9 @@ document.addEventListener('DOMContentLoaded', function() {
         form.addEventListener('submit', function(event) {
 
             console.log("Form submission intercepted");
-            event.preventDefault();  // This should prevent the form from submitting traditionally.
+            event.preventDefault();
 
-            const formData = new FormData(form);  // This collects the form data.
+            const formData = new FormData(form);
             console.log ("Form data collected", formData);
 
             fetch('../actions/action.add_sellorder.php', {
