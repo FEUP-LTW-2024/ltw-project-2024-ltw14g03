@@ -65,7 +65,16 @@ function displayItems(items) {
         priceP.textContent = 'Price: ' + item.price + '€';
 
         const conditionP = document.createElement('p');
-        conditionP.textContent = 'Condition: ' + item.condition_id;
+        conditionP.textContent = 'Condition: ' + item.condition.name;
+
+        const categoryP = document.createElement('p');
+        categoryP.textContent = 'Category: ' + item.category.name;
+
+        const brandP = document.createElement('p');
+        brandP.textContent = 'Brand: ' + item.brand.name;
+
+        const sizeP = document.createElement('p');
+        sizeP.textContent = 'Size: ' + item.size.name;
 
         const removeButtonDiv = document.createElement('div')
         removeButtonDiv.classList.add('removePost')
@@ -104,11 +113,15 @@ function displayItems(items) {
         );
 
         detailsDiv.appendChild(priceP);
-        detailsDiv.appendChild(conditionP);
+        detailsDiv.appendChild(conditionP);7
+        detailsDiv.appendChild(categoryP);
+        detailsDiv.appendChild(brandP);
+        detailsDiv.appendChild(sizeP);
 
         descDiv.appendChild(h3Element);
         descDiv.appendChild(pElement);
         descDiv.appendChild(detailsDiv);
+
 
         itemElement.appendChild(imgElement);
         itemElement.appendChild(descDiv);

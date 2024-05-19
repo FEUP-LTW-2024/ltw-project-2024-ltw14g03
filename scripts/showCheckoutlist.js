@@ -172,6 +172,7 @@ function removeCart(itemId) {
 }
 
 function clearCart() {
+    console.log("Clearing cart");
     fetch('../actions/action.clearCheckoutlist.php', {
         method: 'POST',
         body: JSON.stringify({ clear: true }), // Send a signal to clear the cart

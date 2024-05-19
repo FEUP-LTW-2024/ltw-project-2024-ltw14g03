@@ -15,12 +15,18 @@ if (!$session->isLoggedIn()) {
 $db = getDatabaseConnection();
 
 $stmt = $db->prepare("SELECT * FROM shopping_cart WHERE user_id = ?");
-$result = $stmt->execute([$session->getParam('id')]);
+$stmt->execute([$session->getParam('id')]);
+$result = $stmt->fetchAll();
+
 
 foreach($result as $row) {
-
+    echo "<script>console.log('Debug Objects: " . $row['item_id'] . "' );</script>";
     $stmt = $db->prepare("INSERT INTO transactions (buyer_id, item_id) Values (?, ?)");
     $result = $stmt->execute([$session->getParam('id'), $row['item_id']]);
+
+    $stmt = $db->prepare("UPDATE items SET status = 'sold_processing' WHERE item_id = ?");
+    $result = $stmt->execute([$row['item_id']]);
+
 }
 
 

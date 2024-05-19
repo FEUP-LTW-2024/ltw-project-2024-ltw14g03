@@ -24,7 +24,7 @@ try {
     $cartItems = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
 
     // Fetch details of items in the shopping cart
-    $stmt = $db->prepare('SELECT * FROM items WHERE item_id IN (' . implode(',', array_fill(0, count($cartItems), '?')) . ')');
+    $stmt = $db->prepare('SELECT * FROM items WHERE item_id IN (' . implode(',', array_fill(0, count($cartItems), '?')) . ') AND status="listed"');
     $stmt->execute($cartItems);
     $cartItems = $stmt->fetchAll();
 
@@ -33,7 +33,7 @@ try {
         $stmt->execute([$item['item_id']]);
         $item['image'] = $stmt->fetchColumn();
 
-        
+
         $stmt = $db->prepare('SELECT * FROM conditions WHERE condition_id = ? LIMIT 1');
         $stmt->execute([$item['condition_id']]);
         $item['condition'] = $stmt->fetchColumn();

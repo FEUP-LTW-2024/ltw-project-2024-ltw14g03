@@ -21,7 +21,7 @@ try {
     $stmt->execute([$userId]);
     $wishlistItems = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
 
-    $stmt = $db->prepare('SELECT * FROM items WHERE item_id IN (' . implode(',', array_fill(0, count($wishlistItems), '?')) . ')');
+    $stmt = $db->prepare('SELECT * FROM items WHERE item_id IN (' . implode(',', array_fill(0, count($wishlistItems), '?')) . ') AND status = "listed"');
     $stmt->execute($wishlistItems);
     $wishlistItems = $stmt->fetchAll();
 
