@@ -81,6 +81,7 @@ CREATE TABLE users (
     state TEXT,
     country TEXT,
     zip TEXT,
+    address TEXT,
     phone TEXT,
     profile_picture TEXT,
     created_at TEXT DEFAULT (datetime('now', 'localtime')),

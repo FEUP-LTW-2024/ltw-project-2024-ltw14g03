@@ -125,7 +125,7 @@ class Customer {
         }
     }
 
-    static function registerUser(PDO $db, string $firstName, string $lastName, string $username, string $password, string $city, string $state, string $country, string $zip, string $phone, string $email): void {
+    static function registerUser(PDO $db, string $firstName, string $lastName, string $username, string $password, string $city, string $state, string $country, string $zip, string $phone, string $email, string $address): void {
         $stmt = $db->prepare('
         SELECT * FROM users WHERE username = ? OR email = ?
         ');
@@ -137,8 +137,8 @@ class Customer {
         }else{
 
             $stmt = $db->prepare('
-                INSERT INTO users (firstName, lastName, username, password, city, state, country, zip, phone, email, is_admin, profile_picture)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                INSERT INTO users (firstName, lastName, username, password, city, state, country, zip, phone, email, is_admin, profile_picture, address)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ');
 
             $stmt->execute([
@@ -153,7 +153,8 @@ class Customer {
                 htmlspecialchars($phone),
                 htmlspecialchars($email),
                 0,
-                "../assets/style/images/default_image.jpg"
+                "../assets/style/images/default_image.jpg",
+                htmlspecialchars($address)
             ]);
         }
     }

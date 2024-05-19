@@ -52,6 +52,9 @@ $session->generate_random_token();
             <label for="zip">ZIP Code:</label>
             <input type="text" name="zip" id="zip" required>
 
+            <label for="address">Address:</label>
+            <input type="text" name="address" id="address" required>
+
             <label for="phone">Phone Number:</label>
             <input type="text" name="phone" id="phone" required>
 

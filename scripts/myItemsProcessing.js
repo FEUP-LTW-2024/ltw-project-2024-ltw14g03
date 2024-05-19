@@ -154,7 +154,7 @@ function displayItemsProcessing(items) {
 function generateShippingForm(details) {
     const content = `
         <div class="shipping-form">
-            <h1 class="shipping-form-title">Shipping Form</h1>
+            <h1 class="shipping-form-title">QuickFlip Shipping Form</h1>
             <h2 class="shipping-form-section-title">Item Details</h2>
             <p class="shipping-form-detail"><strong>Name:</strong> ${details.item.name}</p>
             <p class="shipping-form-detail"><strong>Description:</strong> ${details.item.description}</p>
@@ -166,7 +166,11 @@ function generateShippingForm(details) {
             <h2 class="shipping-form-section-title">Buyer Details</h2>
             <p class="shipping-form-detail"><strong>Name:</strong> ${details.buyer.firstName} ${details.buyer.lastName}</p>
             <p class="shipping-form-detail"><strong>Email:</strong> ${details.buyer.email}</p>
-            <p class="shipping-form-detail"><strong>Address:</strong> ${details.buyer.zip}</p>
+            <p class="shipping-form-detail"><strong>Phone:</strong> ${details.buyer.phone}</p>
+            <p class="shipping-form-detail"><strong>Country:</strong> ${details.buyer.country}</p>
+            <p class="shipping-form-detail"><strong>City:</strong> ${details.buyer.city}</p>
+            <p class="shipping-form-detail"><strong>Postal Code:</strong> ${details.buyer.zip}</p>
+            <p class="shipping-form-detail"><strong>Address:</strong> ${details.buyer.address}</p>
         </div>
     `;
 
