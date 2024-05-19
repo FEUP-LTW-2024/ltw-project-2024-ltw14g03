@@ -202,7 +202,8 @@ function changePage(val) {
         .then(data => {
             const container = document.getElementById('productList');
             container.innerHTML = '';
-            data.forEach(item => {
+            const cartItems = data.cartItems;
+            cartItems.forEach(item => {
                 const imageSrc = item.image ? item.image : '../assets/style/images/default_image.jpg'; // Use default image if item.image is falsy
                 container.innerHTML += `
                     <div class="item" id="item_${item.item_id}" data-value="${item.item_id}" style="animation-delay: ${container.children.length / 8}s;">
