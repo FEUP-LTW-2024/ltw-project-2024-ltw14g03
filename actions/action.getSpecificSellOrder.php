@@ -30,10 +30,22 @@ $stmt = $db->prepare("SELECT * FROM item_images WHERE item_id = ?");
 $stmt->execute([$sellOrderID]);
 $sellOrder['images'] = $stmt->fetchAll();
 
+$stmt = $db->prepare("SELECT * FROM categories WHERE category_id = ?");
+$stmt->execute([$sellOrder['category_id']]);
+$sellOrder['category'] = $stmt->fetch();
 
-$stmt = $db->prepare("SELECT * FROM wishlist WHERE item_id = ? AND user_id = ?");
-$stmt->execute([$sellOrderID, $user_id]);
-$sellOrder['inWishlist'] = $stmt->fetch() !== false;
+$stmt = $db->prepare("SELECT * FROM brands WHERE brand_id = ?");
+$stmt->execute([$sellOrder['brand_id']]);
+$sellOrder['brand'] = $stmt->fetch();
+
+$stmt = $db->prepare("SELECT * FROM conditions WHERE condition_id = ?");
+$stmt->execute([$sellOrder['condition_id']]);
+$sellOrder['condition'] = $stmt->fetch();
+
+$stmt = $db->prepare("SELECT * FROM sizes WHERE size_id = ?");
+$stmt->execute([$sellOrder['size_id']]);
+$sellOrder['size'] = $stmt->fetch();
+
 
 $stmt = $db->prepare("SELECT * FROM users WHERE user_id = ?");
 $stmt->execute([$sellOrder['seller_id']]);
