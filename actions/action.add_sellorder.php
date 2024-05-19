@@ -14,15 +14,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $db = getDatabaseConnection();
     $stmt = $db->prepare("INSERT INTO items (name, seller_id, category_id, condition_id, model, size_id, price, description, brand_id) VALUES (:name, :seller_id, :category_id, :condition_id, :model, :size_id, :price, :description, :brand)");
     if ($stmt->execute([
-        'name' => $_POST['name'],
+        'name' => htmlspecialchars($_POST['name']),
         'seller_id' => $user_id, 
-        ':category_id' => $_POST['category'], 
-        ':condition_id' => $_POST['condition'], 
-        ':model' => $_POST['model'], 
-        ':size_id' => $_POST['size'], 
-        ':price' => $_POST['price'], 
-        ':description' => $_POST['description'],
-        ':brand' => $_POST['brand']
+        ':category_id' => htmlspecialchars($_POST['category']), 
+        ':condition_id' => htmlspecialchars($_POST['condition']), 
+        ':model' => htmlspecialchars($_POST['model']), 
+        ':size_id' => htmlspecialchars($_POST['size']), 
+        ':price' => htmlspecialchars($_POST['price']), 
+        ':description' => htmlspecialchars($_POST['description']),
+        ':brand' => htmlspecialchars($_POST['brand'])
     ])) {
         $item_id = $db->lastInsertId();
         $response['item_id'] = $item_id;
