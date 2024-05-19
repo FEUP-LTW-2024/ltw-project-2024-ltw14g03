@@ -17,8 +17,8 @@ $data = json_decode(file_get_contents('php://input'), true);
 $start = $data['start'] ?? '0';
 
 try {
-    $query = "SELECT * FROM items ORDER BY item_id LIMIT 10 OFFSET :start";
-    $params = [':start' => (int)$start * 10];
+    $query = "SELECT * FROM items WHERE seller_id != :userid ORDER BY item_id LIMIT 10 OFFSET :start";
+    $params = [':userid' => $session->getParam('id'), ':start' => (int)$start * 10];
 
     $stmt = $db->prepare($query);
     $stmt->execute($params);

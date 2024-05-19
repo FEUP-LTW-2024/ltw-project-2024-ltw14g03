@@ -74,6 +74,34 @@ function displayItems(items) {
         removeButton.classList.add('removeButton')
         removeButton.dataset.value = item.item_id;
         removeButton.textContent = 'Remove Item';
+        removeButton.addEventListener('click', async () => {
+            try {
+                const response = await fetch('../actions/action.removeItem.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ item_id: item.item_id })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Error removing item: ' + response.statusText);
+                }
+
+                const data = await response.json();
+                console.log('Response data:', data);
+
+                if (data.success) {
+                    console.log('Item removed:', item.item_id);
+                    fetchItems(0);
+                } else {
+                    console.error('Failed to remove item:', data.error);
+                }
+            } catch (error) {
+                console.error('Error removing item:', error);
+            }
+        }
+        );
 
         detailsDiv.appendChild(priceP);
         detailsDiv.appendChild(conditionP);

@@ -46,7 +46,8 @@ if (!empty($size)) {
     $params[':size_id'] = $size;
 }
 
-$query .= ' ORDER BY item_id LIMIT 10 OFFSET :start';
+$query .= ' AND seller_id != :user_id ORDER BY item_id LIMIT 10 OFFSET :start';
+$params[':user_id'] = $session->getParam('id');
 $params[':start'] = (int) $start * 10;
 
 $stmt = $db->prepare($query);
