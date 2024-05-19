@@ -42,8 +42,6 @@
 
             <h1>Featured Items</h1>
 
-            <h1 class="center-header">Categories</h1>
-
             <div class = "pageSelect">
                 <list>
 
