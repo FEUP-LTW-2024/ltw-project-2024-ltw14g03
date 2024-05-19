@@ -13,18 +13,14 @@
     sqlite database/database.db < database/script.sql
     php -S localhost:9000
 
-## External Libraries
-
-(you can remove this section if it doesn't apply to you)
-
-We have used the following external libraries:
-
-- Library 1
-- Library 2
-
 ## Screenshots
 
-(2 or 3 screenshots of your website)
+#### Main Page:
+![Main Page](/screenshots/img1.png)
+#### Browse Page:
+![BrowsePage](/screenshots/img2.png)
+#### Chat Room:
+![Chat Room](/screenshots/img3.png)
 
 ## Implemented Features
 
@@ -61,4 +57,4 @@ We have been careful with the following security aspects:
 - [ ] **Cross-Site Scripting (XSS)**
 - [ ] **Cross-Site Request Forgery (CSRF)**
 
-**Password Storage Mechanism**: hash_password&verify_password
+**Password Storage Mechanism**: hash_password & verify_password
