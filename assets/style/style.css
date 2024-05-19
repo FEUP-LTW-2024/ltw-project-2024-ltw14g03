@@ -878,10 +878,10 @@ main {
     border-radius: 10%;
 }
 
-.searchResult .actions {
+.actions {
     display: flex;
     flex-direction: column;
-    gap: 0.5em;
+    gap: 0.3em;
     margin-top: 1em; 
     align-items: center; 
 }
