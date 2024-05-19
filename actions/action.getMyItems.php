@@ -42,6 +42,26 @@ foreach ($items as &$item) {
     $stmt->execute([':item_id' => $item['item_id'], ':user_id' => $userId]);
     $wish = $stmt->fetch();
     $item['wish'] = $wish ? true : false;
+
+    $stmt = $db->prepare("SELECT * FROM shopping_cart WHERE item_id = :item_id AND user_id = :user_id LIMIT 1");
+    $stmt->execute([':item_id' => $item['item_id'], ':user_id' => $userId]);
+    $cartItem = $stmt->fetch();
+
+    $stmt = $db->prepare("SELECT * FROM conditions WHERE condition_id = :condition_id LIMIT 1");
+    $stmt->execute([':condition_id' => $item['condition_id']]);
+    $item['condition'] = $stmt->fetch();
+
+    $stmt = $db->prepare("SELECT * FROM sizes WHERE size_id = :size_id LIMIT 1");
+    $stmt->execute([':size_id' => $item['size_id']]);
+    $item['size'] = $stmt->fetch();
+
+    $stmt = $db->prepare("SELECT * FROM brands WHERE brand_id = :brand_id LIMIT 1");
+    $stmt->execute([':brand_id' => $item['brand_id']]);
+    $item['brand'] = $stmt->fetch();
+
+    $stmt = $db->prepare("SELECT * FROM categories WHERE category_id = :category_id LIMIT 1");
+    $stmt->execute([':category_id' => $item['category_id']]);
+    $item['category'] = $stmt->fetch();
     
 }
 

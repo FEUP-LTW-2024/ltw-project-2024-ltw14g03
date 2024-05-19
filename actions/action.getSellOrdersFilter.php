@@ -18,7 +18,7 @@ $brand = $_GET['brand'] ?? '';
 $size = $_GET['size'] ?? '';
 $start = $_GET['start'] ?? '0';
 
-$query = "SELECT * FROM items WHERE 1=1";
+$query = "SELECT * FROM items WHERE status = 'listed'";
 $params = [];
 
 if (!empty($name)) {
