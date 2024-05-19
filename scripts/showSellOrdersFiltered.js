@@ -10,6 +10,7 @@ function updateFormData(form, categorySelect, startValue = '0') {
     
     if (selectedCategory && !hasLoadedFromURL) {
         categorySelect.value = selectedCategory;
+        hasLoadedFromURL = true;
     }
     
     return new URLSearchParams(formData).toString();
