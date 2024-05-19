@@ -14,7 +14,7 @@
 
     public function isAdmin(): bool
     {
-      if ($_SESSION['is_admin']=="0"){
+      if ($_SESSION['is_admin']==false){
         return false;
       }else{
         return true;
