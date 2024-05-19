@@ -3,6 +3,7 @@ declare(strict_types = 1);
 require_once(__DIR__ . '/../templates/common.tpl.php');
 $session = new Session();
 drawHeader($session);
+$session->generate_random_token();
 ?>
 
 <script src="../scripts/validatePassword.js"></script>
@@ -56,6 +57,7 @@ drawHeader($session);
 
             <label for="password">Password:</label>
             <input type="password" name="password" id="password" required>
+            <input type="hidden" name="csrf" value="<?php echo $session->getParam('csrf_token'); ?>">
 
             <?php if (isset($_GET['error']) && $_GET['error'] == 'password'): ?>
                 <p style="color: red;">.</p>

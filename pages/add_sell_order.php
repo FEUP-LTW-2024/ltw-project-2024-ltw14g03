@@ -4,7 +4,7 @@ require_once(__DIR__ . '/../utils/session.php');
 require_once(__DIR__ . '/../templates/common.tpl.php');
 require_once(__DIR__ . '/../database/connection.db.php');
 $session = new Session();
-
+$session->generate_random_token();
 if (!$session->isLoggedIn()) {
     header('Location: ../pages/login.php');
     exit();
@@ -110,7 +110,7 @@ drawHeader($session);
                         <label for="description">Description:</label>
                         <textarea style = "height: 3em" type="text" name="description" id="description" class = "lineInput" required></textarea>
                     </div>
-
+                    <input type="hidden" name="csrf" value="<?=$session->getParam('crf_token')?>">
                     <button type = "submit" name = "register" style = "margin-top: 1em">Submit</button>
                 </div>
             </div>

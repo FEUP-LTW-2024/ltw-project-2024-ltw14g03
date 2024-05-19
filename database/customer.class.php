@@ -130,7 +130,7 @@ class Customer {
         SELECT * FROM users WHERE username = ? OR email = ?
         ');
 
-        $stmt->execute([$username, $email]);
+        $stmt->execute([htmlspecialchars($username), htmlspecialchars($email)]);
 
         if ($stmt->fetch()) {
             debugToConsole("User already exists");
@@ -141,9 +141,23 @@ class Customer {
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ');
 
-            $stmt->execute([$firstName, $lastName, $username, $password, $city, $state, $country, $zip, $phone, $email, 0, "../assets/style/images/default_image.jpg"]);
+            $stmt->execute([
+                htmlspecialchars($firstName),
+                htmlspecialchars($lastName),
+                htmlspecialchars($username),
+                htmlspecialchars($password),
+                htmlspecialchars($city),
+                htmlspecialchars($state),
+                htmlspecialchars($country),
+                htmlspecialchars($zip),
+                htmlspecialchars($phone),
+                htmlspecialchars($email),
+                0,
+                "../assets/style/images/default_image.jpg"
+            ]);
         }
     }
+
 
     static function checkPassword(string $password): int{
         return preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]{8,}$/', $password);
