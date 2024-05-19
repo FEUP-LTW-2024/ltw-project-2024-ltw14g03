@@ -1164,6 +1164,7 @@ label {
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     border-radius: 10px; /* Apply border-radius to the container */
     overflow: hidden; /* Ensure contents don't overflow and maintain rounded corners */
+    max-height: 90%;
 }
 
 .seller-info {
@@ -1195,6 +1196,7 @@ label {
 .item-info img {
     min-width: 30%;
     max-width: 100%;
+    max-height: 70%;
 }
 
 

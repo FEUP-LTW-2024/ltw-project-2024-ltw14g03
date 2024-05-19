@@ -146,6 +146,23 @@ function showModal(data) {
     itemPrice.textContent = 'Price: ' + sellOrder.price + '€';
     itemInfoDiv.appendChild(itemPrice);
 
+    const itemCondition = document.createElement('p');
+    itemCondition.textContent = 'Condition: ' + sellOrder.condition.name;
+    itemInfoDiv.appendChild(itemCondition);
+
+    const itemCategory = document.createElement('p');
+    itemCategory.textContent = 'Category: ' + sellOrder.category.name;
+    itemInfoDiv.appendChild(itemCategory);
+
+    const itemBrand = document.createElement('p');
+    itemBrand.textContent = 'Brand: ' + sellOrder.brand.name;
+    itemInfoDiv.appendChild(itemBrand);
+
+    const itemSize = document.createElement('p');
+    itemSize.textContent = 'Size: ' + sellOrder.size.name;
+    itemInfoDiv.appendChild(itemSize);
+    
+
     // ITEM DESCRIPTION
     const itemDescription = document.createElement('p');
     itemDescription.textContent = sellOrder.description;
