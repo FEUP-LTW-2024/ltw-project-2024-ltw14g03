@@ -150,7 +150,6 @@ class Customer {
     }
 
     public function updateFirstAndSecondName(PDO $db, string $firstName, string $lastName): void {
-        // Username is this customer user_id
         $user_id = $this->user_id;
         $stmt = $db->prepare('
             UPDATE users SET firstName = ?, lastName = ?
@@ -161,7 +160,6 @@ class Customer {
     }
 
     public function updateUsernameFirstSecondEmail(PDO $db, string $username,string $firstName, string $lastName, string $email): void {
-        // Username is this customer user_id
         $user_id = $this->user_id;
         $stmt = $db->prepare('
             UPDATE users SET username = ?, firstName = ?, lastName = ?, email = ?

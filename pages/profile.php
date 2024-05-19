@@ -4,7 +4,6 @@ require_once(__DIR__ . '/../utils/session.php');
 require_once(__DIR__ . '/../templates/common.tpl.php');
 $session = new Session();
 
-// Check if the user is logged in
 if (!$session->isLoggedIn()) {
     header('Location: ../pages/login.php');
     exit();

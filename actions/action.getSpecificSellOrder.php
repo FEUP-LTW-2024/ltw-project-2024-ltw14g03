@@ -11,7 +11,7 @@ $session = new Session();
 $user_id = $session->getParam('id');
 
 $request_body = file_get_contents('php://input');
-$request_data = json_decode($request_body, true); // Decode JSON data as associative array
+$request_data = json_decode($request_body, true);
 
 $sellOrderID = $request_data['itemID'] ?? null;
 

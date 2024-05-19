@@ -10,7 +10,7 @@ if (!$session->isLoggedIn()) {
     exit();
 }
 
-$receiverId = isset($_GET['receiver_id']) ? (int)$_GET['receiver_id'] : 0; // Ensure this is sanitized properly
+$receiverId = isset($_GET['receiver_id']) ? (int)$_GET['receiver_id'] : 0;
 
 drawHeader($session);
 ?>
@@ -24,9 +24,8 @@ drawHeader($session);
     <script src="../scripts/chat.js"></script>
 
     <script>
-        // Declare global variables for the JS file
         window.receiverId = <?php echo json_encode($receiverId); ?>;
-        window.userId = <?php echo json_encode($session->getParam('id')); ?>; // Use the 'id' key to retrieve the user ID from the session
+        window.userId = <?php echo json_encode($session->getParam('id')); ?>;
     </script>
 </head>
 

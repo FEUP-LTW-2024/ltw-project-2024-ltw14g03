@@ -6,13 +6,10 @@ $session = new Session();
 
 $db = getDatabaseConnection();
 
-// Prepare SQL statement
 $stmt = $db->prepare('SELECT COUNT(*) AS number FROM shopping_cart WHERE user_id = ?');
 
-// Execute the statement
 $stmt->execute([$session->getParam('id')]);
 
-// Access the row count
 $n = $stmt->fetch(PDO::FETCH_ASSOC)['number'];
 
 drawHeader($session);

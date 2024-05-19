@@ -15,13 +15,10 @@ if (!$session->isLoggedIn()) {
     exit();
 }
 
-// Read the raw input
 $json = file_get_contents('php://input');
 
-// Decode the JSON data
 $data = json_decode($json, true);
 
-// Check if the required data is provided
 if (!isset($data['item_id'])) {
     http_response_code(400);
     echo json_encode(['error' => 'Item ID not provided']);

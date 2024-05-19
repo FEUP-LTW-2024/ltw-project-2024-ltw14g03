@@ -16,11 +16,8 @@ document.addEventListener("DOMContentLoaded", function() {
         const fullNameSpan = document.getElementById('fullName');
         const emailSpan = document.getElementById('email');
 
-        //com esta linha o edit profile button transforma-se em save profile , depois tenho de testar
-        //const btn = document.querySelector('.profile-button');
         let btn = document.getElementById('saveProfileBtn') || document.getElementById('editProfileBtn');
 
-        // Remove any previous cancel button to prevent duplicates
         const existingCancelButton = document.getElementById('cancelEditBtn');
         if (existingCancelButton) {
             existingCancelButton.remove();
@@ -71,7 +68,6 @@ document.addEventListener("DOMContentLoaded", function() {
             btn.id = 'editProfileBtn';
             pfp.innerHTML = '';
 
-            // Remove cancel button if it exists
             const cancelButton = document.getElementById('cancelEditBtn');
             if (cancelButton) {
                 cancelButton.remove();

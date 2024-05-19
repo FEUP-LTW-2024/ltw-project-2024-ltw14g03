@@ -76,7 +76,7 @@ class SellOrder {
 
         $result = $stmt->fetch(\PDO::FETCH_ASSOC);
         if ($result === false) {
-            return ""; // Return an empty string if no image is found
+            return "";
         }
 
         return $result["image_url"];

@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (item.wish==='true'){
                 wishlistButton = `
-                <button class="de-wishlistButton" data-value="${item.item_id}" onclick="removeFromWishlist(${item.item_id})">De-Wishlist</button>
+                <button class="de-wishlistButton" data-value="${item.item_id}" onclick="removeWishlist(${item.item_id})">De-Wishlist</button>
             `;
             }else if(item.wish==='false'){
                 wishlistButton = `
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (item.cart==='true'){
                 checkoutButton = `
-                <button class="de-checkoutButton" data-value="${item.item_id}" onclick="removeFromCart(${item.item_id})">Remove from Cart</button>
+                <button class="de-checkoutButton" data-value="${item.item_id}" onclick="removeCart(${item.item_id})">Remove from Cart</button>
             `;
             }else if(item.cart==='false'){
                 checkoutButton = `
@@ -87,11 +87,10 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
         });
 
-        // Add event listeners to wishlist buttons
         document.querySelectorAll('.de-wishlistButton').forEach(button => {
             button.addEventListener('click', (event) => {
                 const itemId = event.target.getAttribute('data-value');
-                removeFromWishlist(itemId);
+                removeWishlist(itemId);
             });
         });
     }
@@ -161,6 +160,9 @@ function removeWishlist(val){
             button.classList.add('wishlistButton');
             button.setAttribute('onclick', `addWishlist(${val})`);
             console.log('Item successfully removed from wishlist:', val);
+
+            const item = document.querySelector(`#item_${val}`);
+            item.remove();
         } else {
             console.error('Failed to remove item from wishlist:', data.error);
         }

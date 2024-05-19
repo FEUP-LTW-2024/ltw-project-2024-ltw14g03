@@ -6,11 +6,8 @@ $session = new Session();
 
 $db = getDatabaseConnection();
 
-// Prepare SQL statement
 $stmt = $db->prepare('SELECT COUNT(*) AS number FROM wishlist WHERE user_id = ?');
 $stmt->execute([$session->getParam('id')]);
-
-// Access the row count
 $n = $stmt->fetch(PDO::FETCH_ASSOC)['number'];
 
 

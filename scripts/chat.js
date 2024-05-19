@@ -142,7 +142,7 @@ function sendMessage() {
 
     var messageClass = 'sender';
     //$('#chat-box').append(`<div class="message ${messageClass}">${message}</div>`); // Display message instantly
-    $('#message-input').val(''); // Clear input field right after sending
+    $('#message-input').val(''); 
     scrollToBottom();
 }
 

@@ -73,7 +73,7 @@ async function removeItem(itemId) {
         console.log('Remove response data:', data);
 
         if (data.success) {
-            fetchItems(0); // Refresh items list
+            fetchItems(0);
         } else {
             console.error('Failed to remove item:', data.message);
         }
@@ -99,7 +99,7 @@ function selectsSellOrder(itemID) {
         return response.json();
     })
     .then(data => {
-        console.log('Response Data:', data); // Log the response data for debugging
+        console.log('Response Data:', data);
         showModal(data);
     })
     .catch(error => {
