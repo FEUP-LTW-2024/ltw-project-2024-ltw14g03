@@ -674,21 +674,21 @@ main {
     display: inline-block;
     padding: 0.5em;
     border: 2px solid #384955; /* Blue border */
-    border-radius: 10px; /* Rounded corners */
-    background-color: #384955; /* Blue background */
-    color: #ffffff; /* White text color */
+    border-radius: 10px;
+    background-color: #384955;
+    color: #ffffff; 
     text-align: center;
     text-decoration: none;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Smooth transition on hover */
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s; 
 
     margin-top: auto;
 }
 
 .de-wishlistButton:hover {
-    background-color: #333333; /* Darker blue background on hover */
-    border-color: #333333; /* Darker blue border on hover */
+    background-color: #333333;
+    border-color: #333333; 
 }
 
 .checkout{
@@ -699,43 +699,82 @@ main {
 .checkoutlistButton {
     display: inline-block;
     padding: 0.5em;
-    border: 2px solid #70aad1; /* Blue border */
-    border-radius: 10px; /* Rounded corners */
-    background-color: #70aad1; /* Blue background */
-    color: #ffffff; /* White text color */
+    border: 2px solid #70aad1;
+    border-radius: 10px;
+    background-color: #70aad1;
+    color: #ffffff; 
     text-align: center;
     text-decoration: none;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Smooth transition on hover */
-
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
     margin-top: auto;
 }
 
 .checkoutlistButton:hover {
-    background-color: #0056b3; /* Darker blue background on hover */
-    border-color: #0056b3; /* Darker blue border on hover */
+    background-color: #0056b3; 
+    border-color: #0056b3; 
 }
 
 .de-checkoutButton {
     display: inline-block;
     padding: 0.5em;
-    border: 2px solid #384955; /* Blue border */
+    border: 2px solid #384955; 
+    border-radius: 10px; 
+    background-color: #384955;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s; 
+
+    margin-top: auto;
+}
+
+.de-checkoutButton:hover {
+    background-color: #333333;
+    border-color: #333333;
+}
+
+.finishSale {
+    display: inline-block;
+    padding: 0.5em;
+    border: 2px solid #70aad1; 
+    border-radius: 10px;
+    background-color: #70aad1;
+    color: #ffffff; 
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s; 
+    margin-top: 10px; 
+}
+
+.finishSale:hover {
+    background-color: #0056b3; 
+    border-color: #0056b3; 
+}
+
+.shippingForm{
+    display: inline-block;
+    padding: 0.5em;
+    border: 2px solid #70aad1; ; /* Blue border */
     border-radius: 10px; /* Rounded corners */
-    background-color: #384955; /* Blue background */
+    background-color: #70aad1; ; /* Blue background */
     color: #ffffff; /* White text color */
     text-align: center;
     text-decoration: none;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Smooth transition on hover */
-
-    margin-top: auto;
+    margin-top: 10px; /* Adjust margin as needed */
 }
 
-.de-checkoutButton:hover {
-    background-color: #333333; /* Darker blue background on hover */
-    border-color: #333333; /* Darker blue border on hover */
+.shippingForm:hover {
+    background-color: #0056b3; /* Darker blue background on hover */
+    border-color: #0056b3; /* Darker blue border on hover */
 }
 
 
@@ -1253,6 +1292,7 @@ label {
 /* END OF CHECKOUT PAGE */
 
 
+/* SHIPPING FORM */
 @media print {
     body > *:not(#shippingFormContainer) {
         display: none !important;
@@ -1306,3 +1346,5 @@ label {
     }
 
 }
+
+/* END OF SHIPPING FORM */
