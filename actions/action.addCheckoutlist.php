@@ -21,10 +21,25 @@ $json = file_get_contents('php://input');
 // Decode the JSON data
 $data = json_decode($json, true);
 
+// Check if the required data is provided
+if (!isset($data['item_id'])) {
+    http_response_code(400);
+    echo json_encode(['error' => 'Item ID not provided']);
+    exit();
+}
+
 $db = getDatabaseConnection();
 
-$stmt = $db->prepare("INSERT INTO shopping_cart (user_id, item_id) VALUES (?, ?)");
-$stmt->execute([$session->getParam('id'), $data['ID']]);
+try {
+    $stmt = $db->prepare("INSERT INTO shopping_cart (user_id, item_id) VALUES (?, ?)");
+    $stmt->execute([$session->getParam('id'), $data['item_id']]);
+    
+    if ($stmt->rowCount()>0){
+        echo json_encode(['success' => true]);
+    }
+} catch (Exception $e) {
+    http_response_code(500);
+    echo json_encode(['error' => 'Failed to add item to shopping cart', 'message' => $e->getMessage()]);
+}
 
-echo 'lol';
 ?>

@@ -60,9 +60,13 @@ foreach ($sellOrders as &$sellOrder) {
     $stmt->execute([':item_id' => $sellOrder['item_id']]);
     $sellOrder['image'] = $stmt->fetch()['image_url'] ?? 'no-image.png'; // Default image if none
 
-    $stmt = $db->prepare("SELECT * FROM wishlist WHERE item_id = ? LIMIT 1");
-    $stmt->execute([$sellOrder['item_id']]);
+    $stmt = $db->prepare("SELECT * FROM wishlist WHERE item_id = ? AND user_id = ? LIMIT 1");
+    $stmt->execute([$sellOrder['item_id'], $session->getParam('id')]);
     $wish = $stmt->fetch();
+
+    $stmt = $db->prepare("SELECT * FROM shopping_cart WHERE item_id = ? AND user_id = ? LIMIT 1");
+    $stmt->execute([$sellOrder['item_id'], $session->getParam('id')]);
+    $cartItem = $stmt->fetch();
 
 
     $stmt = $db->prepare("SELECT name FROM conditions WHERE condition_id = ? LIMIT 1");
@@ -73,25 +77,41 @@ foreach ($sellOrders as &$sellOrder) {
     $stmt->execute([$sellOrder['size_id']]);
     $sellOrder['size'] = $stmt->fetch();
 
-    $stmt = $db->prepare("SELECT name FROM brands WHERE brand_id = ? LIMIT 1");
-    $stmt->execute([$sellOrder['brand_id']]);
-    $sellOrder['brand'] = $stmt->fetch();
-
     $stmt = $db->prepare("SELECT name FROM categories WHERE category_id = ? LIMIT 1");
     $stmt->execute([$sellOrder['category_id']]);
     $sellOrder['category'] = $stmt->fetch();
 
+    $stmt = $db->prepare("SELECT name FROM brands WHERE brand_id = ? LIMIT 1");
+    $stmt->execute([$sellOrder['brand_id']]);
+    $sellOrder['brand'] = $stmt->fetch();
 
-    if(empty($wish)){
-        $sellOrder['wish'] = "0";
+    if ($session->isLoggedIn()) {
+        if (empty($wish)) {
+            $sellOrder['wish'] = "false";
+        } else {
+            $sellOrder['wish'] = "true";
+        }
+
+        if ($session->getParam('id') == $sellOrder['seller_id']) {
+            $sellOrder['wish'] = "owner";
+        }
+    } else {
+        $sellOrder['wish'] = "notLoggedIn";
     }
-    else
-    {
-        $sellOrder['wish'] = "1";
+
+
+    if($session->isLoggedIn()){
+    if (empty($cartItem)) {
+        $sellOrder['cart'] = "false";
+    } else {
+        $sellOrder['cart'] = "true";
     }
 
     if($session->getParam('id') == $sellOrder['seller_id']){
-        $sellOrder['wish'] = "-1";
+        $sellOrder['cart'] = "owner";
+    }
+    }else{
+        $sellOrder['cart'] = "notLoggedIn";
     }
 }
 

@@ -82,6 +82,20 @@ drawHeader($session);
                             ?>
                         </select>
                     </div>
+                    <div class = "line">
+                        <label for="brand">Brand:</label>
+                        <SELECT name = "brand" id = "brand" class = "lineInput" required>
+                            <option value = "">Select a Brand</option>
+                            <?php
+                            $stmt = $db->query("SELECT * FROM brands");
+                            $brands = $stmt->fetchAll();
+                            foreach ($brands as $brand) {
+                                echo "<option value='{$brand['brand_id']}'>{$brand['name']}</option>";
+                            }
+                            ?>
+                        </SELECT>
+                    </div>
+                            
 
                     <div class = "line">
                         <label for="model">Model:</label>
