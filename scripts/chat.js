@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     chats.addEventListener("click", function (event) {
 
         const chat = event.target.closest(".chat_room");
+        console.log("lol")
         if (chat) {
             changeChat(chat.dataset.value)
         }
@@ -53,7 +54,10 @@ function fetchMessages(val = window.receiverId) {
 
                                     data.forEach(chat => {
 
-                                        if(window.userId != chat.user_id) {
+                                        if(chat.user_id != undefined) {
+
+
+                                            if (window.userId != chat.user_id) {
                                                 chats.innerHTML += `
                                                 
                                                     <div class = 'chat_room' data-value = "${chat.user_id}">  
@@ -67,6 +71,7 @@ function fetchMessages(val = window.receiverId) {
                                                     
                                                     </div>
                                                 `;
+                                            }
                                         }
                                     });
 
@@ -111,14 +116,13 @@ function fetchMessages(val = window.receiverId) {
 
                                 })
 
-                        }
+}
 
 
 
 
 function changeChat(val) {
     window.receiverId = val;
-    fetchMessages(val);
 }
 
 
@@ -150,4 +154,16 @@ function scrollToBottom() {
     $('#chat-box').scrollTop($('#chat-box')[0].scrollHeight);
 }
 
-setInterval(fetchMessages, 200); // Fetch messages every 5 seconds to update the chat
+async function initializeChat() {
+    try {
+        // Perform your async operations here
+        await fetchMessages();
+
+        // Start setInterval after async operations are complete
+        setInterval(fetchMessages, 200);
+    } catch (error) {
+        console.error('Error initializing chat:', error);
+    }
+}
+
+initializeChat();
